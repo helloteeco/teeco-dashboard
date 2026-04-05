@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teeco Command Center</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðï¸</text></svg>">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --yellow: #FBC02D; --black: #111111; --dark: #1a1a1a; --card: #222222;
+    --border: #333333; --text: #e0e0e0; --dim: #888888;
+    --green: #4caf50; --red: #ef5350; --blue: #42a5f5; --orange: #ff9800;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--black); color: var(--text); }
+
+  /* ââ Login Screen ââ */
+  #login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+  .login-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 48px 40px; width: 380px; text-align: center; }
+  .login-box h1 { font-size: 22px; margin-bottom: 4px; }
+  .login-box h1 span { color: var(--yellow); }
+  .login-box p { color: var(--dim); font-size: 13px; margin-bottom: 28px; }
+  .login-box input { width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--dark); color: var(--text); font-size: 14px; margin-bottom: 12px; outline: none; }
+  .login-box input:focus { border-color: var(--yellow); }
+  .login-box button { width: 100%; padding: 12px; border-radius: 8px; border: none; background: var(--yellow); color: var(--black); font-size: 14px; font-weight: 700; cursor: pointer; }
+  .login-box button:hover { opacity: 0.9; }
+  .login-error { color: var(--red); font-size: 12px; margin-bottom: 8px; display: none; }
+
+  /* ââ Dashboard ââ */
+  #dashboard { display: none; }
+  .header { padding: 20px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .header h1 { font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+  .header h1 span { color: var(--yellow); }
+  .header .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .header .subtitle { color: var(--dim); font-size: 13px; margin-top: 2px; margin-left: 18px; }
+  .header-right { display: flex; align-items: center; gap: 16px; font-size: 13px; font-weight: 600; flex-wrap: wrap; }
+  .header-right .agents { color: var(--green); }
+  .header-right .overdue { color: var(--red); }
+  .header-right .logout { color: var(--dim); cursor: pointer; font-weight: 400; text-decoration: underline; font-size: 12px; }
+
+  /* Tabs */
+  .tabs { padding: 0 32px; border-bottom: 1px solid var(--border); display: flex; }
+  .tab { padding: 14px 24px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--dim); font-size: 14px; font-weight: 600; cursor: pointer; }
+  .tab.active { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+  /* Content */
+  .content { padding: 24px 32px; max-width: 1200px; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Metric Cards Row */
+  .metrics-row { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; flex: 1; min-width: 200px; }
+  .metric-card .label { color: var(--dim); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .metric-card .value { font-size: 28px; font-weight: 700; }
+  .metric-card .sub { color: var(--dim); font-size: 12px; margin-top: 4px; }
+
+  /* Alert Box */
+  .alert { border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px; }
+  .alert-red { background: rgba(239,83,80,0.08); border: 1px solid rgba(239,83,80,0.3); }
+  .alert-orange { background: rgba(255,152,0,0.08); border: 1px solid rgba(255,152,0,0.3); }
+  .alert .alert-icon { flex-shrink: 0; margin-top: 2px; font-size: 18px; }
+  .alert .alert-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .alert .alert-body { font-size: 13px; line-height: 1.5; color: var(--text); }
+
+  /* Workstream Cards */
+  .ws-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; overflow: hidden; }
+  .ws-header { padding: 16px 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; }
+  .ws-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ws-info { flex: 1; }
+  .ws-info .name { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .ws-info .meta { color: var(--dim); font-size: 12px; margin-top: 2px; }
+  .ws-agent { text-align: right; }
+  .ws-agent .freq { color: var(--yellow); font-size: 11px; font-weight: 600; }
+  .ws-agent .label { color: var(--dim); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .ws-detail { padding: 0 20px 20px; border-top: 1px solid var(--border); display: none; }
+  .ws-detail.open { display: flex; gap: 24px; padding-top: 16px; }
+  .ws-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ws-metric { background: var(--dark); border-radius: 8px; padding: 8px 12px; }
+  .ws-metric .k { color: var(--dim); font-size: 10px; text-transform: uppercase; }
+  .ws-metric .v { font-size: 14px; font-weight: 600; }
+  .ws-action { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px; }
+  .ws-action .arrow { flex-shrink: 0; margin-top: 3px; }
+  .ws-agent-box { margin-top: 12px; padding: 8px 12px; background: rgba(251,192,45,0.06); border-radius: 8px; border: 1px solid rgba(251,192,45,0.2); }
+  .ws-agent-box .title { color: var(--yellow); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .ws-agent-box .desc { font-size: 12px; margin-top: 2px; }
+
+  /* Badge */
+  .badge { padding: 2px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 1px; display: inline-block; }
+
+  /* Agent Fleet */
+  .fleet-summary { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .fleet-stat { border-radius: 12px; padding: 16px 24px; flex: 1; text-align: center; min-width: 150px; }
+  .fleet-stat .num { font-size: 32px; font-weight: 700; }
+  .fleet-stat .lbl { font-size: 12px; font-weight: 600; }
+  .agent-table { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .agent-row { display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; padding: 14px 20px; align-items: center; border-bottom: 1px solid var(--border); }
+  .agent-row:last-child { border-bottom: none; }
+  .agent-row.head { background: var(--dark); font-size: 11px; font-weight: 700; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; padding: 12px 20px; }
+  .agent-name { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+  .agent-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .agent-dot.live { box-shadow: 0 0 8px var(--green); }
+
+  /* Revenue */
+  .rev-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .rev-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .rev-card .rev-val { font-size: 28px; font-weight: 700; }
+
+  /* Info box */
+  .info-box { margin-top: 24px; padding: 20px; background: rgba(251,192,45,0.04); border: 1px solid rgba(251,192,45,0.2); border-radius: 12px; }
+  .info-box .title { color: var(--yellow); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .info-box p { font-size: 13px; line-height: 1.6; }
+
+  /* Progress bar */
+  .progress-bar { background: var(--dark); border-radius: 8px; height: 12px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 8px; transition: width 1s; }
+
+  @media (max-width: 768px) {
+    .header { padding: 16px; }
+    .content { padding: 16px; }
+    .tabs { padding: 0 16px; overflow-x: auto; }
+    .metrics-row, .fleet-summary, .rev-grid { flex-direction: column; }
+    .agent-row { grid-template-columns: 1fr 1fr; gap: 4px; }
+    .agent-row.head span:nth-child(3), .agent-row.head span:nth-child(4),
+    .agent-row span:nth-child(3), .agent-row span:nth-child(4) { display: none; }
+    .ws-detail.open { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ââ LOGIN ââ -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>TEECO <span>COMMAND CENTER</span></h1>
+    <p>Freedom by Design Â· Team Dashboard</p>
+    <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+    <input type="password" id="pw-input" placeholder="Team password" autocomplete="current-password">
+    <button onclick="tryLogin()">Enter</button>
+  </div>
+</div>
+
+<!-- ââ DASHBOARD ââ -->
+<div id="dashboard">
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1><span class="pulse"></span> TEECO <span>COMMAND CENTER</span></h1>
+      <div class="subtitle" id="date-line"></div>
+    </div>
+    <div class="header-right">
+      <span class="agents">â 14 agents live</span>
+      <span class="overdue">â² 220 overdue tasks</span>
+      <span class="logout" onclick="logout()">Logout</span>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('overview', this)">Command Center</button>
+    <button class="tab" onclick="switchTab('agents', this)">Agent Fleet</button>
+    <button class="tab" onclick="switchTab('revenue', this)">Revenue</button>
+  </div>
+
+  <div class="content">
+
+    <!-- ââââ OVERVIEW TAB ââââ -->
+    <div class="tab-panel active" id="panel-overview">
+      <div class="metrics-row">
+        <div class="metric-card"><div class="label">ð° Monthly Revenue</div><div class="value" style="color:var(--orange)">No data</div><div class="sub">Connect real Stripe + PMS</div></div>
+        <div class="metric-card"><div class="label">ð  Properties</div><div class="value" style="color:var(--blue)">31</div><div class="sub">Rental portfolio</div></div>
+        <div class="metric-card"><div class="label">â ï¸ Overdue Tasks</div><div class="value" style="color:var(--red)">220</div><div class="sub">14 this week Â· Motion</div></div>
+        <div class="metric-card"><div class="label">ð¤ Agent Fleet</div><div class="value" style="color:var(--green)">14</div><div class="sub">All live Â· Telegram reports</div></div>
+      </div>
+
+      <div class="alert alert-red">
+        <div class="alert-icon">â ï¸</div>
+        <div>
+          <div class="alert-title" style="color:var(--red)">Motion Task Debt: 220 Overdue</div>
+          <div class="alert-body">Current week (Apr 4): Track Steph &amp; Wilson deliveries, send Eric affiliate program, create Teeco KY floor plan, automate testimonials, schedule Brenda Villafranco install week. Team: Myla (2 tasks), Ryu (2 tasks).</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:16px;margin:0 0 4px">All Workstreams</h3>
+      <p style="color:var(--dim);font-size:12px;margin:0 0 16px">Click to expand Â· Each has a scheduled agent assigned</p>
+      <div id="workstream-list"></div>
+    </div>
+
+    <!-- ââââ AGENTS TAB ââââ -->
+    <div class="tab-panel" id="panel-agents">
+      <h3 style="font-size:18px;margin:0 0 4px">Agent Fleet</h3>
+      <p style="color:var(--dim);font-size:13px;margin:0 0 24px">Scheduled Claude tasks that push each workstream forward automatically.</p>
+
+      <div class="fleet-summary">
+        <div class="fleet-stat" style="background:rgba(76,175,80,0.08);border:1px solid rgba(76,175,80,0.3)"><div class="num" style="color:var(--green)">14</div><div class="lbl" style="color:var(--green)">LIVE AGENTS</div></div>
+        <div class="fleet-stat" style="background:rgba(251,192,45,0.08);border:1px solid rgba(251,192,45,0.3)"><div class="num" style="color:var(--yellow)">48</div><div class="lbl" style="color:var(--yellow)">RUNS / WEEK</div></div>
+        <div class="fleet-stat" style="background:rgba(66,165,245,0.08);border:1px solid rgba(66,165,245,0.3)"><div class="num" style="color:var(--blue)">1</div><div class="lbl" style="color:var(--blue)">PENDING (QB AUTH)</div></div>
+      </div>
+
+      <div class="agent-table">
+        <div class="agent-row head">
+          <span>Agent</span><span>Status</span><span>Frequency</span><span>Last Run</span>
+        </div>
+        <div id="agent-list"></div>
+      </div>
+
+      <div class="info-box">
+        <div class="title">â¡ Fleet Status</div>
+        <p>All 14 agents are live and scheduled. The Master Builder runs daily at 6:10am and coordinates everything. Reports are delivered to Telegram via @GovConScannerBot. The only pending item is re-authenticating QuickBooks for the bookkeeping agent.</p>
+      </div>
+    </div>
+
+    <!-- ââââ REVENUE TAB ââââ -->
+    <div class="tab-panel" id="panel-revenue">
+      <h3 style="font-size:18px;margin:0 0 4px">Revenue Breakdown</h3>
+      <p style="color:var(--dim);font-size:13px;margin:0 0 24px">Track against $3M-$5M 2026 target Â· Connect Stripe + QuickBooks for live data</p>
+
+      <div class="alert alert-orange">
+        <div class="alert-icon">â ï¸</div>
+        <div>
+          <div class="alert-title" style="color:var(--orange)">Revenue Data Not Connected</div>
+          <div class="alert-body">This Stripe account only shows 3 small payments ($83 total). Real revenue from coaching ($13K design + mgmt fees), Edge, PhotoLab, and rentals is either on a different Stripe account or collected through other channels. QuickBooks needs re-authentication.</div>
+        </div>
+      </div>
+
+      <div class="rev-card" style="margin-bottom:24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-weight:600">2026 Revenue Target: $3M â $5M</span>
+          <span style="color:var(--dim);font-weight:700">Awaiting real data</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%;background:linear-gradient(90deg,var(--orange),var(--yellow))"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--dim)">
+          <span>Connect Stripe + QuickBooks + PMS for live tracking</span>
+          <span>Q1 complete Â· 3 quarters to go</span>
+        </div>
+      </div>
+
+      <div class="rev-grid">
+        <div class="rev-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="color:var(--green)">ð </span><span style="font-weight:600">Rental Income</span></div>
+          <div class="rev-val" style="color:var(--dim)">â</div>
+          <div style="color:var(--dim);font-size:12px;margin-top:4px">31 properties Â· Connect PMS</div>
+        </div>
+        <div class="rev-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="color:var(--yellow)">ð¯</span><span style="font-weight:600">Coaching</span></div>
+          <div class="rev-val" style="color:var(--dim)">â</div>
+          <div style="color:var(--dim);font-size:12px;margin-top:4px">$13K program Â· Design + Management fees</div>
+          <div style="color:var(--dim);font-size:12px;margin-top:4px">7 active clients</div>
+        </div>
+        <div class="rev-card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="color:var(--blue)">ð³</span><span style="font-weight:600">Digital / Stripe</span></div>
+          <div class="rev-val" style="color:var(--blue)">$83</div>
+          <div style="color:var(--dim);font-size:12px;margin-top:4px">3 payments on this Stripe account</div>
+          <div style="color:var(--red);font-size:12px;margin-top:4px">Wrong Stripe? Edge/PhotoLab not here</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ââ Password (change this!) ââ
+const TEAM_PW = "teeco2026";
+
+function tryLogin() {
+  const pw = document.getElementById("pw-input").value;
+  if (pw === TEAM_PW) {
+    sessionStorage.setItem("teeco-auth", "1");
+    showDashboard();
+  } else {
+    document.getElementById("login-error").style.display = "block";
+  }
+}
+document.addEventListener("keydown", e => { if (e.key === "Enter" && !sessionStorage.getItem("teeco-auth")) tryLogin(); });
+
+function logout() { sessionStorage.removeItem("teeco-auth"); location.reload(); }
+
+function showDashboard() {
+  document.getElementById("login-screen").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+  document.getElementById("date-line").textContent = new Date().toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric" }) + " Â· Freedom by Design";
+}
+
+if (sessionStorage.getItem("teeco-auth")) showDashboard();
+
+// ââ Tabs ââ
+function switchTab(id, btn) {
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.getElementById("panel-" + id).classList.add("active");
+  btn.classList.add("active");
+}
+
+// ââ Data ââ
+const statusColors = {
+  active: { bg:"#1b3a1b", fg:"var(--green)", label:"ACTIVE" },
+  live: { bg:"#1b3a1b", fg:"var(--green)", label:"LIVE" },
+  in_progress: { bg:"#3a2e0a", fg:"var(--orange)", label:"IN PROGRESS" },
+  needs_setup: { bg:"#3a1a1a", fg:"var(--red)", label:"NEEDS SETUP" },
+  validating: { bg:"#2a2a0a", fg:"var(--yellow)", label:"VALIDATING" },
+};
+function badge(status) {
+  const s = statusColors[status] || statusColors.active;
+  return `<span class="badge" style="background:${s.bg};color:${s.fg}">${s.label}</span>`;
+}
+
+const workstreams = [
+  { name:"Rental Portfolio", icon:"ð ", status:"active", color:"var(--green)", freq:"Daily 8am",
+    metrics:{properties:31, revenue:"Connect PMS", occupancy:"â", nightlyRate:"â"},
+    actions:["Deploy PriceLabs optimization across all 31 units","Onboard Evergreens A/B + Homely Comforts A/B + Cozy Getaway","Deploy Slack AI #ai-review-drafts channel"],
+    agent:"Daily property performance digest", agentFreq:"Daily 8:09am" },
+  { name:"Teeco Coaching", icon:"ð¯", status:"active", color:"var(--yellow)", freq:"Mon/Thu 9am",
+    metrics:{program:"$13K Design+Mgmt", activeClients:7, pipeline:"â", revenue:"Design fees + mgmt"},
+    actions:["Follow up on warm leads from webinar funnel","Client delivery: Steph & Wilson, Gainesville, KY, Brenda, Lisa & Gus, Neil, Christie","Build case study from completed client projects"],
+    agent:"Lead scoring + follow-up drafts", agentFreq:"Mon & Thu 9:10am" },
+  { name:"Content & Marketing", icon:"ð±", status:"active", color:"var(--red)", freq:"Daily 7am",
+    metrics:{ytSubs:"~12K", igFollowers:"~11K", schedule:"Mon/Wed/Sat", funnelCTR:"48.3%"},
+    actions:["Post case study video (thumbnail ready)","Verify Mon/Wed/Sat YouTube schedule","Create 3 Instagram carousels for rural Airbnb ROI"],
+    agent:"Daily content scheduling + analytics", agentFreq:"Daily 7:00am" },
+  { name:"AirBNB Anywhere Book", icon:"ð", status:"in_progress", color:"var(--orange)", freq:"Sun 10am",
+    metrics:{chapters:"8 / 25", current:"Ch 8: Remote Ops", wordCount:"~24,000", launch:"Q3 2026"},
+    actions:["Finish Chapter 8: Remote Property Management","Draft Chapter 9: Guest Experience & Reviews","Integrate 7-day setup checklist into appendix"],
+    agent:"Weekly writing sprint + chapter review", agentFreq:"Sun 10:10am" },
+  { name:"GovCon Scanner", icon:"ðï¸", status:"active", color:"var(--blue)", freq:"Daily 8:04am",
+    metrics:{scansToday:1, oppsFound:"This week", topMatch:"FEMA lodging", status:"LIVE"},
+    actions:["Review today's scan results in Telegram","Bid on FEMA temporary housing RFP if score > 80","Build response template for recurring types"],
+    agent:"Daily SAM.gov + FEMA scan â Telegram", agentFreq:"Daily 8:04am (LIVE)" },
+  { name:"ParkStay Platform", icon:"ðï¸", status:"in_progress", color:"var(--yellow)", freq:"Wed 10am",
+    metrics:{phase:"Prototype â Prod", hostFee:"3%", model:"Direct booking", target:"parkstay.teeco.co"},
+    actions:["Move from manus.space to parkstay.teeco.co","Build waitlist landing page with email capture","Set up Stripe Connect for host payouts","Seed with Jeff's 31 properties"],
+    agent:"Weekly ParkStay dev + marketing sprint", agentFreq:"Wed 10:05am" },
+  { name:"Teeco Edge", icon:"â¡", status:"active", color:"var(--blue)", freq:"M/W/F 7:08am",
+    metrics:{site:"edge.teeco.co", focus:"Conversion", agent:"M/W/F marketing", funnel:"Active"},
+    actions:["Improve landing page conversion rate","A/B test pricing and CTA copy","Drive traffic from social channels"],
+    agent:"M/W/F marketing + conversion optimization", agentFreq:"M/W/F 7:08am" },
+  { name:"PhotoLab", icon:"ð¸", status:"active", color:"var(--orange)", freq:"Tue 9:08am",
+    metrics:{site:"photolab.teeco.co", focus:"Airbnb photos", agent:"Weekly report", revenue:"Growing"},
+    actions:["Track weekly sales and usage metrics","Expand referral program","Create case studies from client results"],
+    agent:"Weekly PhotoLab sales + growth", agentFreq:"Tue 9:08am" },
+  { name:"Stripe / Revenue", icon:"ð³", status:"active", color:"var(--yellow)", freq:"Mon 8:02am",
+    metrics:{stripe:"Connected", report:"Mon 8:02am", streams:7, target:"$3M-$5M"},
+    actions:["Set up Stripe products for Edge + PhotoLab","Map all products to value ladder tiers","Weekly revenue reconciliation"],
+    agent:"Weekly consolidated revenue report", agentFreq:"Mon 8:02am" },
+  { name:"Bookkeeping & Taxes", icon:"ð", status:"needs_setup", color:"var(--green)", freq:"Pending",
+    metrics:{status:"Re-auth QuickBooks", taxYear:"2023-2025", cpa:"Mark", k1s:"Gather 1099s"},
+    actions:["Re-authenticate QuickBooks MCP in sidebar","Categorize Q1 2026 transactions","Gather 1099s and K1 from 2024 for Mark"],
+    agent:"Weekly transaction categorization", agentFreq:"Pending QB re-auth" },
+  { name:"Lead Automation (GHL)", icon:"ð¥", status:"active", color:"var(--blue)", freq:"Tu/F 9:04am",
+    metrics:{liveFlows:3, webinarCTR:"48.3%", lifestyleCTR:"66.7%", ghlMonitor:"Tu/F"},
+    actions:["Monitor GHL pipeline â ensure Steph's automation is closing","A/B test rural keyword DM","Edit GHL link to apply.teeco.co"],
+    agent:"GHL pipeline + ManyChat report", agentFreq:"Tu/F 9:04am" },
+  { name:"Creator Stay SD", icon:"ð¬", status:"validating", color:"var(--orange)", freq:"Bi-weekly Mon",
+    metrics:{phase:"Demand test", applications:"â", signals:"Collecting", pillars:"4 content pillars"},
+    actions:["Review application signal density","Post 'Who it's NOT for' content","Evaluate go/no-go Q2 volume"],
+    agent:"Bi-weekly demand signal report", agentFreq:"Every other Mon" },
+];
+
+const agentFleet = [
+  { name:"Teeco Builder (Master)", freq:"Daily 6:10am", lastRun:"Runs daily" },
+  { name:"GovCon Scanner", freq:"Daily 8:04am", lastRun:"Today" },
+  { name:"Property Digest", freq:"Daily 8:09am", lastRun:"Today" },
+  { name:"Content Engine", freq:"Daily 7:00am", lastRun:"Today" },
+  { name:"Lead Scorer", freq:"Mon & Thu 9:10am", lastRun:"Scheduled" },
+  { name:"Book Sprint", freq:"Sun 10:10am", lastRun:"Scheduled" },
+  { name:"Weekly Revenue Report", freq:"Mon 8:02am", lastRun:"Scheduled" },
+  { name:"Demand Signal Report", freq:"Mon 9:05am", lastRun:"Scheduled" },
+  { name:"Edge Marketing", freq:"M/W/F 7:08am", lastRun:"Scheduled" },
+  { name:"PhotoLab Sales", freq:"Tue 9:08am", lastRun:"Scheduled" },
+  { name:"Circle Community", freq:"M-F 10:04am", lastRun:"Scheduled" },
+  { name:"C-Suite Weekly", freq:"Fri 8:09am", lastRun:"Scheduled" },
+  { name:"GHL Pipeline Monitor", freq:"Tu/F 9:04am", lastRun:"Scheduled" },
+  { name:"ParkStay Builder", freq:"Wed 10:05am", lastRun:"Scheduled" },
+];
+
+// ââ Render Workstreams ââ
+const wsList = document.getElementById("workstream-list");
+workstreams.forEach((ws, i) => {
+  const metricsHtml = Object.entries(ws.metrics).map(([k,v]) =>
+    `<div class="ws-metric"><div class="k">${k.replace(/([A-Z])/g,' $1')}</div><div class="v">${v}</div></div>`
+  ).join("");
+  const actionsHtml = ws.actions.map(a =>
+    `<div class="ws-action"><span class="arrow" style="color:${ws.color}">â</span><span>${a}</span></div>`
+  ).join("");
+  const metaSummary = Object.entries(ws.metrics).slice(0,3).map(([k,v])=>`${k}: ${v}`).join(" Â· ");
+
+  wsList.innerHTML += `
+    <div class="ws-card">
+      <div class="ws-header" onclick="toggleWs(${i})">
+        <div class="ws-icon" style="background:${ws.color}15">${ws.icon}</div>
+        <div class="ws-info">
+          <div class="name">${ws.name} ${badge(ws.status)}</div>
+          <div class="meta">${metaSummary}</div>
+        </div>
+        <div class="ws-agent">
+          <div class="label">Agent</div>
+          <div class="freq">${ws.agentFreq}</div>
+        </div>
+      </div>
+      <div class="ws-detail" id="ws-detail-${i}">
+        <div style="flex:1">
+          <div style="color:var(--dim);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Metrics</div>
+          <div class="ws-metrics-grid">${metricsHtml}</div>
+        </div>
+        <div style="flex:1">
+          <div style="color:var(--dim);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Next Actions</div>
+          ${actionsHtml}
+          <div class="ws-agent-box"><div class="title">Scheduled Agent</div><div class="desc">${ws.agent}</div></div>
+        </div>
+      </div>
+    </div>`;
+});
+
+function toggleWs(i) {
+  const d = document.getElementById("ws-detail-" + i);
+  d.classList.toggle("open");
+}
+
+// ââ Render Agent Fleet ââ
+const agentList = document.getElementById("agent-list");
+agentFleet.forEach(a => {
+  agentList.innerHTML += `
+    <div class="agent-row">
+      <div class="agent-name"><div class="agent-dot live" style="background:var(--green)"></div>${a.name}</div>
+      <div>${badge("live")}</div>
+      <span style="color:var(--dim);font-size:13px">${a.freq}</span>
+      <span style="color:var(--green);font-size:13px">${a.lastRun}</span>
+    </div>`;
+});
+</script>
+</body>
+</html>
