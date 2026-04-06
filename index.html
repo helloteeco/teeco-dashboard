@@ -1578,21 +1578,21 @@ body {
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--blue-bg)">👥</div>
             <div class="metric-label">Team Members</div>
-            <div class="metric-value" style="color:var(--blue)">4</div>
+            <div class="metric-value" style="color:var(--blue)">7</div>
             <div class="metric-sub">Active contributors</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--orange-bg)">📋</div>
             <div class="metric-label">Active Tasks</div>
-            <div class="metric-value" style="color:var(--orange)">38</div>
+            <div class="metric-value" style="color:var(--orange)">52</div>
             <div class="metric-sub">Across all workstreams</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--green-bg)">✅</div>
             <div class="metric-label">Completed This Week</div>
-            <div class="metric-value" style="color:var(--green)">12</div>
+            <div class="metric-value" style="color:var(--green)">23</div>
             <div class="metric-sub">
-              <span class="metric-trend up">+3 vs last week</span>
+              <span class="metric-trend up">+5 vs last week</span>
             </div>
           </div>
         </div>
@@ -1936,13 +1936,22 @@ const teamMembers = [
   { name:"Jeff", role:"CEO / Founder", color:"var(--gold)", initial:"J",
     tasks:["Strategic oversight","Client relationships","Content creation","Revenue targets"],
     activeTasks:12, completed:5, workstreams:["Coaching","Rentals","Content"] },
-  { name:"Myla", role:"Operations Manager", color:"var(--blue)", initial:"M",
-    tasks:["Track Steph & Wilson deliveries","Create Teeco KY floor plan","Automate testimonials","Schedule Brenda install week"],
-    activeTasks:8, completed:3, workstreams:["Operations","Coaching","Rentals"] },
-  { name:"Ryu", role:"Tech & Development", color:"var(--green)", initial:"R",
-    tasks:["ParkStay platform development","Edge optimization","PhotoLab features","Bot maintenance"],
-    activeTasks:10, completed:2, workstreams:["ParkStay","Edge","PhotoLab"] },
-  { name:"AI Fleet", role:"14 Automated Agents", color:"var(--purple)", initial:"🤖",
+  { name:"Ryu", role:"COO / Acquisitions & Management", color:"var(--green)", initial:"R",
+    tasks:["Property acquisitions pipeline","Portfolio management oversight","Operational strategy","Team coordination"],
+    activeTasks:10, completed:4, workstreams:["Rentals","Acquisitions","Operations"] },
+  { name:"Myla", role:"Head of Design", color:"var(--blue)", initial:"M",
+    tasks:["Teeco KY floor plan design","Brand & visual identity","PhotoLab creative direction","Client presentation decks"],
+    activeTasks:8, completed:3, workstreams:["Design","PhotoLab","Coaching"] },
+  { name:"Stephanie", role:"Sales & Operations", color:"var(--orange)", initial:"S",
+    tasks:["Client onboarding & follow-ups","Sales pipeline management","Coaching program delivery","Operational workflows"],
+    activeTasks:7, completed:3, workstreams:["Sales","Coaching","Operations"] },
+  { name:"Brittany", role:"Designer", color:"var(--purple)", initial:"B",
+    tasks:["Property listing visuals","Marketing collateral design","Social media graphics","Client deliverable design"],
+    activeTasks:6, completed:2, workstreams:["Design","Content","PhotoLab"] },
+  { name:"Eng", role:"Property Manager", color:"var(--red)", initial:"E",
+    tasks:["Day-to-day property operations","Guest communications & reviews","Maintenance coordination","Turnover scheduling"],
+    activeTasks:9, completed:4, workstreams:["Rentals","Operations","Guest Experience"] },
+  { name:"AI Fleet", role:"14 Automated Agents", color:"var(--gold-dark)", initial:"🤖",
     tasks:["Daily property digests","GovCon scanning","Content scheduling","Lead scoring","Revenue reports"],
     activeTasks:8, completed:2, workstreams:["All Workstreams"] },
 ];
@@ -1952,14 +1961,19 @@ const activityLog = [
   { type:"bot", agent:"Property Digest", action:"Generated daily performance report for 31 properties", time:"Today 8:09am", color:"var(--green)" },
   { type:"bot", agent:"Content Engine", action:"Scheduled YouTube video + 2 Instagram posts for today", time:"Today 7:00am", color:"var(--red)" },
   { type:"bot", agent:"Master Builder", action:"Daily coordination complete — all agents healthy", time:"Today 6:10am", color:"var(--gold)" },
+  { type:"team", agent:"Stephanie", action:"Closed 2 coaching leads from webinar funnel", time:"Yesterday 5:15pm", color:"var(--orange)" },
   { type:"team", agent:"Myla", action:"Updated Steph & Wilson delivery timeline in Motion", time:"Yesterday 4:30pm", color:"var(--blue)" },
   { type:"bot", agent:"Edge Marketing", action:"A/B test results: CTA variant B +12% conversion", time:"Yesterday 7:08am", color:"var(--blue)" },
-  { type:"team", agent:"Ryu", action:"Deployed ParkStay waitlist page to staging", time:"Yesterday 2:15pm", color:"var(--green)" },
+  { type:"team", agent:"Eng", action:"Coordinated turnover for 4 properties — all guest-ready", time:"Yesterday 3:00pm", color:"var(--red)" },
+  { type:"team", agent:"Brittany", action:"Completed 3 listing photo edits for new properties", time:"Yesterday 2:45pm", color:"var(--purple)" },
+  { type:"team", agent:"Ryu", action:"Finalized acquisition terms for new property", time:"Yesterday 2:15pm", color:"var(--green)" },
   { type:"bot", agent:"Lead Scorer", action:"Scored 5 new leads — 2 qualified for coaching pipeline", time:"Yesterday 9:10am", color:"var(--gold)" },
   { type:"team", agent:"Jeff", action:"Recorded case study video for YouTube channel", time:"Yesterday 11:00am", color:"var(--gold)" },
   { type:"bot", agent:"PhotoLab Sales", action:"Weekly report: 8 new orders, $1,240 revenue", time:"Tue 9:08am", color:"var(--orange)" },
   { type:"bot", agent:"GHL Pipeline", action:"Pipeline update: 3 leads moved to proposal stage", time:"Tue 9:04am", color:"var(--blue)" },
-  { type:"team", agent:"Myla", action:"Completed Brenda Villafranco scheduling for install week", time:"Mon 3:00pm", color:"var(--blue)" },
+  { type:"team", agent:"Stephanie", action:"Onboarded new coaching client — sent welcome package", time:"Mon 4:00pm", color:"var(--orange)" },
+  { type:"team", agent:"Myla", action:"Delivered Brenda Villafranco design package", time:"Mon 3:00pm", color:"var(--blue)" },
+  { type:"team", agent:"Eng", action:"Resolved maintenance issue at Cozy Getaway unit", time:"Mon 1:30pm", color:"var(--red)" },
   { type:"bot", agent:"Revenue Report", action:"Weekly consolidated: $83 Stripe + coaching invoices pending", time:"Mon 8:02am", color:"var(--gold)" },
   { type:"bot", agent:"Book Sprint", action:"Chapter 8 draft review complete — 3 revision notes", time:"Sun 10:10am", color:"var(--orange)" },
   { type:"team", agent:"Jeff", action:"Webinar funnel optimization — CTR now 48.3%", time:"Sat 10:00am", color:"var(--gold)" },
@@ -2230,17 +2244,17 @@ function initCharts() {
     new Chart(workloadCtx, {
       type: 'bar',
       data: {
-        labels: ['Jeff', 'Myla', 'Ryu', 'AI Fleet'],
+        labels: ['Jeff', 'Ryu', 'Myla', 'Stephanie', 'Brittany', 'Eng', 'AI Fleet'],
         datasets: [
           {
             label: 'Active Tasks',
-            data: [12, 8, 10, 8],
+            data: [12, 10, 8, 7, 6, 9, 8],
             backgroundColor: 'rgba(249,115,22,0.6)',
             borderRadius: 6,
           },
           {
             label: 'Completed',
-            data: [5, 3, 2, 2],
+            data: [5, 4, 3, 3, 2, 4, 2],
             backgroundColor: 'rgba(34,197,94,0.6)',
             borderRadius: 6,
           }
@@ -2294,7 +2308,7 @@ function initCharts() {
       data: {
         labels: ['Bot Actions', 'Team Actions'],
         datasets: [{
-          data: [10, 5],
+          data: [10, 9],
           backgroundColor: ['rgba(251,192,45,0.7)', 'rgba(59,130,246,0.7)'],
           borderWidth: 0,
         }]
