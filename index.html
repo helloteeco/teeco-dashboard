@@ -775,6 +775,8 @@ img, canvas, svg, video { max-width: 100%; }
 .badge-active::before { background: var(--green); }
 .badge-live { background: var(--green-bg); color: var(--green); }
 .badge-live::before { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.badge-pending { background: var(--orange-bg); color: var(--orange); }
+.badge-pending::before { background: var(--orange); }
 .badge-progress { background: var(--orange-bg); color: var(--orange); }
 .badge-progress::before { background: var(--orange); }
 .badge-setup { background: var(--red-bg); color: var(--red); }
@@ -2194,8 +2196,8 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="metric-label">Agent Fleet</div>
             <div class="metric-value" style="color:var(--green)">2</div>
             <div class="metric-sub">
-              <span class="metric-trend up">All live</span>
-              <span>Atlas + Scout</span>
+              <span class="metric-trend neutral">1 live / 1 pending</span>
+              <span>Atlas live; Scout test-gated</span>
             </div>
           </div>
         </div>
@@ -2258,7 +2260,7 @@ img, canvas, svg, video { max-width: 100%; }
         <div class="fleet-stats">
           <div class="fleet-stat-card" style="background:var(--green-bg);border:1px solid var(--green-border)">
             <div class="stat-num" style="color:var(--green)">2</div>
-            <div class="stat-label" style="color:var(--green)">Live Agents</div>
+            <div class="stat-label" style="color:var(--green)">Visible Agents</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--gold-subtle);border:1px solid rgba(251,192,45,0.2)">
             <div class="stat-num" style="color:var(--gold)">—</div>
@@ -2849,6 +2851,7 @@ function scrollToWs(name) {
 const statusMap = {
   active: { cls: "badge-active", label: "ACTIVE" },
   live: { cls: "badge-live", label: "LIVE" },
+  pending: { cls: "badge-pending", label: "PENDING TEST" },
   in_progress: { cls: "badge-progress", label: "IN PROGRESS" },
   needs_setup: { cls: "badge-setup", label: "NEEDS SETUP" },
   validating: { cls: "badge-validating", label: "VALIDATING" },
@@ -2940,6 +2943,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected Agent Fleet accountability so Scout is visibly pending a 7-day test instead of being counted as fully live; agent schedule chart now shows unknown until run logs are connected", time:"2026-05-10 02:58PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Content-to-Lead Proof Queue so case studies, webinar clips, and carousels must show CTA, source proof, owner, next action, and ROI link before more content automation", time:"2026-05-10 02:35PM PDT", color:"var(--purple)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added CRM Count Intake template with week range, oldest untouched lead, no-shows/reschedules, highest-risk follow-up, and a copy-paste Stephanie request so sales proof replaces Unknowns", time:"2026-05-10 02:25PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added coaching stakeholder notification tracker so Stephanie's CRM/GHL count request is visible with sent status, exact ask, and dashboard-only guardrail", time:"2026-05-10 02:16PM PDT", color:"var(--blue)" },
@@ -3024,8 +3028,8 @@ const agentList = document.getElementById("agent-list");
 agentFleet.forEach(a => {
   agentList.innerHTML += `
     <div class="agent-row">
-      <div class="agent-name"><div class="agent-dot ${a.status}" style="background:var(--green)"></div>${a.name}</div>
-      <div>${badge("live")}</div>
+      <div class="agent-name"><div class="agent-dot ${a.status}" style="background:${a.status === 'live' ? 'var(--green)' : 'var(--orange)'}"></div>${a.name}</div>
+      <div>${badge(a.status)}</div>
       <span style="color:var(--text-secondary);font-size:13px">${a.freq}</span>
       <span style="color:var(--green);font-size:13px;font-weight:500">${a.lastRun}</span>
     </div>`;
@@ -3131,10 +3135,10 @@ function initCharts() {
       data: {
         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         datasets: [{
-          label: 'Agent Runs',
-          data: [10, 8, 9, 6, 7, 4, 4],
-          backgroundColor: 'rgba(251,192,45,0.3)',
-          borderColor: 'rgba(251,192,45,0.8)',
+          label: 'Agent Runs (logs not connected)',
+          data: [0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(113,113,122,0.25)',
+          borderColor: 'rgba(113,113,122,0.6)',
           borderWidth: 1,
           borderRadius: 6,
         }]
