@@ -854,261 +854,404 @@ body {
 }
 
 .retreat-hero {
-  min-height: 360px;
-  border: 1px solid rgba(251,192,45,0.20);
-  border-radius: 24px;
+  min-height: 520px;
+  border: 2px solid rgba(251,192,45,0.24);
+  border-radius: 26px;
   margin-bottom: 28px;
   overflow: hidden;
   position: relative;
+  isolation: isolate;
+  background: #111113;
+  box-shadow: 0 28px 90px rgba(0,0,0,0.52), inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+.retreat-room {
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(circle at 18% 18%, rgba(251,192,45,0.26), transparent 18%),
-    linear-gradient(180deg, #17263d 0%, #12384a 36%, #17412f 62%, #0d241c 100%);
-  box-shadow: 0 24px 70px rgba(0,0,0,0.42), inset 0 0 80px rgba(251,192,45,0.06);
+    linear-gradient(180deg, rgba(15,25,36,0.25), rgba(0,0,0,0.25)),
+    linear-gradient(90deg, rgba(0,0,0,0.28) 0 8%, transparent 8% 92%, rgba(0,0,0,0.26) 92%),
+    repeating-linear-gradient(0deg, rgba(115,67,36,0.0) 0 31px, rgba(255,214,144,0.045) 32px),
+    linear-gradient(180deg, #6c3f25 0 50%, #4a2a1b 50% 100%);
 }
-.retreat-hero-skyline {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 54%;
-  background:
-    radial-gradient(circle at 76% 18%, rgba(255,213,79,0.72) 0 34px, transparent 35px),
-    linear-gradient(160deg, transparent 0 42%, rgba(255,255,255,0.10) 42.4% 43.8%, transparent 44.2%),
-    linear-gradient(18deg, transparent 0 48%, rgba(9,23,31,0.72) 48.4% 72%, transparent 72.4%),
-    linear-gradient(340deg, transparent 0 43%, rgba(13,33,39,0.88) 43.4% 75%, transparent 75.4%);
-  opacity: .95;
-}
-.retreat-hero-ground {
-  position: absolute;
-  left: -6%;
-  right: -6%;
-  bottom: -10%;
-  height: 56%;
-  background:
-    radial-gradient(ellipse at 50% 40%, rgba(95,145,72,0.42), transparent 58%),
-    linear-gradient(180deg, rgba(34,87,56,0.9), rgba(7,30,21,1));
-  border-radius: 50% 50% 0 0;
-}
-.retreat-path {
-  position: absolute;
-  left: 44%;
-  bottom: -4%;
-  width: 18%;
-  height: 46%;
-  background: linear-gradient(180deg, rgba(251,192,45,0.30), rgba(132,90,45,0.65));
-  clip-path: polygon(43% 0, 57% 0, 100% 100%, 0 100%);
-  filter: blur(.2px);
-  opacity: .9;
-}
-.retreat-cabin {
-  position: absolute;
-  width: 138px;
-  height: 84px;
-  left: 50%;
-  top: 42%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(180deg, #9b5f34, #5d321f);
-  border: 2px solid rgba(255,213,79,0.25);
-  border-radius: 10px 10px 8px 8px;
-  box-shadow: 0 18px 32px rgba(0,0,0,0.35);
-}
-.retreat-cabin::before {
+.retreat-room::before {
   content: '';
   position: absolute;
-  left: -14px;
-  right: -14px;
-  top: -38px;
-  height: 54px;
-  background: linear-gradient(145deg, #53301f, #2a1811);
-  clip-path: polygon(50% 0, 100% 70%, 92% 100%, 8% 100%, 0 70%);
-  border-radius: 4px;
+  left: -3%; right: -3%; bottom: -2%; height: 37%;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,214,144,0.07) 0 2px, transparent 2px 58px),
+    linear-gradient(180deg, #8a542f, #4f2b1b);
+  transform: perspective(360px) rotateX(54deg);
+  transform-origin: bottom;
+  border-top: 3px solid rgba(251,192,45,0.18);
+  box-shadow: inset 0 20px 45px rgba(0,0,0,0.24);
 }
-.retreat-cabin::after {
-  content: '🏡';
+.retreat-rafters,
+.retreat-rafters::before,
+.retreat-rafters::after {
   position: absolute;
-  inset: 15px auto auto 49px;
-  font-size: 35px;
+  content: '';
+  top: 0; bottom: 34%;
+  width: 18px;
+  background: linear-gradient(90deg, #2d1710, #7b4424 48%, #29140d);
+  box-shadow: 0 0 18px rgba(0,0,0,0.35);
 }
-.retreat-tree {
+.retreat-rafters { left: 4%; }
+.retreat-rafters::before { left: 250px; top: 0; bottom: 0; }
+.retreat-rafters::after { left: 520px; top: 0; bottom: 0; }
+.retreat-status-bar {
   position: absolute;
-  font-size: 34px;
-  filter: drop-shadow(0 9px 8px rgba(0,0,0,0.34));
-}
-.retreat-tree.t1 { left: 7%; top: 48%; }
-.retreat-tree.t2 { left: 19%; top: 37%; transform: scale(1.18); }
-.retreat-tree.t3 { right: 9%; top: 47%; transform: scale(1.1); }
-.retreat-tree.t4 { right: 23%; top: 35%; }
-.ai-employee {
-  position: absolute;
-  width: 86px;
-  min-height: 88px;
+  left: 18px; right: 18px; top: 14px;
+  height: 38px;
+  border-radius: 14px;
+  background: rgba(10,10,11,0.72);
+  border: 1px solid rgba(255,255,255,0.10);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
-  animation: employee-bob 3.6s ease-in-out infinite;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 14px;
+  backdrop-filter: blur(12px);
+  z-index: 6;
 }
-.ai-employee:nth-of-type(2n) { animation-delay: .7s; }
-.ai-sprite {
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-  font-size: 29px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(17,17,19,0.86));
-  border: 1px solid rgba(255,255,255,0.16);
-  box-shadow: 0 12px 22px rgba(0,0,0,0.30), 0 0 0 4px rgba(251,192,45,0.07);
-  backdrop-filter: blur(8px);
+.retreat-title {
+  color: #f9e6aa;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.35);
 }
-.ai-nameplate {
-  background: rgba(10,10,11,0.76);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 999px;
-  padding: 4px 8px;
-  color: #fff;
+.retreat-counters {
+  display: flex;
+  gap: 12px;
+  color: rgba(255,255,255,0.76);
   font-size: 11px;
-  font-weight: 800;
   white-space: nowrap;
 }
-.ai-task-bubble {
-  max-width: 112px;
-  background: rgba(251,192,45,0.13);
-  border: 1px solid rgba(251,192,45,0.24);
-  color: rgba(255,255,255,0.82);
-  border-radius: 10px;
-  padding: 5px 7px;
-  font-size: 10px;
-  line-height: 1.18;
-  text-align: center;
-}
-.ai-atlas { left: 16%; bottom: 14%; }
-.ai-scout { right: 17%; bottom: 17%; }
-.ai-builder { left: 38%; bottom: 8%; }
-.ai-gov { right: 37%; bottom: 8%; }
-.retreat-hero-sign {
+.retreat-counters b { color: var(--green); }
+.retreat-stage-label {
   position: absolute;
-  left: 18px;
-  top: 18px;
-  display: flex;
-  gap: 8px;
+  top: 60px;
+  left: 24px;
+  z-index: 5;
+  display: inline-flex;
   align-items: center;
-  background: rgba(10,10,11,0.58);
-  border: 1px solid rgba(255,255,255,0.12);
+  gap: 9px;
+  padding: 7px 12px;
   border-radius: 999px;
-  padding: 8px 12px;
-  color: rgba(255,255,255,0.86);
+  color: rgba(255,255,255,0.88);
+  background: rgba(13,20,24,0.72);
+  border: 1px solid rgba(251,192,45,0.22);
   font-size: 12px;
   font-weight: 800;
-  backdrop-filter: blur(10px);
 }
+.retreat-fireplace {
+  position: absolute;
+  left: 50%; top: 40%;
+  width: 118px; height: 118px;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 50% 78%, rgba(255,132,31,.92) 0 13px, rgba(255,210,76,.75) 14px 22px, transparent 24px),
+    repeating-linear-gradient(0deg, #8b8f86 0 12px, #686d68 12px 15px);
+  border: 4px solid #3b2a23;
+  border-radius: 12px 12px 6px 6px;
+  box-shadow: 0 0 42px rgba(255,131,34,0.32), inset 0 -26px 0 rgba(34,20,14,0.82);
+  z-index: 2;
+}
+.retreat-fireplace::before {
+  content: '';
+  position: absolute;
+  left: 27px; right: 27px; top: -42px; height: 50px;
+  background: repeating-linear-gradient(0deg, #9aa098 0 10px, #747a74 10px 13px);
+  border: 3px solid #3b2a23;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+}
+.retreat-fireplace::after {
+  content: '';
+  position: absolute;
+  left: 35px; right: 35px; bottom: 16px; height: 24px;
+  background: radial-gradient(circle at 50% 100%, #ffd76b 0 12px, #ff7b22 13px 22px, transparent 23px);
+  animation: fire-flicker .55s ease-in-out infinite alternate;
+}
+.retreat-bookshelf {
+  position: absolute;
+  top: 98px;
+  width: 158px; height: 178px;
+  background: linear-gradient(180deg, #70401f, #3f2113);
+  border: 4px solid #2d1710;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 8px rgba(255,224,160,0.04), 0 16px 28px rgba(0,0,0,0.28);
+  z-index: 1;
+}
+.retreat-bookshelf.left { left: 42px; }
+.retreat-bookshelf.right { right: 42px; }
+.retreat-bookshelf::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  background:
+    repeating-linear-gradient(90deg, #243d5a 0 9px, #e8a541 9px 16px, #7d2338 16px 24px, #2f6b46 24px 33px),
+    repeating-linear-gradient(0deg, transparent 0 42px, rgba(255,230,175,.22) 42px 46px);
+  opacity: .92;
+}
+.retreat-workbench {
+  position: absolute;
+  left: 8%; bottom: 19%;
+  width: 188px; height: 76px;
+  border-radius: 14px 14px 8px 8px;
+  background: linear-gradient(180deg, #9f6031, #5a2f1b);
+  border: 3px solid #2d1710;
+  box-shadow: 0 16px 28px rgba(0,0,0,0.28);
+  z-index: 2;
+}
+.retreat-workbench::before {
+  content: '📋  ☕  💬';
+  position: absolute;
+  left: 18px; top: -22px;
+  font-size: 22px;
+  letter-spacing: 12px;
+}
+.retreat-window {
+  position: absolute;
+  right: 14%; top: 112px;
+  width: 156px; height: 108px;
+  border-radius: 12px;
+  border: 5px solid #2d1710;
+  background:
+    radial-gradient(circle at 78% 23%, rgba(255,240,145,.75) 0 19px, transparent 20px),
+    linear-gradient(180deg, #213e63, #0f2238 55%, #12351f);
+  box-shadow: inset 0 0 0 4px rgba(255,255,255,0.08), 0 12px 26px rgba(0,0,0,0.25);
+  z-index: 1;
+}
+.retreat-window::after {
+  content: 'MOUNTAIN\A LODGE';
+  white-space: pre;
+  position: absolute;
+  inset: 26px 0 auto 0;
+  text-align: center;
+  color: rgba(255,255,255,0.36);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+.retreat-sofa {
+  position: absolute;
+  right: 23%; bottom: 18%;
+  width: 146px; height: 64px;
+  border-radius: 26px 26px 14px 14px;
+  background: linear-gradient(180deg, #e4d5bb, #af8d68);
+  border: 3px solid #5a3722;
+  box-shadow: 0 16px 26px rgba(0,0,0,0.26);
+  z-index: 2;
+}
+.retreat-sofa::before {
+  content: '';
+  position: absolute;
+  left: -18px; right: -18px; bottom: 4px; height: 38px;
+  border-radius: 20px;
+  background: inherit;
+  border: 3px solid #5a3722;
+  z-index: -1;
+}
+.retreat-plant,
+.retreat-plant::before,
+.retreat-plant::after {
+  position: absolute;
+  content: '🌿';
+  font-size: 34px;
+  filter: drop-shadow(0 8px 9px rgba(0,0,0,0.35));
+  z-index: 3;
+}
+.retreat-plant { left: 31%; bottom: 22%; }
+.retreat-plant::before { left: -210px; top: 54px; }
+.retreat-plant::after { left: 365px; top: 70px; }
+.retreat-snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.65) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,.42) 0 1px, transparent 2px);
+  background-size: 96px 96px, 148px 148px;
+  animation: snow-drift 18s linear infinite;
+  opacity: .24;
+  z-index: 4;
+}
+.ai-employee {
+  --skin: #f2c39a;
+  --hair: #24324d;
+  --coat: #365dff;
+  --accent: #ffd95a;
+  --boot: #29202a;
+  position: absolute;
+  width: 88px;
+  height: 126px;
+  z-index: 5;
+  cursor: pointer;
+  transform-origin: 50% 100%;
+  animation: character-walk 9s ease-in-out infinite;
+}
+.ai-employee:hover { animation-play-state: paused; z-index: 8; }
+.ai-sprite {
+  position: absolute;
+  left: 50%; top: 24px;
+  width: 58px; height: 74px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 14px 10px rgba(0,0,0,.35));
+}
+.ai-sprite::before {
+  content: '';
+  position: absolute;
+  left: 13px; top: 4px;
+  width: 32px; height: 31px;
+  border-radius: 44% 44% 48% 48%;
+  background:
+    radial-gradient(circle at 11px 15px, #101216 0 2px, transparent 3px),
+    radial-gradient(circle at 22px 15px, #101216 0 2px, transparent 3px),
+    linear-gradient(var(--skin), var(--skin));
+  border: 2px solid rgba(0,0,0,.38);
+  box-shadow: 0 -8px 0 2px var(--hair), -8px -2px 0 -1px var(--hair), 8px -2px 0 -1px var(--hair);
+  z-index: 3;
+}
+.ai-sprite::after {
+  content: '';
+  position: absolute;
+  left: 11px; top: 35px;
+  width: 36px; height: 35px;
+  border-radius: 12px 12px 16px 16px;
+  background:
+    linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,.22) 8px 11px, transparent 11px 100%),
+    linear-gradient(180deg, var(--coat), color-mix(in srgb, var(--coat) 62%, #000));
+  border: 2px solid rgba(0,0,0,.42);
+  box-shadow: -12px 4px 0 -6px var(--skin), 12px 4px 0 -6px var(--skin), -8px 32px 0 -7px var(--boot), 8px 32px 0 -7px var(--boot);
+  z-index: 2;
+}
+.ai-accessory {
+  position: absolute;
+  left: 54px; top: 45px;
+  width: 28px; height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(10,10,11,0.76);
+  border: 1px solid rgba(255,255,255,0.14);
+  font-size: 17px;
+  z-index: 4;
+}
+.ai-shadow {
+  position: absolute;
+  left: 18px; right: 18px; bottom: 4px; height: 13px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.35);
+  filter: blur(2px);
+}
+.ai-nameplate {
+  position: absolute;
+  left: 50%; bottom: -20px;
+  transform: translateX(-50%);
+  background: rgba(10,10,11,0.82);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.32);
+}
+.ai-task-bubble {
+  position: absolute;
+  left: 50%; bottom: 110px;
+  transform: translateX(-50%);
+  min-width: 128px;
+  background: #fffdf1;
+  color: #3b2a23;
+  border: 2px solid rgba(45,23,16,.24);
+  border-radius: 14px;
+  padding: 7px 9px;
+  font-size: 10px;
+  line-height: 1.22;
+  text-align: center;
+  font-weight: 800;
+  opacity: .94;
+  box-shadow: 0 10px 18px rgba(0,0,0,.22);
+}
+.ai-task-bubble::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 6px); bottom: -7px;
+  width: 12px; height: 12px;
+  background: #fffdf1;
+  border-right: 2px solid rgba(45,23,16,.24);
+  border-bottom: 2px solid rgba(45,23,16,.24);
+  transform: rotate(45deg);
+}
+.ai-atlas { left: 18%; bottom: 18%; --hair:#10121b; --coat:#2f56ff; --accent:#ffd95a; animation-name: atlas-patrol; }
+.ai-atlas .ai-sprite::before { box-shadow: 0 -8px 0 2px var(--hair), -10px -1px 0 -2px var(--hair), 10px -1px 0 -2px var(--hair), 0 0 0 5px rgba(85,135,255,.18); }
+.ai-scout { right: 19%; bottom: 20%; --hair:#f2d45a; --coat:#2bbf73; --accent:#8af7ff; animation-name: scout-patrol; animation-delay: -2.4s; }
+.ai-scout .ai-sprite::before { box-shadow: 0 -9px 0 3px var(--hair), -9px -1px 0 -2px var(--hair), 10px 0 0 -2px var(--hair); }
+.agent-pad {
+  position: absolute;
+  width: 92px; height: 62px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,0.42);
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+  background: rgba(10,10,11,0.34);
+  border: 1px dashed rgba(255,255,255,0.16);
+  z-index: 3;
+}
+.agent-pad.p1 { left: 39%; bottom: 13%; }
+.agent-pad.p2 { right: 38%; bottom: 27%; }
 .retreat-hero-status {
   position: absolute;
+  left: 18px;
   right: 18px;
-  bottom: 18px;
-  background: rgba(10,10,11,0.68);
-  border: 1px solid rgba(34,197,94,0.28);
-  border-radius: 14px;
-  padding: 10px 12px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: rgba(10,10,11,0.78);
+  border: 1px solid rgba(34,197,94,0.24);
+  border-radius: 16px;
+  padding: 11px 14px;
   color: rgba(255,255,255,0.82);
   font-size: 12px;
-  max-width: 230px;
   backdrop-filter: blur(10px);
+  z-index: 7;
 }
-@keyframes employee-bob {
-+  0%, 100% { transform: translateY(0); }
-+  50% { transform: translateY(-7px); }
-+}
-+
-.retreat-panel {
-  background:
-    radial-gradient(circle at 14% 18%, rgba(251,192,45,0.18), transparent 24%),
-    linear-gradient(135deg, rgba(34,197,94,0.08), rgba(59,130,246,0.05) 44%, rgba(17,17,19,0.98));
-  border: 1px solid rgba(251,192,45,0.18);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-bottom: 24px;
-  position: relative;
+.retreat-hero-status strong { color: var(--green); }
+.retreat-hero-status .mini-action { color: #f9d35d; font-weight: 900; }
+@keyframes atlas-patrol {
+  0%,100% { transform: translate(0,0) scale(1); }
+  25% { transform: translate(84px,-28px) scale(1.02); }
+  50% { transform: translate(156px,12px) scale(.98); }
+  75% { transform: translate(58px,36px) scale(1.01); }
 }
-.retreat-panel::after {
-  content: '🏕️ 🌲 🏡 🌾';
-  position: absolute;
-  right: 22px;
-  top: 18px;
-  font-size: 24px;
-  opacity: 0.35;
-  letter-spacing: 7px;
+@keyframes scout-patrol {
+  0%,100% { transform: translate(0,0) scale(1); }
+  28% { transform: translate(-82px,18px) scale(.99); }
+  55% { transform: translate(-146px,-34px) scale(1.02); }
+  78% { transform: translate(-38px,-48px) scale(1); }
 }
-.retreat-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+@keyframes fire-flicker {
+  from { transform: scaleY(.82) translateY(3px); opacity: .72; }
+  to { transform: scaleY(1.14) translateY(-2px); opacity: 1; }
 }
-.retreat-agent-card {
-  background: rgba(17,17,19,0.82);
-  border: 1px solid var(--surface-3);
-  border-radius: var(--radius-sm);
-  padding: 16px;
+@keyframes snow-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 96px 96px, -148px 148px; }
 }
-.retreat-agent-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.retreat-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: var(--surface-1);
-}
-.retreat-name {
-  font-size: 16px;
-  font-weight: 800;
-}
-.retreat-role {
-  color: var(--text-muted);
-  font-size: 12px;
-  margin-top: 2px;
-}
-.retreat-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-.retreat-meta {
-  background: var(--surface-1);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: var(--radius-xs);
-  padding: 10px;
-}
-.retreat-meta .label {
-  color: var(--text-muted);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .7px;
-  text-transform: uppercase;
-}
-.retreat-meta .value {
-  color: var(--text-secondary);
-  font-size: 12px;
-  margin-top: 4px;
-  line-height: 1.35;
-}
-.retreat-callout {
-  margin-top: 14px;
-  background: rgba(251,192,45,0.08);
-  border: 1px solid rgba(251,192,45,0.16);
-  border-radius: var(--radius-sm);
-  color: var(--text-secondary);
-  font-size: 13px;
-  line-height: 1.45;
-  padding: 12px;
+@media (prefers-reduced-motion: reduce) {
+  .ai-employee, .retreat-snow, .retreat-fireplace::after { animation: none; }
 }
 
+.retreat-panel {
 /* ═══ ACTIVITY FEED ═══ */
 .activity-feed { max-height: 480px; overflow-y: auto; }
 
@@ -1292,6 +1435,44 @@ body {
   font-size: 13px;
 }
 .sales-triage-item strong { color: var(--text-primary); }
+
+.dropped-ball-register {
+  margin-top: 18px;
+  background: rgba(239,68,68,0.04);
+  border: 1px solid rgba(239,68,68,0.14);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.dropped-ball-row {
+  display: grid;
+  grid-template-columns: 1.15fr .8fr 1.25fr .9fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-secondary);
+  font-size: 13px;
+  align-items: start;
+}
+.dropped-ball-row:last-child { border-bottom: none; }
+.dropped-ball-row.header {
+  background: var(--surface-1);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.dropped-ball-row strong { color: var(--text-primary); }
+.dropped-ball-risk {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--red-bg);
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+}
 
 /* ═══ TEAM TAB ═══ */
 .team-grid {
@@ -1516,21 +1697,33 @@ body {
   .metrics-grid { grid-template-columns: 1fr 1fr; }
   .fleet-stats { grid-template-columns: 1fr; }
   .rev-streams { grid-template-columns: 1fr; }
-  .retreat-hero { min-height: 430px; border-radius: 18px; margin-bottom: 22px; }
-  .retreat-cabin { top: 34%; transform: translate(-50%, -50%) scale(.82); }
-  .retreat-tree { font-size: 27px; }
-  .ai-employee { width: 72px; }
-  .ai-sprite { width: 46px; height: 46px; border-radius: 15px; font-size: 24px; }
-  .ai-task-bubble { display: none; }
-  .ai-atlas { left: 9%; bottom: 18%; }
-  .ai-scout { right: 9%; bottom: 18%; }
-  .ai-builder { left: 27%; bottom: 6%; }
-  .ai-gov { right: 27%; bottom: 6%; }
-  .retreat-hero-sign { left: 12px; top: 12px; font-size: 11px; }
-  .retreat-hero-status { left: 12px; right: 12px; bottom: 12px; max-width: none; font-size: 11px; }
+  .retreat-hero { min-height: 560px; border-radius: 18px; margin-bottom: 22px; }
+  .retreat-status-bar { left: 10px; right: 10px; top: 10px; height: auto; min-height: 42px; align-items: flex-start; flex-direction: column; padding: 8px 10px; gap: 3px; }
+  .retreat-title { font-size: 11px; letter-spacing: 1px; }
+  .retreat-counters { font-size: 10px; gap: 7px; flex-wrap: wrap; }
+  .retreat-stage-label { top: 70px; left: 12px; font-size: 11px; }
+  .retreat-bookshelf { width: 118px; height: 132px; top: 112px; }
+  .retreat-bookshelf.left { left: 10px; }
+  .retreat-bookshelf.right { right: 10px; }
+  .retreat-fireplace { top: 39%; transform: translate(-50%, -50%) scale(.78); }
+  .retreat-window { right: 7%; top: 126px; transform: scale(.74); transform-origin: top right; }
+  .retreat-workbench { left: 5%; bottom: 22%; transform: scale(.78); transform-origin: bottom left; }
+  .retreat-sofa { right: 12%; bottom: 23%; transform: scale(.74); transform-origin: bottom right; }
+  .ai-employee { width: 72px; height: 112px; }
+  .ai-sprite { transform: translateX(-50%) scale(.82); transform-origin: top center; }
+  .ai-task-bubble { min-width: 96px; font-size: 9px; bottom: 96px; }
+  .ai-atlas { left: 8%; bottom: 16%; }
+  .ai-scout { right: 8%; bottom: 17%; }
+  .agent-pad { width: 72px; height: 50px; font-size: 9px; }
+  .agent-pad.p1 { left: 38%; bottom: 14%; }
+  .agent-pad.p2 { right: 34%; bottom: 31%; }
+  .retreat-plant { display: none; }
+  .retreat-hero-status { left: 10px; right: 10px; bottom: 10px; font-size: 11px; align-items: flex-start; flex-direction: column; gap: 5px; }
   .retreat-grid { grid-template-columns: 1fr; }
   .retreat-meta-grid { grid-template-columns: 1fr; }
   .coaching-control-grid { grid-template-columns: 1fr; }
+  .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
+  .dropped-ball-row.header { display: none; }
   .team-grid { grid-template-columns: 1fr; }
 
   .agent-row {
@@ -1677,40 +1870,42 @@ body {
       <!-- ═══════ OVERVIEW TAB ═══════ -->
       <div class="tab-panel active" id="panel-overview">
         <div class="retreat-hero" aria-label="TEECO Lodging Agent Retreat visual command center">
-          <div class="retreat-hero-skyline"></div>
-          <div class="retreat-hero-ground"></div>
-          <div class="retreat-path"></div>
-          <div class="retreat-cabin"></div>
-          <div class="retreat-tree t1">🌲</div>
-          <div class="retreat-tree t2">🌲</div>
-          <div class="retreat-tree t3">🌲</div>
-          <div class="retreat-tree t4">🌲</div>
+          <div class="retreat-room"></div>
+          <div class="retreat-rafters"></div>
+          <div class="retreat-bookshelf left"></div>
+          <div class="retreat-bookshelf right"></div>
+          <div class="retreat-fireplace"></div>
+          <div class="retreat-window"></div>
+          <div class="retreat-workbench"></div>
+          <div class="retreat-sofa"></div>
+          <div class="retreat-plant"></div>
+          <div class="retreat-snow"></div>
 
-          <div class="retreat-hero-sign"><span>🏕️</span><span>TEECO Lodging Retreat</span></div>
+          <div class="retreat-status-bar">
+            <div class="retreat-title">TEECO Agent Basecamp</div>
+            <div class="retreat-counters"><span><b>2</b> active</span><span><b style="color:var(--text-muted)">0</b> stale</span><span><b style="color:var(--red)">0</b> error</span><span>walk mode: on</span></div>
+          </div>
+          <div class="retreat-stage-label"><span>🏕️</span><span>Rural STR lodge · agents visible first</span></div>
 
-          <div class="ai-employee ai-atlas">
-            <div class="ai-sprite">🧭</div>
+          <div class="ai-employee ai-atlas" aria-label="Atlas walking around the lodge">
+            <div class="ai-task-bubble">Atlas: cuts distractions, protects revenue</div>
+            <div class="ai-sprite"><span class="ai-accessory">🧭</span></div>
+            <div class="ai-shadow"></div>
             <div class="ai-nameplate">Atlas</div>
-            <div class="ai-task-bubble">triage + revenue focus</div>
           </div>
-          <div class="ai-employee ai-scout">
-            <div class="ai-sprite">🔎</div>
+          <div class="ai-employee ai-scout" aria-label="Scout walking around the lodge">
+            <div class="ai-task-bubble">Scout: researches angles + opportunities</div>
+            <div class="ai-sprite"><span class="ai-accessory">🔎</span></div>
+            <div class="ai-shadow"></div>
             <div class="ai-nameplate">Scout</div>
-            <div class="ai-task-bubble">content angles</div>
           </div>
-          <div class="ai-employee ai-builder">
-            <div class="ai-sprite">🛠️</div>
-            <div class="ai-nameplate">Builder</div>
-            <div class="ai-task-bubble">dashboard upgrades</div>
-          </div>
-          <div class="ai-employee ai-gov">
-            <div class="ai-sprite">💰</div>
-            <div class="ai-nameplate">Governor</div>
-            <div class="ai-task-bubble">profitability guardrails</div>
-          </div>
+
+          <div class="agent-pad p1">future hire<br>locked</div>
+          <div class="agent-pad p2">open desk<br>after ROI</div>
 
           <div class="retreat-hero-status">
-            <strong style="color:var(--green)">Live build loop:</strong> agents visible first, numbers second. Tap Agent Fleet for accountability cards.
+            <span><strong>Built toward your reference:</strong> warm lodge, chibi employees, speech bubbles, motion, personality.</span>
+            <span class="mini-action">Next: click/tap characters → accountability cards.</span>
           </div>
         </div>
 
@@ -2009,6 +2204,27 @@ body {
               <div class="sales-triage-item"><span>🚨</span><div><strong>Next 25-minute action:</strong> export/update GHL counts for qualified leads, consults booked, consults held, closes, and follow-ups due. Until then, the dashboard should show Unknown instead of pretending the revenue engine is measured.</div></div>
               <div class="sales-triage-item"><span>👤</span><div><strong>Stakeholder:</strong> Stephanie owns sales pipeline numbers and follow-up queue. Atlas should only judge bottlenecks after those counts are real.</div></div>
               <div class="sales-triage-item"><span>🤖</span><div><strong>Agent guardrail:</strong> no new bots from this screen. Existing agents must report completed work, cost, next action, and ROI link before additional automation is approved.</div></div>
+            </div>
+            <div class="dropped-ball-register" aria-label="Coaching dropped-ball register">
+              <div class="dropped-ball-row header"><span>Risk</span><span>Owner</span><span>Proof needed</span><span>Next action</span></div>
+              <div class="dropped-ball-row">
+                <strong>Warm leads not followed up</strong>
+                <span>Stephanie</span>
+                <span>Unknown: CRM/GHL overdue follow-up count and oldest untouched lead.</span>
+                <span><span class="dropped-ball-risk">Fill today</span></span>
+              </div>
+              <div class="dropped-ball-row">
+                <strong>Booked calls not confirmed/held</strong>
+                <span>Stephanie</span>
+                <span>Unknown: booked consults, held consults, no-shows, and reschedule list.</span>
+                <span>Export weekly call status.</span>
+              </div>
+              <div class="dropped-ball-row">
+                <strong>Content assets not tied to pipeline</strong>
+                <span>Atlas + Scout</span>
+                <span>Unknown: case studies, webinar clips, carousels, and their lead source links.</span>
+                <span>Attach ROI link before scheduling more content work.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2430,6 +2646,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching dropped-ball register for warm leads, booked-vs-held calls, and content assets missing ROI links; all counts remain labeled Unknown until CRM proof is supplied", time:"2026-05-10 01:52PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added TEECO Lodging Agent Retreat cards for Atlas and Scout with current task, completed work, cost, permissions, next action, ROI/shutdown rules, and no-recursive-cron approval gate", time:"2026-05-10 01:23PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Sales Control Panel with Unknown placeholders for qualified leads, calls booked/held, closes, follow-ups due, content assets, agent cost, and ROI link", time:"2026-05-10 1:17pm", color:"var(--gold)" },
   { type:"bot", agent:"GovCon Scanner", action:"Scanned SAM.gov — 3 new FEMA lodging opportunities found", time:"Today 8:04am", color:"var(--blue)" },
