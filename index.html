@@ -1745,6 +1745,62 @@ img, canvas, svg, video { max-width: 100%; }
   padding: 10px 12px;
 }
 
+.sales-sla-card {
+  margin-top: 18px;
+  background: rgba(59,130,246,0.045);
+  border: 1px solid rgba(59,130,246,0.16);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.sales-sla-card h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.sales-sla-card p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.sales-sla-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.sales-sla-step {
+  background: var(--surface-1);
+  border: 1px solid rgba(59,130,246,0.16);
+  border-radius: var(--radius-xs);
+  padding: 12px;
+}
+.sales-sla-step .label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.sales-sla-step .value {
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 800;
+  margin-top: 5px;
+}
+.sales-sla-step .note {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.sales-sla-script {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+  background: rgba(0,0,0,0.22);
+  border-radius: var(--radius-xs);
+  padding: 10px 12px;
+}
+
 .content-lead-queue {
   margin-top: 18px;
   background: rgba(168,85,247,0.045);
@@ -2039,6 +2095,7 @@ img, canvas, svg, video { max-width: 100%; }
   .stakeholder-row.header { display: none; }
   .crm-proof-grid { grid-template-columns: 1fr; }
   .close-math-grid { grid-template-columns: 1fr; }
+  .sales-sla-grid { grid-template-columns: 1fr; }
   .content-lead-row { grid-template-columns: 1fr; gap: 6px; }
   .content-lead-row.header { display: none; }
   .team-grid { grid-template-columns: 1fr; }
@@ -2676,6 +2733,16 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="close-math-script"><strong>25-minute sprint:</strong> pull CRM view for this week, sort warm leads by last touch, count booked/held/no-show consults, and paste the source date here before approving more agent/content work.</div>
             </div>
+            <div class="sales-sla-card" aria-label="Coaching sales response SLA">
+              <h4>⏱️ Coaching Sales Response SLA — prevent dropped-ball decay</h4>
+              <p>This is the operating rule after the CRM export lands. Counts stay Unknown for now; the dashboard still makes the owner, response window, and proof requirement explicit.</p>
+              <div class="sales-sla-grid">
+                <div class="sales-sla-step"><div class="label">New qualified lead</div><div class="value">Same-day touch</div><div class="note">Owner: Stephanie. Proof: CRM activity or message timestamp, not a verbal “handled.”</div></div>
+                <div class="sales-sla-step"><div class="label">Booked consult</div><div class="value">Confirm + prep</div><div class="note">Proof: calendar status, reminder sent, and consult outcome marked booked / held / no-show.</div></div>
+                <div class="sales-sla-step"><div class="label">No-show or stale warm lead</div><div class="value">Recovery queue</div><div class="note">Proof: oldest untouched lead, next follow-up date, and whether stakeholder notification was sent.</div></div>
+              </div>
+              <div class="sales-sla-script"><strong>Promotion rule:</strong> only move coaching metrics from Unknown to live after the exported source date, owner, next action, and follow-up proof are visible. If proof is missing, route the next 25-minute sprint to Stephanie instead of adding more agent activity.</div>
+            </div>
             <div class="content-lead-queue" aria-label="Content-to-lead proof queue">
               <div class="content-lead-row header"><span>Asset</span><span>$13K offer CTA</span><span>Pipeline proof required</span><span>Owner / next action</span><span>Status</span></div>
               <div class="content-lead-row">
@@ -3166,6 +3233,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Sales Response SLA so new qualified leads, booked consults, no-shows, and stale warm leads have explicit owner, response window, source proof, and promotion rule before metrics go live", time:"2026-05-10 03:40PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Activity Proof Guardrail so dashboard activity cannot masquerade as revenue progress unless it has source proof, owner, next action, and ROI link to the $13K coaching funnel", time:"2026-05-10 03:32PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Dashboard Fix Loop", action:"Added Workflow Lifecycle Gates: incomplete workflows now grey out as under construction, require source proof + verification before going live, and include a Telegram notification rule when ready", time:"2026-05-10 03:30PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added $13K Close Math panel so follow-up risk is tied to the coaching offer value while revenue-at-risk counts stay Unknown until CRM proof is supplied", time:"2026-05-10 03:06PM PDT", color:"var(--green)" },
