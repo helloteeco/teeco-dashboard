@@ -74,7 +74,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
 }
+
+html, body, #dashboard, .main {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img, canvas, svg, video { max-width: 100%; }
 
 /* ═══ SCROLLBAR ═══ */
 ::-webkit-scrollbar { width: 6px; }
@@ -868,22 +876,30 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(15,25,36,0.25), rgba(0,0,0,0.25)),
-    linear-gradient(90deg, rgba(0,0,0,0.28) 0 8%, transparent 8% 92%, rgba(0,0,0,0.26) 92%),
-    repeating-linear-gradient(0deg, rgba(115,67,36,0.0) 0 31px, rgba(255,214,144,0.045) 32px),
-    linear-gradient(180deg, #6c3f25 0 50%, #4a2a1b 50% 100%);
+    radial-gradient(circle at 78% 18%, #ffe071 0 34px, transparent 35px),
+    linear-gradient(180deg, #28476b 0 26%, #356b89 27% 42%, #7aa365 43% 59%, #5c7d45 60% 66%, #53321f 67% 100%);
 }
 .retreat-room::before {
   content: '';
   position: absolute;
-  left: -3%; right: -3%; bottom: -2%; height: 37%;
+  inset: 0;
   background:
-    repeating-linear-gradient(90deg, rgba(255,214,144,0.07) 0 2px, transparent 2px 58px),
-    linear-gradient(180deg, #8a542f, #4f2b1b);
-  transform: perspective(360px) rotateX(54deg);
-  transform-origin: bottom;
-  border-top: 3px solid rgba(251,192,45,0.18);
-  box-shadow: inset 0 20px 45px rgba(0,0,0,0.24);
+    radial-gradient(ellipse at 12% 60%, rgba(38,92,48,.9) 0 34px, transparent 35px),
+    radial-gradient(ellipse at 24% 56%, rgba(43,108,54,.9) 0 42px, transparent 43px),
+    radial-gradient(ellipse at 83% 57%, rgba(34,88,48,.92) 0 46px, transparent 47px),
+    linear-gradient(152deg, transparent 0 34%, rgba(42,68,89,.72) 34.3% 52%, transparent 52.4%),
+    linear-gradient(28deg, transparent 0 38%, rgba(25,64,83,.88) 38.3% 62%, transparent 62.4%);
+  opacity: .96;
+}
+.retreat-room::after {
+  content: '';
+  position: absolute;
+  left: -5%; right: -5%; bottom: -4%; height: 38%;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,226,154,.10) 0 2px, transparent 2px 54px),
+    linear-gradient(180deg, #8b6137 0 18%, #6a4228 19% 58%, #3b2118 59% 100%);
+  border-top: 5px solid rgba(255,215,113,.28);
+  box-shadow: inset 0 20px 0 rgba(255,255,255,.035), inset 0 -20px 35px rgba(0,0,0,.30);
 }
 .retreat-rafters,
 .retreat-rafters::before,
@@ -895,9 +911,19 @@ body {
   background: linear-gradient(90deg, #2d1710, #7b4424 48%, #29140d);
   box-shadow: 0 0 18px rgba(0,0,0,0.35);
 }
-.retreat-rafters { left: 4%; }
-.retreat-rafters::before { left: 250px; top: 0; bottom: 0; }
-.retreat-rafters::after { left: 520px; top: 0; bottom: 0; }
+.retreat-rafters { left: 7%; }
+.retreat-rafters::before { left: min(32vw, 250px); top: 0; bottom: 0; }
+.retreat-rafters::after { left: min(68vw, 520px); top: 0; bottom: 0; }
+.retreat-platform {
+  position: absolute;
+  left: 8%; right: 8%; bottom: 82px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #b47a42, #6b3c22);
+  border: 3px solid #2e180f;
+  box-shadow: 0 12px 20px rgba(0,0,0,.30), inset 0 5px 0 rgba(255,232,163,.16);
+  z-index: 3;
+}
 .retreat-status-bar {
   position: absolute;
   left: 18px; right: 18px; top: 14px;
@@ -1079,14 +1105,15 @@ body {
   z-index: 4;
 }
 .ai-employee {
-  --skin: #f2c39a;
-  --hair: #24324d;
-  --coat: #365dff;
-  --accent: #ffd95a;
-  --boot: #29202a;
+  --skin: #f0bd8c;
+  --hair: #1f2633;
+  --coat: #253d9f;
+  --trim: #ffd564;
+  --pants: #151521;
+  --boot: #111118;
   position: absolute;
-  width: 88px;
-  height: 126px;
+  width: 92px;
+  height: 142px;
   z-index: 5;
   cursor: pointer;
   transform-origin: 50% 100%;
@@ -1095,62 +1122,70 @@ body {
 .ai-employee:hover { animation-play-state: paused; z-index: 8; }
 .ai-sprite {
   position: absolute;
-  left: 50%; top: 24px;
-  width: 58px; height: 74px;
+  left: 50%; top: 8px;
+  width: 66px; height: 104px;
   transform: translateX(-50%);
-  filter: drop-shadow(0 14px 10px rgba(0,0,0,.35));
+  filter: drop-shadow(0 15px 9px rgba(0,0,0,.36));
 }
 .ai-sprite::before {
   content: '';
   position: absolute;
-  left: 13px; top: 4px;
-  width: 32px; height: 31px;
-  border-radius: 44% 44% 48% 48%;
+  left: 17px; top: 10px;
+  width: 32px; height: 34px;
+  border-radius: 42% 42% 48% 48%;
   background:
-    radial-gradient(circle at 11px 15px, #101216 0 2px, transparent 3px),
-    radial-gradient(circle at 22px 15px, #101216 0 2px, transparent 3px),
+    radial-gradient(circle at 11px 17px, #101216 0 2px, transparent 3px),
+    radial-gradient(circle at 22px 17px, #101216 0 2px, transparent 3px),
+    radial-gradient(ellipse at 16px 25px, rgba(120,58,42,.45) 0 5px, transparent 6px),
     linear-gradient(var(--skin), var(--skin));
-  border: 2px solid rgba(0,0,0,.38);
-  box-shadow: 0 -8px 0 2px var(--hair), -8px -2px 0 -1px var(--hair), 8px -2px 0 -1px var(--hair);
-  z-index: 3;
+  border: 2px solid rgba(0,0,0,.46);
+  box-shadow: 0 -12px 0 3px var(--hair), -13px -4px 0 -4px var(--hair), 12px -5px 0 -4px var(--hair), 0 3px 0 rgba(255,255,255,.12) inset;
+  z-index: 4;
 }
 .ai-sprite::after {
   content: '';
   position: absolute;
-  left: 11px; top: 35px;
-  width: 36px; height: 35px;
-  border-radius: 12px 12px 16px 16px;
+  left: 13px; top: 44px;
+  width: 42px; height: 48px;
+  border-radius: 12px 12px 10px 10px;
   background:
-    linear-gradient(90deg, transparent 0 8px, rgba(255,255,255,.22) 8px 11px, transparent 11px 100%),
-    linear-gradient(180deg, var(--coat), color-mix(in srgb, var(--coat) 62%, #000));
-  border: 2px solid rgba(0,0,0,.42);
-  box-shadow: -12px 4px 0 -6px var(--skin), 12px 4px 0 -6px var(--skin), -8px 32px 0 -7px var(--boot), 8px 32px 0 -7px var(--boot);
-  z-index: 2;
+    linear-gradient(90deg, transparent 0 8px, var(--trim) 8px 12px, transparent 12px 30px, rgba(255,255,255,.20) 30px 33px, transparent 33px),
+    linear-gradient(180deg, color-mix(in srgb, var(--coat) 88%, #fff), var(--coat) 58%, color-mix(in srgb, var(--coat) 58%, #000));
+  border: 2px solid rgba(0,0,0,.46);
+  box-shadow:
+    -16px 7px 0 -8px var(--skin),
+    16px 7px 0 -8px var(--skin),
+    -8px 45px 0 -6px var(--pants),
+    9px 45px 0 -6px var(--pants),
+    -9px 58px 0 -7px var(--boot),
+    10px 58px 0 -7px var(--boot);
+  z-index: 3;
 }
 .ai-accessory {
   position: absolute;
-  left: 54px; top: 45px;
+  left: 45px; top: 58px;
   width: 28px; height: 28px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(10,10,11,0.76);
-  border: 1px solid rgba(255,255,255,0.14);
-  font-size: 17px;
-  z-index: 4;
+  background: rgba(10,10,11,0.78);
+  border: 1px solid rgba(255,255,255,0.18);
+  font-size: 16px;
+  z-index: 5;
+  box-shadow: 0 6px 10px rgba(0,0,0,.24);
 }
 .ai-shadow {
   position: absolute;
-  left: 18px; right: 18px; bottom: 4px; height: 13px;
+  left: 13px; right: 13px; bottom: 2px; height: 12px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.34);
   filter: blur(2px);
 }
 .ai-nameplate {
   position: absolute;
-  left: 50%; bottom: -20px;
+  left: 50%; bottom: -18px;
   transform: translateX(-50%);
-  background: rgba(10,10,11,0.82);
+  background: rgba(10,10,11,0.86);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 999px;
   padding: 5px 10px;
@@ -1162,19 +1197,19 @@ body {
 }
 .ai-task-bubble {
   position: absolute;
-  left: 50%; bottom: 110px;
+  left: 50%; bottom: 124px;
   transform: translateX(-50%);
   min-width: 128px;
-  background: #fffdf1;
+  background: #fff8e2;
   color: #3b2a23;
-  border: 2px solid rgba(45,23,16,.24);
-  border-radius: 14px;
+  border: 2px solid rgba(45,23,16,.28);
+  border-radius: 12px;
   padding: 7px 9px;
   font-size: 10px;
   line-height: 1.22;
   text-align: center;
-  font-weight: 800;
-  opacity: .94;
+  font-weight: 850;
+  opacity: .96;
   box-shadow: 0 10px 18px rgba(0,0,0,.22);
 }
 .ai-task-bubble::after {
@@ -1182,15 +1217,25 @@ body {
   position: absolute;
   left: calc(50% - 6px); bottom: -7px;
   width: 12px; height: 12px;
-  background: #fffdf1;
-  border-right: 2px solid rgba(45,23,16,.24);
-  border-bottom: 2px solid rgba(45,23,16,.24);
+  background: #fff8e2;
+  border-right: 2px solid rgba(45,23,16,.28);
+  border-bottom: 2px solid rgba(45,23,16,.28);
   transform: rotate(45deg);
 }
-.ai-atlas { left: 18%; bottom: 18%; --hair:#10121b; --coat:#2f56ff; --accent:#ffd95a; animation-name: atlas-patrol; }
-.ai-atlas .ai-sprite::before { box-shadow: 0 -8px 0 2px var(--hair), -10px -1px 0 -2px var(--hair), 10px -1px 0 -2px var(--hair), 0 0 0 5px rgba(85,135,255,.18); }
-.ai-scout { right: 19%; bottom: 20%; --hair:#f2d45a; --coat:#2bbf73; --accent:#8af7ff; animation-name: scout-patrol; animation-delay: -2.4s; }
-.ai-scout .ai-sprite::before { box-shadow: 0 -9px 0 3px var(--hair), -9px -1px 0 -2px var(--hair), 10px 0 0 -2px var(--hair); }
+.ai-atlas { left: 18%; bottom: 17%; --hair:#11182b; --coat:#1f3bb5; --trim:#f7cb3c; --pants:#19192a; animation-name: atlas-patrol; }
+.ai-atlas .ai-sprite::before {
+  box-shadow: 0 -13px 0 4px var(--hair), -14px -4px 0 -4px var(--hair), 13px -4px 0 -4px var(--hair), 0 0 0 5px rgba(64,104,255,.16);
+}
+.ai-atlas .ai-sprite::after {
+  border-radius: 8px 14px 10px 10px;
+}
+.ai-scout { right: 18%; bottom: 18%; --hair:#b25d24; --coat:#218653; --trim:#8bf1d4; --pants:#251728; animation-name: scout-patrol; animation-delay: -2.4s; }
+.ai-scout .ai-sprite::before {
+  box-shadow: 0 -13px 0 5px var(--hair), -12px -1px 0 -3px var(--hair), 12px -1px 0 -3px var(--hair), 16px 6px 0 -5px var(--hair);
+}
+.ai-scout .ai-sprite::after {
+  border-radius: 16px 8px 12px 12px;
+}
 .agent-pad {
   position: absolute;
   width: 92px; height: 62px;
@@ -1511,6 +1556,61 @@ body {
   font-weight: 700;
 }
 
+.crm-proof-card {
+  margin-top: 18px;
+  background: rgba(251,192,45,0.045);
+  border: 1px solid rgba(251,192,45,0.18);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.crm-proof-card h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.crm-proof-card p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.crm-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.crm-proof-field {
+  background: var(--surface-1);
+  border: 1px dashed rgba(251,192,45,0.26);
+  border-radius: var(--radius-xs);
+  padding: 10px;
+}
+.crm-proof-field .label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.crm-proof-field .value {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.crm-proof-field .source {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  margin-top: 2px;
+}
+.crm-proof-script {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+  background: rgba(0,0,0,0.20);
+  border-radius: var(--radius-xs);
+  padding: 10px 12px;
+}
+
 /* ═══ TEAM TAB ═══ */
 .team-grid {
   display: grid;
@@ -1763,6 +1863,7 @@ body {
   .dropped-ball-row.header { display: none; }
   .stakeholder-row { grid-template-columns: 1fr; gap: 6px; }
   .stakeholder-row.header { display: none; }
+  .crm-proof-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
 
   .agent-row {
@@ -1782,9 +1883,79 @@ body {
   .two-col { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 768px) {
+  html, body, #dashboard, .main, .page-content, .tab-panel.active {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+  .topbar {
+    width: 100%;
+    max-width: 100vw;
+    gap: 8px;
+  }
+  .topbar-left { min-width: 0; gap: 10px; }
+  .topbar-title, .topbar-date { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-right { flex: 0 1 auto; min-width: 0; }
+  .search-box { max-width: 112px; padding: 8px 10px; }
+  .search-box span:nth-child(2) { max-width: 58px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .page-content { box-sizing: border-box; }
+  .retreat-hero, .metric-card, .alert-banner, .card, .ws-card, .retreat-panel, .agent-table, .rev-target-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .two-col, .two-col[style] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+  .two-col > *, .metrics-grid > *, .fleet-stats > *, .rev-streams > * { min-width: 0; }
+  .ws-header {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 14px 14px;
+    align-items: center;
+  }
+  .ws-info .ws-name { min-width: 0; }
+  .ws-info .ws-meta { max-width: 100%; }
+  .ws-right { min-width: 0; max-width: 92px; }
+  .ws-right .ws-freq { white-space: normal; line-height: 1.2; }
+  .section-header p, .alert-banner .alert-body { overflow-wrap: anywhere; }
+  .retreat-hero { min-height: 540px; }
+  .retreat-status-bar { border-radius: 16px; }
+  .retreat-stage-label { max-width: calc(100% - 24px); }
+  .retreat-bookshelf { width: 110px; height: 124px; }
+  .retreat-fireplace { transform: translate(-50%, -50%) scale(.68); }
+  .retreat-window { right: 4%; transform: scale(.68); }
+  .retreat-workbench { left: 4%; bottom: 23%; transform: scale(.72); }
+  .retreat-sofa { right: 7%; bottom: 23%; transform: scale(.68); }
+  .retreat-platform { left: 6%; right: 6%; bottom: 78px; }
+  .ai-employee { width: 68px; height: 116px; }
+  .ai-sprite { transform: translateX(-50%) scale(.75); transform-origin: top center; }
+  .ai-task-bubble { min-width: 98px; max-width: 116px; font-size: 9px; bottom: 100px; }
+  .ai-atlas { left: 10%; bottom: 16%; }
+  .ai-scout { right: 10%; bottom: 17%; }
+  @keyframes atlas-patrol {
+    0%,100% { transform: translate(0,0) scale(1); }
+    35% { transform: translate(44px,-18px) scale(1.01); }
+    70% { transform: translate(76px,10px) scale(.99); }
+  }
+  @keyframes scout-patrol {
+    0%,100% { transform: translate(0,0) scale(1); }
+    35% { transform: translate(-44px,14px) scale(.99); }
+    70% { transform: translate(-76px,-20px) scale(1.01); }
+  }
+}
+
 @media (max-width: 480px) {
   .metrics-grid { grid-template-columns: 1fr; }
   .metric-card .metric-value { font-size: 26px; }
+  .page-content { padding: 18px 12px; }
+  .retreat-hero { border-radius: 18px; }
 }
 </style>
 </head>
@@ -1919,6 +2090,7 @@ body {
           <div class="retreat-sofa"></div>
           <div class="retreat-plant"></div>
           <div class="retreat-snow"></div>
+          <div class="retreat-platform"></div>
 
           <div class="retreat-status-bar">
             <div class="retreat-title">TEECO Agent Basecamp</div>
@@ -1943,7 +2115,7 @@ body {
           <div class="agent-pad p2">open desk<br>after ROI</div>
 
           <div class="retreat-hero-status">
-            <span><strong>Built toward your reference:</strong> warm lodge, chibi employees, speech bubbles, motion, personality.</span>
+            <span><strong>Built toward your reference:</strong> Maple-style lodge, distinct agent outfits, speech bubbles, motion, personality.</span>
             <span class="mini-action">Next: click/tap characters → accountability cards.</span>
           </div>
         </div>
@@ -2243,6 +2415,17 @@ body {
               <div class="sales-triage-item"><span>🚨</span><div><strong>Next 25-minute action:</strong> export/update GHL counts for qualified leads, consults booked, consults held, closes, and follow-ups due. Until then, the dashboard should show Unknown instead of pretending the revenue engine is measured.</div></div>
               <div class="sales-triage-item"><span>👤</span><div><strong>Stakeholder:</strong> Stephanie owns sales pipeline numbers and follow-up queue. Atlas should only judge bottlenecks after those counts are real.</div></div>
               <div class="sales-triage-item"><span>🤖</span><div><strong>Agent guardrail:</strong> no new bots from this screen. Existing agents must report completed work, cost, next action, and ROI link before additional automation is approved.</div></div>
+            </div>
+            <div class="crm-proof-card" aria-label="CRM proof intake template">
+              <h4>📥 CRM Count Intake — fill before judging the week</h4>
+              <p>Copy these exact fields from GHL/CRM. Leave values as Unknown unless Stephanie or source export supplies proof.</p>
+              <div class="crm-proof-grid">
+                <div class="crm-proof-field"><div class="label">Week range</div><div class="value">Unknown</div><div class="source">Source: CRM export date</div></div>
+                <div class="crm-proof-field"><div class="label">Oldest untouched lead</div><div class="value">Unknown</div><div class="source">Source: follow-up queue</div></div>
+                <div class="crm-proof-field"><div class="label">No-shows / reschedules</div><div class="value">Unknown</div><div class="source">Source: calendar + CRM</div></div>
+                <div class="crm-proof-field"><div class="label">Highest-risk follow-up</div><div class="value">Unknown</div><div class="source">Owner + due date needed</div></div>
+              </div>
+              <div class="crm-proof-script"><strong>Message to Stephanie:</strong> Please send this week's GHL/CRM count snapshot: qualified leads, calls booked, calls held, no-shows/reschedules, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up. No narrative needed — counts + source date are enough.</div>
             </div>
             <div class="dropped-ball-register" aria-label="Coaching dropped-ball register">
               <div class="dropped-ball-row header"><span>Risk</span><span>Owner</span><span>Proof needed</span><span>Next action</span></div>
@@ -2690,6 +2873,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added CRM Count Intake template with week range, oldest untouched lead, no-shows/reschedules, highest-risk follow-up, and a copy-paste Stephanie request so sales proof replaces Unknowns", time:"2026-05-10 02:25PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added coaching stakeholder notification tracker so Stephanie's CRM/GHL count request is visible with sent status, exact ask, and dashboard-only guardrail", time:"2026-05-10 02:16PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Visual Builder", action:"Upgraded the retreat into a warm game-style lodge with walking chibi Atlas and Scout characters, speech bubbles, desks, fireplace, and no fake 14-agent count", time:"2026-05-10 02:00PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching dropped-ball register for warm leads, booked-vs-held calls, and content assets missing ROI links; all counts remain labeled Unknown until CRM proof is supplied", time:"2026-05-10 01:52PM PDT", color:"var(--red)" },
