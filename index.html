@@ -1611,6 +1611,44 @@ img, canvas, svg, video { max-width: 100%; }
   padding: 10px 12px;
 }
 
+.content-lead-queue {
+  margin-top: 18px;
+  background: rgba(168,85,247,0.045);
+  border: 1px solid rgba(168,85,247,0.16);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.content-lead-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1.05fr 1.2fr .95fr .7fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-secondary);
+  font-size: 13px;
+  align-items: start;
+}
+.content-lead-row:last-child { border-bottom: none; }
+.content-lead-row.header {
+  background: var(--surface-1);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.content-lead-row strong { color: var(--text-primary); }
+.content-lead-status {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(168,85,247,0.14);
+  color: var(--purple);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 /* ═══ TEAM TAB ═══ */
 .team-grid {
   display: grid;
@@ -1864,6 +1902,8 @@ img, canvas, svg, video { max-width: 100%; }
   .stakeholder-row { grid-template-columns: 1fr; gap: 6px; }
   .stakeholder-row.header { display: none; }
   .crm-proof-grid { grid-template-columns: 1fr; }
+  .content-lead-row { grid-template-columns: 1fr; gap: 6px; }
+  .content-lead-row.header { display: none; }
   .team-grid { grid-template-columns: 1fr; }
 
   .agent-row {
@@ -2427,6 +2467,30 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="crm-proof-script"><strong>Message to Stephanie:</strong> Please send this week's GHL/CRM count snapshot: qualified leads, calls booked, calls held, no-shows/reschedules, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up. No narrative needed — counts + source date are enough.</div>
             </div>
+            <div class="content-lead-queue" aria-label="Content-to-lead proof queue">
+              <div class="content-lead-row header"><span>Asset</span><span>$13K offer CTA</span><span>Pipeline proof required</span><span>Owner / next action</span><span>Status</span></div>
+              <div class="content-lead-row">
+                <strong>Rural Airbnb ROI case study</strong>
+                <span>Apply for first high-cash-flow Airbnb coaching consult.</span>
+                <span>Unknown: clicks, DMs, booked consults, held consults, and lead source URL.</span>
+                <span>Scout drafts angle; Jeff/Stephanie attach CRM source proof before publishing more variants.</span>
+                <span><span class="content-lead-status">Proof needed</span></span>
+              </div>
+              <div class="content-lead-row">
+                <strong>Webinar clip follow-up</strong>
+                <span>Book a consult for the 6-month rural STR plan.</span>
+                <span>Unknown: attendee follow-ups due, oldest untouched warm lead, no-show recovery list.</span>
+                <span>Stephanie exports follow-up queue; Atlas flags dropped balls only after source counts exist.</span>
+                <span><span class="content-lead-status">Unknown</span></span>
+              </div>
+              <div class="content-lead-row">
+                <strong>Carousel: Who this is NOT for</strong>
+                <span>Qualify out bad-fit leads before sales calls.</span>
+                <span>Unknown: replies, saves, qualified applications, disqualified leads, call-quality impact.</span>
+                <span>Scout drafts one tight brief; do not schedule recurring content agent until ROI link is visible.</span>
+                <span><span class="content-lead-status">7-day test</span></span>
+              </div>
+            </div>
             <div class="dropped-ball-register" aria-label="Coaching dropped-ball register">
               <div class="dropped-ball-row header"><span>Risk</span><span>Owner</span><span>Proof needed</span><span>Next action</span></div>
               <div class="dropped-ball-row">
@@ -2749,6 +2813,9 @@ function handleSearch(query) {
   if ("retreat atlas scout accountability roi permissions".includes(q)) {
     matches.push({ icon: "🏕️", text: "TEECO Lodging Agent Retreat", hint: "Agent accountability", tab: "agents" });
   }
+  if ("content lead pipeline proof case study webinar carousel cta".includes(q)) {
+    matches.push({ icon: "📣", text: "Content-to-Lead Proof Queue", hint: "Coaching revenue", tab: "revenue" });
+  }
   if ("team".includes(q) || "workload".includes(q)) {
     matches.push({ icon: "👥", text: "Team & Workload", hint: "Tab", tab: "team" });
   }
@@ -2873,6 +2940,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Content-to-Lead Proof Queue so case studies, webinar clips, and carousels must show CTA, source proof, owner, next action, and ROI link before more content automation", time:"2026-05-10 02:35PM PDT", color:"var(--purple)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added CRM Count Intake template with week range, oldest untouched lead, no-shows/reschedules, highest-risk follow-up, and a copy-paste Stephanie request so sales proof replaces Unknowns", time:"2026-05-10 02:25PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added coaching stakeholder notification tracker so Stephanie's CRM/GHL count request is visible with sent status, exact ask, and dashboard-only guardrail", time:"2026-05-10 02:16PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Visual Builder", action:"Upgraded the retreat into a warm game-style lodge with walking chibi Atlas and Scout characters, speech bubbles, desks, fireplace, and no fake 14-agent count", time:"2026-05-10 02:00PM PDT", color:"var(--green)" },
