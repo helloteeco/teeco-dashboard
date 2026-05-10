@@ -1251,7 +1251,6 @@ body {
   .ai-employee, .retreat-snow, .retreat-fireplace::after { animation: none; }
 }
 
-.retreat-panel {
 /* ═══ ACTIVITY FEED ═══ */
 .activity-feed { max-height: 480px; overflow-y: auto; }
 
@@ -1470,6 +1469,44 @@ body {
   border-radius: 999px;
   background: var(--red-bg);
   color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stakeholder-tracker {
+  margin-top: 18px;
+  background: rgba(59,130,246,0.045);
+  border: 1px solid rgba(59,130,246,0.16);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.stakeholder-row {
+  display: grid;
+  grid-template-columns: .8fr 1fr 1.35fr .85fr .75fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-secondary);
+  font-size: 13px;
+  align-items: start;
+}
+.stakeholder-row:last-child { border-bottom: none; }
+.stakeholder-row.header {
+  background: var(--surface-1);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.stakeholder-row strong { color: var(--text-primary); }
+.notification-status {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(59,130,246,0.12);
+  color: var(--blue);
   font-size: 11px;
   font-weight: 700;
 }
@@ -1794,7 +1831,7 @@ body {
         </button>
         <button class="nav-item" onclick="switchTab('agents', this)" aria-label="Agent Fleet">
           <span class="nav-icon">🤖</span> Agent Fleet
-          <span class="nav-badge" style="background:var(--green-bg);color:var(--green)">14</span>
+          <span class="nav-badge" style="background:var(--green-bg);color:var(--green)">2</span>
         </button>
         <button class="nav-item" onclick="switchTab('revenue', this)" aria-label="Revenue">
           <span class="nav-icon">💰</span> Revenue
@@ -1851,7 +1888,7 @@ body {
       <div class="topbar-right">
         <div class="topbar-stat">
           <span class="dot" style="background:var(--green);box-shadow:0 0 6px var(--green)"></span>
-          <span style="color:var(--green)">14 Agents Live</span>
+          <span style="color:var(--green)">2 Agents Visible</span>
         </div>
         <div class="topbar-stat">
           <span class="dot" style="background:var(--red)"></span>
@@ -1941,10 +1978,10 @@ body {
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--green-bg)">🤖</div>
             <div class="metric-label">Agent Fleet</div>
-            <div class="metric-value" style="color:var(--green)">14</div>
+            <div class="metric-value" style="color:var(--green)">2</div>
             <div class="metric-sub">
               <span class="metric-trend up">All live</span>
-              <span>Telegram reports</span>
+              <span>Atlas + Scout</span>
             </div>
           </div>
         </div>
@@ -1979,8 +2016,8 @@ body {
                 </div>
                 <div>
                   <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px">Agent Runs This Week</div>
-                  <div style="font-size:32px;font-weight:800;color:var(--gold)">48</div>
-                  <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Across all 14 agents</div>
+                  <div style="font-size:32px;font-weight:800;color:var(--gold)">—</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Connect run logs; do not fake counts</div>
                 </div>
               </div>
             </div>
@@ -2001,21 +2038,21 @@ body {
       <div class="tab-panel" id="panel-agents">
         <div class="section-header">
           <h2>Agent Fleet</h2>
-          <p>Scheduled Claude AI tasks that push each workstream forward automatically</p>
+          <p>Visible AI employees only. Future agents stay locked until they prove ROI.</p>
         </div>
 
         <div class="fleet-stats">
           <div class="fleet-stat-card" style="background:var(--green-bg);border:1px solid var(--green-border)">
-            <div class="stat-num" style="color:var(--green)">14</div>
+            <div class="stat-num" style="color:var(--green)">2</div>
             <div class="stat-label" style="color:var(--green)">Live Agents</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--gold-subtle);border:1px solid rgba(251,192,45,0.2)">
-            <div class="stat-num" style="color:var(--gold)">48</div>
-            <div class="stat-label" style="color:var(--gold)">Runs / Week</div>
+            <div class="stat-num" style="color:var(--gold)">—</div>
+            <div class="stat-label" style="color:var(--gold)">Runs / Week Unknown</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--orange-bg);border:1px solid var(--orange-border)">
-            <div class="stat-num" style="color:var(--orange)">1</div>
-            <div class="stat-label" style="color:var(--orange)">Pending (QB Auth)</div>
+            <div class="stat-num" style="color:var(--orange)">0</div>
+            <div class="stat-label" style="color:var(--orange)">Future Desks Locked</div>
           </div>
         </div>
 
@@ -2094,7 +2131,7 @@ body {
 
         <div class="info-box">
           <div class="info-title">⚡ Fleet Status</div>
-          <p>All 14 agents are live and scheduled. The Master Builder runs daily at 6:10am and coordinates everything. Reports are delivered to Telegram via @GovConScannerBot. The only pending item is re-authenticating QuickBooks for the bookkeeping agent.</p>
+          <p>Current visible employees: Atlas and Scout. No 15-agent fantasy layer yet. Future characters need role, ROI metric, budget, permissions, 7-day test, and shutdown rule before they earn a desk in the lodge.</p>
         </div>
       </div>
 
@@ -2605,20 +2642,8 @@ const workstreams = [
 ];
 
 const agentFleet = [
-  { name:"Teeco Builder (Master)", freq:"Daily 6:10am", lastRun:"Runs daily", status:"live" },
-  { name:"GovCon Scanner", freq:"Daily 8:04am", lastRun:"Today", status:"live" },
-  { name:"Property Digest", freq:"Daily 8:09am", lastRun:"Today", status:"live" },
-  { name:"Content Engine", freq:"Daily 7:00am", lastRun:"Today", status:"live" },
-  { name:"Lead Scorer", freq:"Mon & Thu 9:10am", lastRun:"Scheduled", status:"live" },
-  { name:"Book Sprint", freq:"Sun 10:10am", lastRun:"Scheduled", status:"live" },
-  { name:"Weekly Revenue Report", freq:"Mon 8:02am", lastRun:"Scheduled", status:"live" },
-  { name:"Demand Signal Report", freq:"Mon 9:05am", lastRun:"Scheduled", status:"live" },
-  { name:"Edge Marketing", freq:"M/W/F 7:08am", lastRun:"Scheduled", status:"live" },
-  { name:"PhotoLab Sales", freq:"Tue 9:08am", lastRun:"Scheduled", status:"live" },
-  { name:"Circle Community", freq:"M-F 10:04am", lastRun:"Scheduled", status:"live" },
-  { name:"C-Suite Weekly", freq:"Fri 8:09am", lastRun:"Scheduled", status:"live" },
-  { name:"GHL Pipeline Monitor", freq:"Tu/F 9:04am", lastRun:"Scheduled", status:"live" },
-  { name:"ParkStay Builder", freq:"Wed 10:05am", lastRun:"Scheduled", status:"live" },
+  { name:"Atlas", freq:"On demand + approved dashboard sprints", lastRun:"Active now", status:"live" },
+  { name:"Scout", freq:"Prototype / awaiting 7-day test", lastRun:"Not scheduled", status:"pending" },
 ];
 
 const teamMembers = [
@@ -2640,12 +2665,13 @@ const teamMembers = [
   { name:"Eng", role:"Property Manager", color:"var(--red)", initial:"E",
     tasks:["Day-to-day property operations","Guest communications & reviews","Maintenance coordination","Turnover scheduling"],
     activeTasks:9, completed:4, workstreams:["Rentals","Operations","Guest Experience"] },
-  { name:"AI Fleet", role:"14 Automated Agents", color:"var(--gold-dark)", initial:"🤖",
-    tasks:["Daily property digests","GovCon scanning","Content scheduling","Lead scoring","Revenue reports"],
-    activeTasks:8, completed:2, workstreams:["All Workstreams"] },
+  { name:"AI Fleet", role:"Atlas + Scout only", color:"var(--gold-dark)", initial:"🤖",
+    tasks:["Chief-of-staff triage","Research briefs","Revenue accountability","Future-agent approval gates"],
+    activeTasks:2, completed:0, workstreams:["Coaching","Personal Brand"] },
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Visual Builder", action:"Upgraded the retreat into a warm game-style lodge with walking chibi Atlas and Scout characters, speech bubbles, desks, fireplace, and no fake 14-agent count", time:"2026-05-10 02:00PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching dropped-ball register for warm leads, booked-vs-held calls, and content assets missing ROI links; all counts remain labeled Unknown until CRM proof is supplied", time:"2026-05-10 01:52PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added TEECO Lodging Agent Retreat cards for Atlas and Scout with current task, completed work, cost, permissions, next action, ROI/shutdown rules, and no-recursive-cron approval gate", time:"2026-05-10 01:23PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Sales Control Panel with Unknown placeholders for qualified leads, calls booked/held, closes, follow-ups due, content assets, agent cost, and ROI link", time:"2026-05-10 1:17pm", color:"var(--gold)" },
