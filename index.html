@@ -1801,6 +1801,57 @@ img, canvas, svg, video { max-width: 100%; }
   padding: 10px 12px;
 }
 
+.sales-proof-board {
+  margin-top: 18px;
+  background: linear-gradient(135deg, rgba(34,197,94,0.055), rgba(59,130,246,0.04));
+  border: 1px solid rgba(34,197,94,0.16);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.sales-proof-board-title {
+  padding: 14px;
+  border-bottom: 1px solid var(--surface-3);
+}
+.sales-proof-board-title h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.sales-proof-board-title p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.sales-proof-row {
+  display: grid;
+  grid-template-columns: .95fr 1.1fr 1.15fr .8fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-secondary);
+  font-size: 13px;
+  align-items: start;
+}
+.sales-proof-row:last-child { border-bottom: none; }
+.sales-proof-row.header {
+  background: var(--surface-1);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.sales-proof-row strong { color: var(--text-primary); }
+.sales-proof-status {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(34,197,94,0.12);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 .content-lead-queue {
   margin-top: 18px;
   background: rgba(168,85,247,0.045);
@@ -2096,6 +2147,8 @@ img, canvas, svg, video { max-width: 100%; }
   .crm-proof-grid { grid-template-columns: 1fr; }
   .close-math-grid { grid-template-columns: 1fr; }
   .sales-sla-grid { grid-template-columns: 1fr; }
+  .sales-proof-row { grid-template-columns: 1fr; gap: 6px; }
+  .sales-proof-row.header { display: none; }
   .content-lead-row { grid-template-columns: 1fr; gap: 6px; }
   .content-lead-row.header { display: none; }
   .team-grid { grid-template-columns: 1fr; }
@@ -2743,6 +2796,31 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="sales-sla-script"><strong>Promotion rule:</strong> only move coaching metrics from Unknown to live after the exported source date, owner, next action, and follow-up proof are visible. If proof is missing, route the next 25-minute sprint to Stephanie instead of adding more agent activity.</div>
             </div>
+            <div class="sales-proof-board" aria-label="Sales proof promotion board">
+              <div class="sales-proof-board-title">
+                <h4>✅ Sales Proof Promotion Board — when Unknown becomes live</h4>
+                <p>Jeff should not have to guess whether a sales metric is usable. Each coaching metric graduates only after source proof, owner, next action, and dashboard update are present.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Metric</span><span>Minimum source proof</span><span>Owner / next 25-minute action</span><span>Promotion status</span></div>
+              <div class="sales-proof-row">
+                <strong>Qualified leads</strong>
+                <span>GHL/CRM export with week range, source date, and lead-stage filter.</span>
+                <span>Stephanie sends count snapshot; Atlas keeps value Unknown until source date is attached.</span>
+                <span><span class="sales-proof-status">Proof needed</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Booked vs held calls</strong>
+                <span>Calendar/CRM status split: booked, held, no-show, rescheduled.</span>
+                <span>Stephanie exports consult status; dashboard can then expose call leakage without guessing.</span>
+                <span><span class="sales-proof-status">Blocked</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Follow-ups due</strong>
+                <span>Overdue count, oldest untouched lead, highest-risk follow-up, and next-touch due date.</span>
+                <span>Atlas flags dropped balls only after Stephanie's queue proof is visible.</span>
+                <span><span class="sales-proof-status">Next sprint</span></span>
+              </div>
+            </div>
             <div class="content-lead-queue" aria-label="Content-to-lead proof queue">
               <div class="content-lead-row header"><span>Asset</span><span>$13K offer CTA</span><span>Pipeline proof required</span><span>Owner / next action</span><span>Status</span></div>
               <div class="content-lead-row">
@@ -3108,7 +3186,10 @@ function handleSearch(query) {
     matches.push({ icon: "🏕️", text: "TEECO Lodging Agent Retreat", hint: "Agent accountability", tab: "agents" });
   }
   if ("content lead pipeline proof case study webinar carousel cta".includes(q)) {
-    matches.push({ icon: "📣", text: "Content-to-Lead Proof Queue", hint: "Coaching revenue", tab: "revenue" });
+    matches.push({ icon: "🧲", text: "Content-to-Lead Proof Queue", hint: "$13K content ROI", tab: "revenue" });
+  }
+  if ("sales proof promotion unknown qualified booked held follow-ups".includes(q)) {
+    matches.push({ icon: "✅", text: "Sales Proof Promotion Board", hint: "Unknown → live metric gates", tab: "revenue" });
   }
   if ("activity proof source owner roi unknown guardrail".includes(q)) {
     matches.push({ icon: "🧾", text: "Activity Proof Guardrail", hint: "Execution log quality", tab: "activity" });
@@ -3241,6 +3322,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Sales Proof Promotion Board so qualified leads, booked-vs-held calls, and follow-ups due only move from Unknown to live after source proof, owner, next action, and dashboard update are present", time:"2026-05-10 04:17PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added team workload source-proof guardrail: task totals now stay Unknown until Motion export date, owner, overdue count, and next action are visible; coaching follow-ups and sales calls outrank generic task volume", time:"2026-05-10 04:04PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Sales Response SLA so new qualified leads, booked consults, no-shows, and stale warm leads have explicit owner, response window, source proof, and promotion rule before metrics go live", time:"2026-05-10 03:40PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Activity Proof Guardrail so dashboard activity cannot masquerade as revenue progress unless it has source proof, owner, next action, and ROI link to the $13K coaching funnel", time:"2026-05-10 03:32PM PDT", color:"var(--orange)" },
