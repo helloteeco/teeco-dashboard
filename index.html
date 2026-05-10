@@ -783,6 +783,8 @@ img, canvas, svg, video { max-width: 100%; }
 .badge-setup::before { background: var(--red); }
 .badge-validating { background: var(--purple-bg); color: var(--purple); }
 .badge-validating::before { background: var(--purple); }
+.badge-construction { background: rgba(113,113,122,0.12); color: var(--text-tertiary); }
+.badge-construction::before { background: var(--text-muted); }
 
 /* ═══ AGENT FLEET TABLE ═══ */
 .fleet-stats {
@@ -861,6 +863,80 @@ img, canvas, svg, video { max-width: 100%; }
 }
 .agent-dot.pending {
   background: var(--orange);
+}
+.agent-dot.construction {
+  background: var(--text-muted);
+}
+
+.workflow-lifecycle-panel {
+  background: var(--surface-2);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 24px 0;
+}
+.workflow-lifecycle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.workflow-stage-card {
+  background: var(--surface-1);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  min-height: 184px;
+}
+.workflow-stage-card.under-construction {
+  opacity: .62;
+  filter: grayscale(.72);
+  border-style: dashed;
+}
+.workflow-stage-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.workflow-stage-title {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -.2px;
+}
+.workflow-stage-owner {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.workflow-stage-desc {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.workflow-checklist {
+  display: grid;
+  gap: 7px;
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+.workflow-checklist span {
+  display: flex;
+  gap: 7px;
+}
+.workflow-automation-rule {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.18);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .retreat-hero {
@@ -1910,6 +1986,7 @@ img, canvas, svg, video { max-width: 100%; }
   .two-col { grid-template-columns: 1fr; }
   .rev-streams { grid-template-columns: repeat(2, 1fr); }
   .retreat-grid { grid-template-columns: 1fr; }
+  .workflow-lifecycle-grid { grid-template-columns: 1fr; }
   .coaching-control-grid { grid-template-columns: repeat(2, 1fr); }
   .fleet-stats { grid-template-columns: repeat(3, 1fr); }
 }
@@ -1954,6 +2031,7 @@ img, canvas, svg, video { max-width: 100%; }
   .retreat-hero-status { left: 10px; right: 10px; bottom: 10px; font-size: 11px; align-items: flex-start; flex-direction: column; gap: 5px; }
   .retreat-grid { grid-template-columns: 1fr; }
   .retreat-meta-grid { grid-template-columns: 1fr; }
+  .workflow-lifecycle-grid { grid-template-columns: 1fr; }
   .coaching-control-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
@@ -2324,8 +2402,8 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="stat-label" style="color:var(--gold)">Runs / Week Unknown</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--orange-bg);border:1px solid var(--orange-border)">
-            <div class="stat-num" style="color:var(--orange)">0</div>
-            <div class="stat-label" style="color:var(--orange)">Future Desks Locked</div>
+            <div class="stat-num" style="color:var(--orange)">3</div>
+            <div class="stat-label" style="color:var(--orange)">Under Construction</div>
           </div>
         </div>
 
@@ -2375,6 +2453,68 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
             </div>
             <div class="retreat-callout"><strong>Approval gate:</strong> Future agents need role, mission, ROI metric, permissions, budget, 7-day test, and shutdown rule before any recurring schedule. Cron-run sessions only write recommendations/status here — they do not create more cron jobs.</div>
+          </div>
+        </div>
+
+        <div class="workflow-lifecycle-panel">
+          <div class="card-header">
+            <div>
+              <h3>Workflow Lifecycle Gates</h3>
+              <p style="color:var(--text-tertiary);font-size:13px;margin-top:4px">If a workflow is not ready to interpret or use, it stays greyed out as under construction. It only turns live after source proof + a verification run.</p>
+            </div>
+            <span class="card-badge" style="background:rgba(113,113,122,0.12);color:var(--text-tertiary)">Self-solve queue</span>
+          </div>
+          <div class="card-body">
+            <div class="workflow-lifecycle-grid">
+              <div class="workflow-stage-card">
+                <div class="workflow-stage-top">
+                  <div>
+                    <div class="workflow-stage-title">Atlas Dashboard Fix Loop</div>
+                    <div class="workflow-stage-owner">Owner: Atlas</div>
+                  </div>
+                  <span class="badge badge-live">LIVE</span>
+                </div>
+                <div class="workflow-stage-desc">Safe local fixes for dashboard bugs, misleading states, missing accountability, and mobile readability. Reports to Jeff before push/deploy unless explicitly authorized.</div>
+                <div class="workflow-checklist">
+                  <span>✅ Root cause found before fixing</span>
+                  <span>✅ Local HTML/JS/server verification required</span>
+                  <span>✅ Telegram report when ready or blocked</span>
+                </div>
+              </div>
+
+              <div class="workflow-stage-card under-construction">
+                <div class="workflow-stage-top">
+                  <div>
+                    <div class="workflow-stage-title">CRM/GHL Sales Metrics Sync</div>
+                    <div class="workflow-stage-owner">Owner: Stephanie + Atlas</div>
+                  </div>
+                  <span class="badge badge-construction">UNDER CONSTRUCTION</span>
+                </div>
+                <div class="workflow-stage-desc">Cannot be trusted until real qualified leads, booked calls, held calls, closes, follow-ups due, and oldest untouched lead are exported from CRM/GHL.</div>
+                <div class="workflow-checklist">
+                  <span>⬜ Stephanie sends source export/date</span>
+                  <span>⬜ Atlas validates field mapping</span>
+                  <span>⬜ Auto-promote to live after verified counts replace Unknowns</span>
+                </div>
+              </div>
+
+              <div class="workflow-stage-card under-construction">
+                <div class="workflow-stage-top">
+                  <div>
+                    <div class="workflow-stage-title">Scout Content Brief Engine</div>
+                    <div class="workflow-stage-owner">Owner: Scout / Jeff approval</div>
+                  </div>
+                  <span class="badge badge-construction">UNDER CONSTRUCTION</span>
+                </div>
+                <div class="workflow-stage-desc">Research briefs stay grey until one 7-day test produces usable offer angles, proof assets, and a visible lead-source link tied to the $13K coaching offer.</div>
+                <div class="workflow-checklist">
+                  <span>⬜ One content-to-lead brief created</span>
+                  <span>⬜ Jeff approves quality bar</span>
+                  <span>⬜ Lead/reply/booked-call signal attached</span>
+                </div>
+              </div>
+            </div>
+            <div class="workflow-automation-rule"><strong>Automation rule:</strong> agents should self-solve issues they discover inside their permission box. If the workflow is incomplete, the dashboard shows it as under construction instead of fake-live. When verification passes, the card can flip to live and Atlas should notify Jeff in Telegram with what changed, proof checked, and the next revenue action.</div>
           </div>
         </div>
 
@@ -2673,7 +2813,15 @@ img, canvas, svg, video { max-width: 100%; }
       <div class="tab-panel" id="panel-activity">
         <div class="section-header">
           <h2>Activity Feed</h2>
-          <p>Real-time log of what bots and team members are doing</p>
+          <p>Execution log with source-proof guardrails — activity is not revenue proof until tied to CRM, Motion, Stripe, GHL, or a verified owner update.</p>
+        </div>
+
+        <div class="alert-banner alert-warning" aria-label="Activity proof guardrail">
+          <div class="alert-icon">🧾</div>
+          <div>
+            <div class="alert-title" style="color:var(--orange)">Activity ≠ Revenue Proof</div>
+            <div class="alert-body">Use this tab to see what changed, but do not count a bot/team item as progress unless it has a source, owner, next action, and ROI link to qualified leads, booked/held calls, closes, follow-ups due, content assets, or agent cost.</div>
+          </div>
         </div>
 
         <div class="two-col" style="grid-template-columns:1fr 340px">
@@ -2694,18 +2842,20 @@ img, canvas, svg, video { max-width: 100%; }
           <div>
             <div class="card">
               <div class="card-header">
-                <h3>Activity by Hour</h3>
+                <h3>Proof Checklist</h3>
               </div>
-              <div class="card-body">
-                <div class="chart-container" style="height:220px">
-                  <canvas id="activityHourChart"></canvas>
-                </div>
+              <div class="card-body" style="display:grid;gap:10px;color:var(--text-secondary);font-size:13px">
+                <div>✅ Dashboard/code change logged here</div>
+                <div>⬜ CRM/GHL source counts attached</div>
+                <div>⬜ Owner confirmed next action</div>
+                <div>⬜ ROI link tied to $13K coaching funnel</div>
+                <div style="margin-top:6px;padding:10px 12px;border-radius:var(--radius-xs);background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.16);color:var(--text-secondary)"><strong style="color:var(--red)">Rule:</strong> if any source proof is missing, label the metric Unknown and route the next 25-minute action to the owner instead of celebrating activity volume.</div>
               </div>
             </div>
 
             <div class="card" style="margin-top:16px">
               <div class="card-header">
-                <h3>Bot vs Team</h3>
+                <h3>Logged Items Only</h3>
               </div>
               <div class="card-body">
                 <div class="chart-container" style="height:200px">
@@ -2885,6 +3035,9 @@ function handleSearch(query) {
   if ("content lead pipeline proof case study webinar carousel cta".includes(q)) {
     matches.push({ icon: "📣", text: "Content-to-Lead Proof Queue", hint: "Coaching revenue", tab: "revenue" });
   }
+  if ("activity proof source owner roi unknown guardrail".includes(q)) {
+    matches.push({ icon: "🧾", text: "Activity Proof Guardrail", hint: "Execution log quality", tab: "activity" });
+  }
   if ("team".includes(q) || "workload".includes(q)) {
     matches.push({ icon: "👥", text: "Team & Workload", hint: "Tab", tab: "team" });
   }
@@ -2919,6 +3072,7 @@ const statusMap = {
   active: { cls: "badge-active", label: "ACTIVE" },
   live: { cls: "badge-live", label: "LIVE" },
   pending: { cls: "badge-pending", label: "PENDING TEST" },
+  construction: { cls: "badge-construction", label: "UNDER CONSTRUCTION" },
   in_progress: { cls: "badge-progress", label: "IN PROGRESS" },
   needs_setup: { cls: "badge-setup", label: "NEEDS SETUP" },
   validating: { cls: "badge-validating", label: "VALIDATING" },
@@ -2983,6 +3137,8 @@ const workstreams = [
 const agentFleet = [
   { name:"Atlas", freq:"On demand + approved dashboard sprints", lastRun:"Active now", status:"live" },
   { name:"Scout", freq:"Prototype / awaiting 7-day test", lastRun:"Not scheduled", status:"pending" },
+  { name:"CRM/GHL Sales Metrics Sync", freq:"Build queue — needs source export", lastRun:"Blocked on Stephanie data", status:"construction" },
+  { name:"Scout Content Brief Engine", freq:"Build queue — 7-day proof test", lastRun:"Not live yet", status:"construction" },
 ];
 
 const teamMembers = [
@@ -3010,6 +3166,8 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Activity Proof Guardrail so dashboard activity cannot masquerade as revenue progress unless it has source proof, owner, next action, and ROI link to the $13K coaching funnel", time:"2026-05-10 03:32PM PDT", color:"var(--orange)" },
+  { type:"bot", agent:"Atlas Dashboard Fix Loop", action:"Added Workflow Lifecycle Gates: incomplete workflows now grey out as under construction, require source proof + verification before going live, and include a Telegram notification rule when ready", time:"2026-05-10 03:30PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added $13K Close Math panel so follow-up risk is tied to the coaching offer value while revenue-at-risk counts stay Unknown until CRM proof is supplied", time:"2026-05-10 03:06PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected Agent Fleet accountability so Scout is visibly pending a 7-day test instead of being counted as fully live; agent schedule chart now shows unknown until run logs are connected", time:"2026-05-10 02:58PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Content-to-Lead Proof Queue so case studies, webinar clips, and carousels must show CTA, source proof, owner, next action, and ROI link before more content automation", time:"2026-05-10 02:35PM PDT", color:"var(--purple)" },
@@ -3094,12 +3252,14 @@ function toggleWs(i) {
 // ─── Render Agent Fleet ───
 const agentList = document.getElementById("agent-list");
 agentFleet.forEach(a => {
+  const dotColor = a.status === 'live' ? 'var(--green)' : a.status === 'construction' ? 'var(--text-muted)' : 'var(--orange)';
+  const lastRunColor = a.status === 'live' ? 'var(--green)' : a.status === 'construction' ? 'var(--text-muted)' : 'var(--orange)';
   agentList.innerHTML += `
     <div class="agent-row">
-      <div class="agent-name"><div class="agent-dot ${a.status}" style="background:${a.status === 'live' ? 'var(--green)' : 'var(--orange)'}"></div>${a.name}</div>
+      <div class="agent-name"><div class="agent-dot ${a.status}" style="background:${dotColor}"></div>${a.name}</div>
       <div>${badge(a.status)}</div>
       <span style="color:var(--text-secondary);font-size:13px">${a.freq}</span>
-      <span style="color:var(--green);font-size:13px;font-weight:500">${a.lastRun}</span>
+      <span style="color:${lastRunColor};font-size:13px;font-weight:500">${a.lastRun}</span>
     </div>`;
 });
 
