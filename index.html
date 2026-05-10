@@ -1761,6 +1761,8 @@ body {
   .coaching-control-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
+  .stakeholder-row { grid-template-columns: 1fr; gap: 6px; }
+  .stakeholder-row.header { display: none; }
   .team-grid { grid-template-columns: 1fr; }
 
   .agent-row {
@@ -2263,6 +2265,23 @@ body {
                 <span>Attach ROI link before scheduling more content work.</span>
               </div>
             </div>
+            <div class="stakeholder-tracker" aria-label="Coaching stakeholder notification tracker">
+              <div class="stakeholder-row header"><span>Stakeholder</span><span>Change</span><span>Why it matters</span><span>Exact ask</span><span>Sent?</span></div>
+              <div class="stakeholder-row">
+                <strong>Stephanie</strong>
+                <span>Coaching pipeline counts are now the dashboard priority.</span>
+                <span>Sales visibility beats vanity agent activity; missing follow-ups leak $13K program revenue.</span>
+                <span>Export GHL/CRM counts: qualified leads, booked, held, closes, follow-ups due.</span>
+                <span><span class="notification-status">Not sent</span></span>
+              </div>
+              <div class="stakeholder-row">
+                <strong>Atlas</strong>
+                <span>Agents must prove ROI before more automation.</span>
+                <span>Keeps future bots tied to pipeline movement, cost, permissions, and shutdown rules.</span>
+                <span>Review next sprint only after Stephanie's source counts are visible.</span>
+                <span><span class="notification-status">Dashboard only</span></span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2671,6 +2690,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added coaching stakeholder notification tracker so Stephanie's CRM/GHL count request is visible with sent status, exact ask, and dashboard-only guardrail", time:"2026-05-10 02:16PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Visual Builder", action:"Upgraded the retreat into a warm game-style lodge with walking chibi Atlas and Scout characters, speech bubbles, desks, fireplace, and no fake 14-agent count", time:"2026-05-10 02:00PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching dropped-ball register for warm leads, booked-vs-held calls, and content assets missing ROI links; all counts remain labeled Unknown until CRM proof is supplied", time:"2026-05-10 01:52PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added TEECO Lodging Agent Retreat cards for Atlas and Scout with current task, completed work, cost, permissions, next action, ROI/shutdown rules, and no-recursive-cron approval gate", time:"2026-05-10 01:23PM PDT", color:"var(--gold)" },
