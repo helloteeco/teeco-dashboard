@@ -1613,6 +1613,62 @@ img, canvas, svg, video { max-width: 100%; }
   padding: 10px 12px;
 }
 
+.close-math-card {
+  margin-top: 18px;
+  background: linear-gradient(135deg, rgba(34,197,94,0.07), rgba(251,192,45,0.04));
+  border: 1px solid rgba(34,197,94,0.18);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.close-math-card h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.close-math-card p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.close-math-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.close-math-step {
+  background: var(--surface-1);
+  border: 1px solid rgba(34,197,94,0.16);
+  border-radius: var(--radius-xs);
+  padding: 12px;
+}
+.close-math-step .label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.close-math-step .value {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 5px;
+}
+.close-math-step .note {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.close-math-script {
+  margin-top: 12px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+  background: rgba(0,0,0,0.22);
+  border-radius: var(--radius-xs);
+  padding: 10px 12px;
+}
+
 .content-lead-queue {
   margin-top: 18px;
   background: rgba(168,85,247,0.045);
@@ -1904,6 +1960,7 @@ img, canvas, svg, video { max-width: 100%; }
   .stakeholder-row { grid-template-columns: 1fr; gap: 6px; }
   .stakeholder-row.header { display: none; }
   .crm-proof-grid { grid-template-columns: 1fr; }
+  .close-math-grid { grid-template-columns: 1fr; }
   .content-lead-row { grid-template-columns: 1fr; gap: 6px; }
   .content-lead-row.header { display: none; }
   .team-grid { grid-template-columns: 1fr; }
@@ -2469,6 +2526,16 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="crm-proof-script"><strong>Message to Stephanie:</strong> Please send this week's GHL/CRM count snapshot: qualified leads, calls booked, calls held, no-shows/reschedules, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up. No narrative needed — counts + source date are enough.</div>
             </div>
+            <div class="close-math-card" aria-label="$13K coaching close math and follow-up risk">
+              <h4>💰 $13K Close Math — show revenue risk without inventing counts</h4>
+              <p>Every missing follow-up and unconfirmed consult should point to a source count, owner, and next action. The dashboard can show the offer value; conversion and pipeline counts stay Unknown until CRM proof exists.</p>
+              <div class="close-math-grid">
+                <div class="close-math-step"><div class="label">Offer value</div><div class="value">$13K / close</div><div class="note">Known current coaching offer; do not multiply until closes are sourced.</div></div>
+                <div class="close-math-step"><div class="label">Revenue at risk</div><div class="value">Unknown</div><div class="note">Needs overdue follow-ups, booked-not-held calls, and warm-lead aging from CRM.</div></div>
+                <div class="close-math-step"><div class="label">Next owner action</div><div class="value">Stephanie export</div><div class="note">Counts + oldest untouched lead convert this from warning light to operating system.</div></div>
+              </div>
+              <div class="close-math-script"><strong>25-minute sprint:</strong> pull CRM view for this week, sort warm leads by last touch, count booked/held/no-show consults, and paste the source date here before approving more agent/content work.</div>
+            </div>
             <div class="content-lead-queue" aria-label="Content-to-lead proof queue">
               <div class="content-lead-row header"><span>Asset</span><span>$13K offer CTA</span><span>Pipeline proof required</span><span>Owner / next action</span><span>Status</span></div>
               <div class="content-lead-row">
@@ -2943,6 +3010,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added $13K Close Math panel so follow-up risk is tied to the coaching offer value while revenue-at-risk counts stay Unknown until CRM proof is supplied", time:"2026-05-10 03:06PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected Agent Fleet accountability so Scout is visibly pending a 7-day test instead of being counted as fully live; agent schedule chart now shows unknown until run logs are connected", time:"2026-05-10 02:58PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Content-to-Lead Proof Queue so case studies, webinar clips, and carousels must show CTA, source proof, owner, next action, and ROI link before more content automation", time:"2026-05-10 02:35PM PDT", color:"var(--purple)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added CRM Count Intake template with week range, oldest untouched lead, no-shows/reschedules, highest-risk follow-up, and a copy-paste Stephanie request so sales proof replaces Unknowns", time:"2026-05-10 02:25PM PDT", color:"var(--gold)" },
