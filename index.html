@@ -2836,7 +2836,15 @@ img, canvas, svg, video { max-width: 100%; }
       <div class="tab-panel" id="panel-team">
         <div class="section-header">
           <h2>Team & Workload</h2>
-          <p>See who's working on what and track team capacity</p>
+          <p>Team capacity must be sourced from Motion/CRM before it is treated as operating truth.</p>
+        </div>
+
+        <div class="alert-banner alert-warning" aria-label="Team workload source proof guardrail">
+          <div class="alert-icon">🧾</div>
+          <div>
+            <div class="alert-title" style="color:var(--orange)">Workload Counts Need Source Proof</div>
+            <div class="alert-body">Do not use team task totals as productivity proof until Motion export date, owner, overdue count, and next action are visible. Coaching follow-ups and sales calls outrank generic task volume.</div>
+          </div>
         </div>
 
         <div class="metrics-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:28px">
@@ -2849,15 +2857,15 @@ img, canvas, svg, video { max-width: 100%; }
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--orange-bg)">📋</div>
             <div class="metric-label">Active Tasks</div>
-            <div class="metric-value" style="color:var(--orange)">52</div>
-            <div class="metric-sub">Across all workstreams</div>
+            <div class="metric-value" style="color:var(--orange)">Unknown</div>
+            <div class="metric-sub">Needs Motion source export</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--green-bg)">✅</div>
             <div class="metric-label">Completed This Week</div>
-            <div class="metric-value" style="color:var(--green)">23</div>
+            <div class="metric-value" style="color:var(--green)">Unknown</div>
             <div class="metric-sub">
-              <span class="metric-trend up">+5 vs last week</span>
+              <span class="metric-trend neutral">Do not estimate</span>
             </div>
           </div>
         </div>
@@ -3211,28 +3219,29 @@ const agentFleet = [
 const teamMembers = [
   { name:"Jeff", role:"CEO / Founder", color:"var(--gold)", initial:"J",
     tasks:["Strategic oversight","Client relationships","Content creation","Revenue targets"],
-    activeTasks:12, completed:5, workstreams:["Coaching","Rentals","Content"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Coaching","Rentals","Content"] },
   { name:"Ryu", role:"COO / Acquisitions & Management", color:"var(--green)", initial:"R",
     tasks:["Property acquisitions pipeline","Portfolio management oversight","Operational strategy","Team coordination"],
-    activeTasks:10, completed:4, workstreams:["Rentals","Acquisitions","Operations"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Rentals","Acquisitions","Operations"] },
   { name:"Myla", role:"Head of Design", color:"var(--blue)", initial:"M",
     tasks:["Teeco KY floor plan design","Brand & visual identity","PhotoLab creative direction","Client presentation decks"],
-    activeTasks:8, completed:3, workstreams:["Design","PhotoLab","Coaching"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Design","PhotoLab","Coaching"] },
   { name:"Stephanie", role:"Sales & Operations", color:"var(--orange)", initial:"S",
     tasks:["Client onboarding & follow-ups","Sales pipeline management","Coaching program delivery","Operational workflows"],
-    activeTasks:7, completed:3, workstreams:["Sales","Coaching","Operations"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Sales","Coaching","Operations"] },
   { name:"Brittany", role:"Designer", color:"var(--purple)", initial:"B",
     tasks:["Property listing visuals","Marketing collateral design","Social media graphics","Client deliverable design"],
-    activeTasks:6, completed:2, workstreams:["Design","Content","PhotoLab"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Design","Content","PhotoLab"] },
   { name:"Eng", role:"Property Manager", color:"var(--red)", initial:"E",
     tasks:["Day-to-day property operations","Guest communications & reviews","Maintenance coordination","Turnover scheduling"],
-    activeTasks:9, completed:4, workstreams:["Rentals","Operations","Guest Experience"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Rentals","Operations","Guest Experience"] },
   { name:"AI Fleet", role:"Atlas + Scout only", color:"var(--gold-dark)", initial:"🤖",
     tasks:["Chief-of-staff triage","Research briefs","Revenue accountability","Future-agent approval gates"],
-    activeTasks:2, completed:0, workstreams:["Coaching","Personal Brand"] },
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Coaching","Personal Brand"] },
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added team workload source-proof guardrail: task totals now stay Unknown until Motion export date, owner, overdue count, and next action are visible; coaching follow-ups and sales calls outrank generic task volume", time:"2026-05-10 04:04PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Sales Response SLA so new qualified leads, booked consults, no-shows, and stale warm leads have explicit owner, response window, source proof, and promotion rule before metrics go live", time:"2026-05-10 03:40PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Activity Proof Guardrail so dashboard activity cannot masquerade as revenue progress unless it has source proof, owner, next action, and ROI link to the $13K coaching funnel", time:"2026-05-10 03:32PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Dashboard Fix Loop", action:"Added Workflow Lifecycle Gates: incomplete workflows now grey out as under construction, require source proof + verification before going live, and include a Telegram notification rule when ready", time:"2026-05-10 03:30PM PDT", color:"var(--blue)" },
@@ -3537,15 +3546,15 @@ function initCharts() {
         labels: ['Jeff', 'Ryu', 'Myla', 'Stephanie', 'Brittany', 'Eng', 'AI Fleet'],
         datasets: [
           {
-            label: 'Active Tasks',
-            data: [12, 10, 8, 7, 6, 9, 8],
-            backgroundColor: 'rgba(249,115,22,0.6)',
+            label: 'Active Tasks (Motion not connected)',
+            data: [0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(113,113,122,0.35)',
             borderRadius: 6,
           },
           {
-            label: 'Completed',
-            data: [5, 4, 3, 3, 2, 4, 2],
-            backgroundColor: 'rgba(34,197,94,0.6)',
+            label: 'Completed (source required)',
+            data: [0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(34,197,94,0.25)',
             borderRadius: 6,
           }
         ]
