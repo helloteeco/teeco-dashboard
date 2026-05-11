@@ -1185,13 +1185,16 @@ img, canvas, svg, video { max-width: 100%; }
 .ai-employee {
   --skin: #f0bd8c;
   --hair: #1f2633;
+  --hair2: #111827;
   --coat: #253d9f;
+  --coat2: #101a52;
   --trim: #ffd564;
   --pants: #151521;
   --boot: #111118;
+  --eye: #101216;
   position: absolute;
-  width: 92px;
-  height: 142px;
+  width: 104px;
+  height: 158px;
   z-index: 5;
   cursor: pointer;
   transform-origin: 50% 100%;
@@ -1200,68 +1203,124 @@ img, canvas, svg, video { max-width: 100%; }
 .ai-employee:hover { animation-play-state: paused; z-index: 8; }
 .ai-sprite {
   position: absolute;
-  left: 50%; top: 8px;
-  width: 66px; height: 104px;
+  left: 50%; top: 4px;
+  width: 82px; height: 132px;
   transform: translateX(-50%);
-  filter: drop-shadow(0 15px 9px rgba(0,0,0,.36));
+  filter: drop-shadow(0 16px 8px rgba(0,0,0,.42));
 }
-.ai-sprite::before {
+.ai-sprite span { position: absolute; display: block; box-sizing: border-box; }
+.ai-hair-back {
+  left: 13px; top: 2px;
+  width: 56px; height: 62px;
+  border-radius: 48% 48% 35% 35%;
+  background:
+    radial-gradient(circle at 18% 34%, color-mix(in srgb, var(--hair) 78%, #fff) 0 5px, transparent 6px),
+    linear-gradient(145deg, color-mix(in srgb, var(--hair) 86%, #fff), var(--hair2));
+  border: 3px solid rgba(0,0,0,.58);
+  box-shadow: -11px 15px 0 -5px var(--hair2), 12px 13px 0 -5px var(--hair2), 0 8px 0 rgba(0,0,0,.10) inset;
+  z-index: 1;
+}
+.ai-face {
+  left: 24px; top: 22px;
+  width: 36px; height: 39px;
+  border-radius: 44% 44% 48% 48%;
+  background:
+    radial-gradient(circle at 12px 20px, var(--eye) 0 2.6px, transparent 3px),
+    radial-gradient(circle at 25px 20px, var(--eye) 0 2.6px, transparent 3px),
+    linear-gradient(180deg, rgba(255,255,255,.16), transparent 24%),
+    linear-gradient(var(--skin), color-mix(in srgb, var(--skin) 88%, #b66a50));
+  border: 3px solid rgba(0,0,0,.56);
+  box-shadow: 0 -13px 0 2px var(--hair), -12px -4px 0 -4px var(--hair), 12px -5px 0 -4px var(--hair), 0 3px 0 rgba(255,255,255,.20) inset;
+  z-index: 5;
+}
+.ai-face::after {
   content: '';
   position: absolute;
-  left: 17px; top: 10px;
-  width: 32px; height: 34px;
-  border-radius: 42% 42% 48% 48%;
-  background:
-    radial-gradient(circle at 11px 17px, #101216 0 2px, transparent 3px),
-    radial-gradient(circle at 22px 17px, #101216 0 2px, transparent 3px),
-    radial-gradient(ellipse at 16px 25px, rgba(120,58,42,.45) 0 5px, transparent 6px),
-    linear-gradient(var(--skin), var(--skin));
-  border: 2px solid rgba(0,0,0,.46);
-  box-shadow: 0 -12px 0 3px var(--hair), -13px -4px 0 -4px var(--hair), 12px -5px 0 -4px var(--hair), 0 3px 0 rgba(255,255,255,.12) inset;
+  left: 14px; top: 28px;
+  width: 8px; height: 3px;
+  border-radius: 999px;
+  background: rgba(96,45,40,.52);
+}
+.ai-collar {
+  left: 25px; top: 57px;
+  width: 34px; height: 15px;
+  border-radius: 8px 8px 4px 4px;
+  background: linear-gradient(90deg, var(--trim) 0 11px, #fff3b2 11px 17px, var(--trim) 17px 100%);
+  border: 2px solid rgba(0,0,0,.52);
   z-index: 4;
 }
-.ai-sprite::after {
-  content: '';
-  position: absolute;
-  left: 13px; top: 44px;
-  width: 42px; height: 48px;
-  border-radius: 12px 12px 10px 10px;
+.ai-torso {
+  left: 20px; top: 66px;
+  width: 44px; height: 45px;
+  border-radius: 11px 11px 14px 14px;
   background:
-    linear-gradient(90deg, transparent 0 8px, var(--trim) 8px 12px, transparent 12px 30px, rgba(255,255,255,.20) 30px 33px, transparent 33px),
-    linear-gradient(180deg, color-mix(in srgb, var(--coat) 88%, #fff), var(--coat) 58%, color-mix(in srgb, var(--coat) 58%, #000));
-  border: 2px solid rgba(0,0,0,.46);
-  box-shadow:
-    -16px 7px 0 -8px var(--skin),
-    16px 7px 0 -8px var(--skin),
-    -8px 45px 0 -6px var(--pants),
-    9px 45px 0 -6px var(--pants),
-    -9px 58px 0 -7px var(--boot),
-    10px 58px 0 -7px var(--boot);
+    linear-gradient(90deg, transparent 0 9px, var(--trim) 9px 13px, transparent 13px 30px, rgba(255,255,255,.20) 30px 34px, transparent 34px),
+    linear-gradient(180deg, color-mix(in srgb, var(--coat) 88%, #fff) 0 14%, var(--coat) 15% 60%, var(--coat2));
+  border: 3px solid rgba(0,0,0,.58);
+  box-shadow: inset 0 5px 0 rgba(255,255,255,.10), 0 4px 0 rgba(0,0,0,.15);
   z-index: 3;
 }
+.ai-arm {
+  top: 73px;
+  width: 15px; height: 37px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--coat), var(--coat2) 64%, var(--skin) 65% 100%);
+  border: 2px solid rgba(0,0,0,.55);
+  z-index: 2;
+}
+.ai-arm.left { left: 11px; transform: rotate(13deg); }
+.ai-arm.right { right: 10px; transform: rotate(-13deg); }
+.ai-leg {
+  top: 105px;
+  width: 16px; height: 28px;
+  border-radius: 5px 5px 8px 8px;
+  background: linear-gradient(180deg, var(--pants), var(--boot) 68%);
+  border: 2px solid rgba(0,0,0,.58);
+  z-index: 2;
+}
+.ai-leg.left { left: 24px; transform: rotate(5deg); }
+.ai-leg.right { right: 24px; transform: rotate(-5deg); }
+.ai-cape {
+  left: 13px; top: 57px;
+  width: 55px; height: 66px;
+  border-radius: 15px 12px 24px 20px;
+  background: linear-gradient(160deg, rgba(255,255,255,.08), color-mix(in srgb, var(--coat2) 72%, #000));
+  border: 3px solid rgba(0,0,0,.42);
+  transform: skewX(-5deg);
+  opacity: .92;
+  z-index: 1;
+}
+.ai-accent-tail {
+  left: 4px; top: 38px;
+  width: 22px; height: 58px;
+  border-radius: 90% 10% 80% 20%;
+  background: linear-gradient(180deg, var(--trim), color-mix(in srgb, var(--trim) 62%, #8a4d00));
+  border: 2px solid rgba(0,0,0,.42);
+  transform: rotate(28deg);
+  z-index: 0;
+}
 .ai-accessory {
-  position: absolute;
-  left: 45px; top: 58px;
-  width: 28px; height: 28px;
-  display: grid;
+  right: 0; top: 70px;
+  width: 31px; height: 31px;
+  display: grid !important;
   place-items: center;
   border-radius: 50%;
-  background: rgba(10,10,11,0.78);
-  border: 1px solid rgba(255,255,255,0.18);
-  font-size: 16px;
-  z-index: 5;
-  box-shadow: 0 6px 10px rgba(0,0,0,.24);
+  background: rgba(10,10,11,0.82);
+  border: 2px solid rgba(255,255,255,0.20);
+  font-size: 17px;
+  z-index: 7;
+  box-shadow: 0 6px 10px rgba(0,0,0,.28);
 }
 .ai-shadow {
   position: absolute;
-  left: 13px; right: 13px; bottom: 2px; height: 12px;
+  left: 14px; right: 14px; bottom: 0; height: 13px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.34);
+  background: rgba(0,0,0,0.36);
   filter: blur(2px);
 }
 .ai-nameplate {
   position: absolute;
-  left: 50%; bottom: -18px;
+  left: 50%; bottom: -17px;
   transform: translateX(-50%);
   background: rgba(10,10,11,0.86);
   border: 1px solid rgba(255,255,255,0.15);
@@ -1275,7 +1334,7 @@ img, canvas, svg, video { max-width: 100%; }
 }
 .ai-task-bubble {
   position: absolute;
-  left: 50%; bottom: 124px;
+  left: 50%; bottom: 136px;
   transform: translateX(-50%);
   min-width: 128px;
   background: #fff8e2;
@@ -1300,20 +1359,31 @@ img, canvas, svg, video { max-width: 100%; }
   border-bottom: 2px solid rgba(45,23,16,.28);
   transform: rotate(45deg);
 }
-.ai-atlas { left: 18%; bottom: 17%; --hair:#11182b; --coat:#1f3bb5; --trim:#f7cb3c; --pants:#19192a; animation-name: atlas-patrol; }
-.ai-atlas .ai-sprite::before {
-  box-shadow: 0 -13px 0 4px var(--hair), -14px -4px 0 -4px var(--hair), 13px -4px 0 -4px var(--hair), 0 0 0 5px rgba(64,104,255,.16);
+.ai-atlas {
+  left: 18%; bottom: 16%;
+  --hair:#18233e; --hair2:#080b16; --coat:#1e43d8; --coat2:#0b154e; --trim:#f3cc47; --pants:#17182b;
+  animation-name: atlas-patrol;
 }
-.ai-atlas .ai-sprite::after {
-  border-radius: 8px 14px 10px 10px;
+.ai-atlas .ai-hair-back {
+  border-radius: 52% 42% 34% 34%;
+  box-shadow: -9px 18px 0 -5px var(--hair2), 12px 11px 0 -6px var(--hair2), 0 0 0 5px rgba(64,104,255,.12);
 }
-.ai-scout { right: 18%; bottom: 18%; --hair:#b25d24; --coat:#218653; --trim:#8bf1d4; --pants:#251728; animation-name: scout-patrol; animation-delay: -2.4s; }
-.ai-scout .ai-sprite::before {
-  box-shadow: 0 -13px 0 5px var(--hair), -12px -1px 0 -3px var(--hair), 12px -1px 0 -3px var(--hair), 16px 6px 0 -5px var(--hair);
+.ai-atlas .ai-face { box-shadow: 0 -12px 0 3px var(--hair), -15px -2px 0 -6px var(--hair), 14px -5px 0 -5px var(--hair); }
+.ai-atlas .ai-cape { background: linear-gradient(160deg, rgba(46,92,255,.24), #080d2d); }
+.ai-atlas .ai-accent-tail { background: linear-gradient(180deg, #ffd95a, #d88613); }
+.ai-scout {
+  right: 18%; bottom: 17%;
+  --hair:#a9471f; --hair2:#552111; --coat:#188452; --coat2:#083a2c; --trim:#88f0d0; --pants:#241725;
+  animation-name: scout-patrol; animation-delay: -2.4s;
 }
-.ai-scout .ai-sprite::after {
-  border-radius: 16px 8px 12px 12px;
+.ai-scout .ai-hair-back {
+  width: 60px; left: 11px;
+  border-radius: 46% 54% 45% 30%;
+  box-shadow: -13px 12px 0 -5px var(--hair2), 16px 22px 0 -6px var(--hair), 8px -9px 0 -7px #ffd166;
 }
+.ai-scout .ai-face { box-shadow: 0 -13px 0 4px var(--hair), -12px -1px 0 -4px var(--hair), 14px 2px 0 -4px var(--hair), 18px 10px 0 -6px var(--hair2); }
+.ai-scout .ai-cape { background: linear-gradient(160deg, rgba(71,224,157,.22), #082a22); border-radius: 12px 20px 28px 14px; }
+.ai-scout .ai-accent-tail { left: 55px; top: 37px; transform: rotate(-30deg); background: linear-gradient(180deg, #8bf0d0, #278c76); }
 .agent-pad {
   position: absolute;
   width: 92px; height: 62px;
@@ -1859,6 +1929,19 @@ img, canvas, svg, video { max-width: 100%; }
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
+.content-lead-title {
+  padding: 14px;
+  border-bottom: 1px solid var(--surface-3);
+}
+.content-lead-title h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.content-lead-title p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.5;
+}
 .content-lead-row {
   display: grid;
   grid-template-columns: 1.05fr 1.05fr 1.2fr .95fr .7fr;
@@ -2221,9 +2304,9 @@ img, canvas, svg, video { max-width: 100%; }
   .retreat-workbench { left: 4%; bottom: 23%; transform: scale(.72); }
   .retreat-sofa { right: 7%; bottom: 23%; transform: scale(.68); }
   .retreat-platform { left: 6%; right: 6%; bottom: 78px; }
-  .ai-employee { width: 68px; height: 116px; }
-  .ai-sprite { transform: translateX(-50%) scale(.75); transform-origin: top center; }
-  .ai-task-bubble { min-width: 98px; max-width: 116px; font-size: 9px; bottom: 100px; }
+  .ai-employee { width: 76px; height: 126px; }
+  .ai-sprite { transform: translateX(-50%) scale(.68); transform-origin: top center; }
+  .ai-task-bubble { min-width: 98px; max-width: 116px; font-size: 9px; bottom: 108px; }
   .ai-atlas { left: 10%; bottom: 16%; }
   .ai-scout { right: 10%; bottom: 17%; }
   @keyframes atlas-patrol {
@@ -2387,13 +2470,13 @@ img, canvas, svg, video { max-width: 100%; }
 
           <div class="ai-employee ai-atlas" aria-label="Atlas walking around the lodge">
             <div class="ai-task-bubble">Atlas: cuts distractions, protects revenue</div>
-            <div class="ai-sprite"><span class="ai-accessory">🧭</span></div>
+            <div class="ai-sprite"><span class="ai-accent-tail"></span><span class="ai-cape"></span><span class="ai-hair-back"></span><span class="ai-face"></span><span class="ai-collar"></span><span class="ai-torso"></span><span class="ai-arm left"></span><span class="ai-arm right"></span><span class="ai-leg left"></span><span class="ai-leg right"></span><span class="ai-accessory">🧭</span></div>
             <div class="ai-shadow"></div>
             <div class="ai-nameplate">Atlas</div>
           </div>
           <div class="ai-employee ai-scout" aria-label="Scout walking around the lodge">
-            <div class="ai-task-bubble">Scout: researches angles + opportunities</div>
-            <div class="ai-sprite"><span class="ai-accessory">🔎</span></div>
+            <div class="ai-task-bubble">Scout: designs STR homes + designers site</div>
+            <div class="ai-sprite"><span class="ai-accent-tail"></span><span class="ai-cape"></span><span class="ai-hair-back"></span><span class="ai-face"></span><span class="ai-collar"></span><span class="ai-torso"></span><span class="ai-arm left"></span><span class="ai-arm right"></span><span class="ai-leg left"></span><span class="ai-leg right"></span><span class="ai-accessory">🔎</span></div>
             <div class="ai-shadow"></div>
             <div class="ai-nameplate">Scout</div>
           </div>
@@ -2512,7 +2595,7 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="stat-label" style="color:var(--gold)">Runs / Week Unknown</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--orange-bg);border:1px solid var(--orange-border)">
-            <div class="stat-num" style="color:var(--orange)">3</div>
+            <div class="stat-num" style="color:var(--orange)">1</div>
             <div class="stat-label" style="color:var(--orange)">Under Construction</div>
           </div>
         </div>
@@ -2549,16 +2632,16 @@ img, canvas, svg, video { max-width: 100%; }
                   <div class="retreat-avatar" style="box-shadow:0 0 0 3px rgba(168,85,247,0.08)">🔎</div>
                   <div>
                     <div class="retreat-name">Scout</div>
-                    <div class="retreat-role">Creative Director Scout / Offer Angle Research</div>
+                    <div class="retreat-role">Home Design Scout / designers.teeco.co Builder</div>
                   </div>
                 </div>
                 <div class="retreat-meta-grid">
-                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">Proposed: find high-converting rural Airbnb coaching angles and proof assets.</div></div>
-                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">Not yet connected to a visible weekly output in this dashboard.</div></div>
+                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">VALIDATING 7-day test: produce one Telegram-visible home/design brief or designers.teeco.co build slice.</div></div>
+                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">Role corrected 2026-05-10: Scout is for home design and designers.teeco.co, not generic content briefs. First design-focused brief scheduled next.</div></div>
                   <div class="retreat-meta"><div class="label">Spend / cost</div><div class="value">Unknown; must report cost before earning more scheduled work.</div></div>
-                  <div class="retreat-meta"><div class="label">Permissions</div><div class="value">Research + draft briefs only. No publishing, pricing changes, or team messages.</div></div>
-                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Create one content-to-lead brief tied to the $13K coaching offer.</div></div>
-                  <div class="retreat-meta"><div class="label">Shutdown rule</div><div class="value">Pause if briefs do not produce leads, replies, booked calls, or reusable sales assets.</div></div>
+                  <div class="retreat-meta"><div class="label">Permissions</div><div class="value">Research + draft home/design briefs and designers.teeco.co plans only. No publishing, pricing changes, or team messages.</div></div>
+                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Create one STR design brief or designers.teeco.co homepage/workflow slice for Jeff/Myla review.</div></div>
+                  <div class="retreat-meta"><div class="label">Shutdown rule</div><div class="value">Pause if outputs do not improve design speed/quality, designer workflow clarity, or revenue-supporting design deliverables.</div></div>
                 </div>
               </div>
             </div>
@@ -2608,19 +2691,19 @@ img, canvas, svg, video { max-width: 100%; }
                 </div>
               </div>
 
-              <div class="workflow-stage-card under-construction">
+              <div class="workflow-stage-card">
                 <div class="workflow-stage-top">
                   <div>
-                    <div class="workflow-stage-title">Scout Content Brief Engine</div>
+                    <div class="workflow-stage-title">Scout Home Design + Designers Site Engine</div>
                     <div class="workflow-stage-owner">Owner: Scout / Jeff approval</div>
                   </div>
-                  <span class="badge badge-construction">UNDER CONSTRUCTION</span>
+                  <span class="badge badge-validating">VALIDATING</span>
                 </div>
-                <div class="workflow-stage-desc">Research briefs stay grey until one 7-day test produces usable offer angles, proof assets, and a visible lead-source link tied to the $13K coaching offer.</div>
+                <div class="workflow-stage-desc">Scout is corrected into a 7-day Telegram-visible home/design test. It graduates only if outputs are useful for STR design decisions, Myla/design-team workflow, or designers.teeco.co creation.</div>
                 <div class="workflow-checklist">
-                  <span>⬜ One content-to-lead brief created</span>
+                  <span>✅ Role corrected from content to home/design</span>
                   <span>⬜ Jeff approves quality bar</span>
-                  <span>⬜ Lead/reply/booked-call signal attached</span>
+                  <span>⬜ designers.teeco.co or design deliverable proof attached</span>
                 </div>
               </div>
             </div>
@@ -2822,6 +2905,10 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
             </div>
             <div class="content-lead-queue" aria-label="Content-to-lead proof queue">
+              <div class="content-lead-title">
+                <h4>🧲 Content-to-Lead Proof Queue — stop publishing without a pipeline link</h4>
+                <p>Scout and Atlas can create assets only when each item has a $13K coaching CTA, source proof requirement, owner, and next action. Engagement is not progress until it creates qualified leads, booked/held consults, closes, or a documented follow-up.</p>
+              </div>
               <div class="content-lead-row header"><span>Asset</span><span>$13K offer CTA</span><span>Pipeline proof required</span><span>Owner / next action</span><span>Status</span></div>
               <div class="content-lead-row">
                 <strong>Rural Airbnb ROI case study</strong>
@@ -3292,9 +3379,8 @@ const workstreams = [
 
 const agentFleet = [
   { name:"Atlas", freq:"On demand + approved dashboard sprints", lastRun:"Active now", status:"live" },
-  { name:"Scout", freq:"Prototype / awaiting 7-day test", lastRun:"Not scheduled", status:"pending" },
+  { name:"Scout", freq:"Daily 8am — home/design + designers site test", lastRun:"Role corrected 2026-05-10; next design brief scheduled", status:"validating" },
   { name:"CRM/GHL Sales Metrics Sync", freq:"Build queue — needs source export", lastRun:"Blocked on Stephanie data", status:"construction" },
-  { name:"Scout Content Brief Engine", freq:"Build queue — 7-day proof test", lastRun:"Not live yet", status:"construction" },
 ];
 
 const teamMembers = [
@@ -3317,11 +3403,13 @@ const teamMembers = [
     tasks:["Day-to-day property operations","Guest communications & reviews","Maintenance coordination","Turnover scheduling"],
     activeTasks:"Unknown", completed:"Unknown", workstreams:["Rentals","Operations","Guest Experience"] },
   { name:"AI Fleet", role:"Atlas + Scout only", color:"var(--gold-dark)", initial:"🤖",
-    tasks:["Chief-of-staff triage","Research briefs","Revenue accountability","Future-agent approval gates"],
-    activeTasks:"Unknown", completed:"Unknown", workstreams:["Coaching","Personal Brand"] },
+    tasks:["Chief-of-staff triage","Home/design Scout briefs","Revenue accountability","Future-agent approval gates"],
+    activeTasks:"Unknown", completed:"Unknown", workstreams:["Coaching","Design","Personal Brand"] },
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Labeled the Content-to-Lead Proof Queue so Scout/Atlas assets must carry a $13K coaching CTA, pipeline proof requirement, owner, next action, and ROI guardrail before more publishing is treated as progress", time:"2026-05-10 08:36PM PDT", color:"var(--purple)" },
+  { type:"bot", agent:"Atlas", action:"Corrected Scout role: Scout is a Telegram-facing home/design AI for STR design briefs and designers.teeco.co, not a content/revenue brief bot; scheduler and dashboard now point to the design test", time:"2026-05-10 04:43PM PDT", color:"var(--purple)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Sales Proof Promotion Board so qualified leads, booked-vs-held calls, and follow-ups due only move from Unknown to live after source proof, owner, next action, and dashboard update are present", time:"2026-05-10 04:17PM PDT", color:"var(--green)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added team workload source-proof guardrail: task totals now stay Unknown until Motion export date, owner, overdue count, and next action are visible; coaching follow-ups and sales calls outrank generic task volume", time:"2026-05-10 04:04PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Sales Response SLA so new qualified leads, booked consults, no-shows, and stale warm leads have explicit owner, response window, source proof, and promotion rule before metrics go live", time:"2026-05-10 03:40PM PDT", color:"var(--blue)" },
