@@ -1628,6 +1628,67 @@ img, canvas, svg, video { max-width: 100%; }
 }
 .sales-triage-item strong { color: var(--text-primary); }
 
+.today-revenue-loop {
+  margin: 18px 0 24px;
+  background: linear-gradient(135deg, rgba(251,192,45,0.07), rgba(239,68,68,0.05));
+  border: 1px solid rgba(251,192,45,0.18);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.today-revenue-loop-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.today-revenue-loop-head h3 { font-size: 16px; margin-bottom: 4px; }
+.today-revenue-loop-head p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+.today-revenue-loop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.today-loop-step {
+  background: rgba(10,10,11,0.38);
+  border: 1px solid var(--surface-3);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  min-width: 0;
+}
+.today-loop-step .step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--gold-subtle);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.today-loop-step .step-title {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.today-loop-step .step-note {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.today-loop-step .step-owner {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  margin-top: 8px;
+}
+
 .dropped-ball-register {
   margin-top: 18px;
   background: rgba(239,68,68,0.04);
@@ -2229,6 +2290,7 @@ img, canvas, svg, video { max-width: 100%; }
   .retreat-grid { grid-template-columns: 1fr; }
   .workflow-lifecycle-grid { grid-template-columns: 1fr; }
   .coaching-control-grid { grid-template-columns: repeat(2, 1fr); }
+  .today-revenue-loop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fleet-stats { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -2274,6 +2336,8 @@ img, canvas, svg, video { max-width: 100%; }
   .retreat-meta-grid { grid-template-columns: 1fr; }
   .workflow-lifecycle-grid { grid-template-columns: 1fr; }
   .coaching-control-grid { grid-template-columns: 1fr; }
+  .today-revenue-loop-head { flex-direction: column; }
+  .today-revenue-loop-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
   .followup-recovery-row { grid-template-columns: 1fr; gap: 6px; }
@@ -2588,6 +2652,22 @@ img, canvas, svg, video { max-width: 100%; }
           <div>
             <div class="alert-title" style="color:var(--red)">Coaching Sales Proof Debt: counts still Unknown</div>
             <div class="alert-body">Before celebrating task volume, get Stephanie's source snapshot for qualified leads, calls booked, calls held, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up. Motion overdue counts stay secondary until the $13K coaching pipeline is sourced.</div>
+          </div>
+        </div>
+
+        <div class="today-revenue-loop" aria-label="Today's coaching revenue control loop">
+          <div class="today-revenue-loop-head">
+            <div>
+              <h3>Today's $13K Coaching Revenue Control Loop</h3>
+              <p>Jeff's first dashboard check should create sales motion, not just admire agent activity. Values stay Unknown until CRM/GHL proof lands.</p>
+            </div>
+            <span class="card-badge" style="background:var(--red-bg);color:var(--red)">Daily priority</span>
+          </div>
+          <div class="today-revenue-loop-grid">
+            <div class="today-loop-step"><div class="step-num">1</div><div class="step-title">Source the scoreboard</div><div class="step-note">Get qualified leads, booked calls, held calls, closes, follow-ups due, and oldest untouched warm lead.</div><div class="step-owner">Owner: Stephanie · Status: Unknown</div></div>
+            <div class="today-loop-step"><div class="step-num">2</div><div class="step-title">Recover the oldest lead</div><div class="step-note">One stale warm lead can be a missed $13K close; find last-touch timestamp and next message.</div><div class="step-owner">Owner: Stephanie · Notified: Not sent</div></div>
+            <div class="today-loop-step"><div class="step-num">3</div><div class="step-title">Confirm booked consults</div><div class="step-note">Split booked vs held vs no-show before judging sales performance or content ROI.</div><div class="step-owner">Owner: Stephanie · Proof: Calendar + CRM</div></div>
+            <div class="today-loop-step"><div class="step-num">4</div><div class="step-title">Throttle agent work</div><div class="step-note">No new recurring bots until outputs show owner, next action, cost/spend, and ROI link to the coaching funnel.</div><div class="step-owner">Owner: Atlas · Rule: Revenue first</div></div>
           </div>
         </div>
 
@@ -3492,6 +3572,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added Today's $13K Coaching Revenue Control Loop to the overview so Jeff sees the daily sales-control sequence first: source CRM/GHL counts, recover oldest lead, confirm booked consults, then throttle new agent work until ROI proof exists", time:"2026-05-11 04:45AM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Follow-Up Recovery Board so coaching leaks now show owner, source status, due timing, notification state, next action, and ROI link without inventing CRM counts", time:"2026-05-11 12:40AM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Re-pointed the overview warning away from generic Motion task debt and toward Stephanie's missing coaching sales proof: qualified leads, booked/held calls, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up", time:"2026-05-10 09:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Labeled the Content-to-Lead Proof Queue so Scout/Atlas assets must carry a $13K coaching CTA, pipeline proof requirement, owner, next action, and ROI guardrail before more publishing is treated as progress", time:"2026-05-10 08:36PM PDT", color:"var(--purple)" },
