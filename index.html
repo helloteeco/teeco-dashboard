@@ -3073,6 +3073,31 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="sales-sla-script"><strong>Promotion rule:</strong> only move coaching metrics from Unknown to live after the exported source date, owner, next action, and follow-up proof are visible. If proof is missing, route the next 25-minute sprint to Stephanie instead of adding more agent activity.</div>
             </div>
+            <div class="sales-proof-board" aria-label="Coaching interview link routing guardrail">
+              <div class="sales-proof-board-title">
+                <h4>🔗 Coaching Interview Link Router — do not leak warm leads into the wrong lane</h4>
+                <p>Every $13K coaching follow-up needs the right booking path. Warm leads ready for Jeff should get Jeff's interview link; Stephanie-owned onboarding and sales follow-up should use Stephanie's tracked flow. Do not invent lead counts — use this as a routing rule until CRM proof exists.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Lead situation</span><span>Use this link</span><span>Owner / proof required</span><span>Status</span></div>
+              <div class="sales-proof-row">
+                <strong>Warm lead ready for Jeff</strong>
+                <span>https://links.teeco.co/widget/bookings/interview-aa-coaching-jeff</span>
+                <span>Owner: Jeff + Stephanie. Proof: CRM lead stage, last-touch timestamp, and consult outcome.</span>
+                <span><span class="sales-proof-status">Direct to Jeff</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Stephanie onboarding / sales follow-up</strong>
+                <span>https://links.teeco.co/widget/bookings/interview-aa-coaching-stephanie</span>
+                <span>Owner: Stephanie. Proof: GHL source date, booked/held/no-show status, and next follow-up due.</span>
+                <span><span class="sales-proof-status">Tracked flow</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Old client asking strategy questions</strong>
+                <span>Move to a call only after safe listing/context details; do not over-deliver strategy in text.</span>
+                <span>Owner: Jeff first; flag Stephanie after listings, booking, or paid-support signal appears.</span>
+                <span><span class="sales-proof-status">Protect time</span></span>
+              </div>
+            </div>
             <div class="sales-proof-board" aria-label="Sales proof promotion board">
               <div class="sales-proof-board-title">
                 <h4>✅ Sales Proof Promotion Board — when Unknown becomes live</h4>
@@ -3661,6 +3686,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Interview Link Router so warm leads use Jeff's interview link, Stephanie-owned onboarding uses Stephanie's tracked flow, and old-client strategy questions are moved to a call without over-delivering in text", time:"2026-05-11 03:01PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Agent Spend ROI Gate so Atlas, Scout, and future agents cannot earn more scheduled work without cost proof, completed output, owner, shutdown/approval rule, and ROI link to the $13K coaching funnel", time:"2026-05-11 12:01PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined legacy/demo activity claims in the feed: old bot/team items now say source proof needed instead of masquerading as revenue progress", time:"2026-05-11 09:01AM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Pipeline Proof Stamp above the daily revenue loop so the coaching scoreboard is visibly blocked until a CRM/GHL source snapshot, owner ask, and 25-minute export action exist", time:"2026-05-11 08:47AM PDT", color:"var(--red)" },
