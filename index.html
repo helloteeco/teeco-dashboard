@@ -1666,6 +1666,57 @@ img, canvas, svg, video { max-width: 100%; }
   font-weight: 700;
 }
 
+.followup-recovery-board {
+  margin-top: 18px;
+  background: linear-gradient(135deg, rgba(239,68,68,0.055), rgba(251,192,45,0.04));
+  border: 1px solid rgba(239,68,68,0.16);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.followup-recovery-title {
+  padding: 14px;
+  border-bottom: 1px solid var(--surface-3);
+}
+.followup-recovery-title h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.followup-recovery-title p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.followup-recovery-row {
+  display: grid;
+  grid-template-columns: 1fr .8fr 1.05fr .8fr .8fr 1.15fr;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-secondary);
+  font-size: 13px;
+  align-items: start;
+}
+.followup-recovery-row:last-child { border-bottom: none; }
+.followup-recovery-row.header {
+  background: var(--surface-1);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.followup-recovery-row strong { color: var(--text-primary); }
+.followup-recovery-status {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--red-bg);
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 .stakeholder-tracker {
   margin-top: 18px;
   background: rgba(59,130,246,0.045);
@@ -2225,6 +2276,8 @@ img, canvas, svg, video { max-width: 100%; }
   .coaching-control-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
+  .followup-recovery-row { grid-template-columns: 1fr; gap: 6px; }
+  .followup-recovery-row.header { display: none; }
   .stakeholder-row { grid-template-columns: 1fr; gap: 6px; }
   .stakeholder-row.header { display: none; }
   .crm-proof-grid { grid-template-columns: 1fr; }
@@ -2953,6 +3006,37 @@ img, canvas, svg, video { max-width: 100%; }
                 <span>Attach ROI link before scheduling more content work.</span>
               </div>
             </div>
+            <div class="followup-recovery-board" aria-label="Coaching follow-up recovery board">
+              <div class="followup-recovery-title">
+                <h4>🚑 Follow-Up Recovery Board — convert Unknown into next touches</h4>
+                <p>This board is the first place to look when the $13K coaching pipeline feels leaky. Counts stay Unknown until CRM/GHL proof exists, but each leak already has an owner, notification status, ROI link, and next action.</p>
+              </div>
+              <div class="followup-recovery-row header"><span>Leak</span><span>Owner</span><span>Source status</span><span>Due</span><span>Notified?</span><span>Next action / ROI link</span></div>
+              <div class="followup-recovery-row">
+                <strong>Oldest warm lead</strong>
+                <span>Stephanie</span>
+                <span>Unknown — needs CRM last-touch timestamp + lead stage.</span>
+                <span>Today</span>
+                <span><span class="followup-recovery-status">Not sent</span></span>
+                <span>Export oldest untouched lead; ROI link: one recovered consult can become a $13K close.</span>
+              </div>
+              <div class="followup-recovery-row">
+                <strong>Booked-not-held consults</strong>
+                <span>Stephanie</span>
+                <span>Unknown — needs calendar/CRM split for booked, held, no-show, rescheduled.</span>
+                <span>Today</span>
+                <span><span class="followup-recovery-status">Dashboard only</span></span>
+                <span>Confirm upcoming calls and recover no-shows before approving more content/agent work.</span>
+              </div>
+              <div class="followup-recovery-row">
+                <strong>Content leads with no CTA proof</strong>
+                <span>Atlas + Scout</span>
+                <span>Unknown — needs source URL, CTA, clicks/DMs, and CRM lead-source tag.</span>
+                <span>Next asset</span>
+                <span><span class="followup-recovery-status">Dashboard only</span></span>
+                <span>Do not schedule more variants until the asset links to qualified leads, booked/held calls, or follow-up proof.</span>
+              </div>
+            </div>
             <div class="stakeholder-tracker" aria-label="Coaching stakeholder notification tracker">
               <div class="stakeholder-row header"><span>Stakeholder</span><span>Change</span><span>Why it matters</span><span>Exact ask</span><span>Sent?</span></div>
               <div class="stakeholder-row">
@@ -3408,6 +3492,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added Follow-Up Recovery Board so coaching leaks now show owner, source status, due timing, notification state, next action, and ROI link without inventing CRM counts", time:"2026-05-11 12:40AM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Re-pointed the overview warning away from generic Motion task debt and toward Stephanie's missing coaching sales proof: qualified leads, booked/held calls, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up", time:"2026-05-10 09:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Labeled the Content-to-Lead Proof Queue so Scout/Atlas assets must carry a $13K coaching CTA, pipeline proof requirement, owner, next action, and ROI guardrail before more publishing is treated as progress", time:"2026-05-10 08:36PM PDT", color:"var(--purple)" },
   { type:"bot", agent:"Atlas", action:"Corrected Scout role: Scout is a Telegram-facing home/design AI for STR design briefs and designers.teeco.co, not a content/revenue brief bot; scheduler and dashboard now point to the design test", time:"2026-05-10 04:43PM PDT", color:"var(--purple)" },
