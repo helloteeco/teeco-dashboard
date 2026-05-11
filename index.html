@@ -1689,6 +1689,55 @@ img, canvas, svg, video { max-width: 100%; }
   margin-top: 8px;
 }
 
+.pipeline-proof-stamp {
+  margin: 0 0 18px;
+  background: linear-gradient(135deg, rgba(239,68,68,0.07), rgba(59,130,246,0.045));
+  border: 1px solid rgba(239,68,68,0.18);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.pipeline-proof-stamp h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.pipeline-proof-stamp p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.pipeline-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.pipeline-proof-cell {
+  background: rgba(10,10,11,0.36);
+  border: 1px dashed rgba(239,68,68,0.22);
+  border-radius: var(--radius-xs);
+  padding: 10px;
+  min-width: 0;
+}
+.pipeline-proof-cell .label {
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+.pipeline-proof-cell .value {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 5px;
+}
+.pipeline-proof-cell .note {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
 .dropped-ball-register {
   margin-top: 18px;
   background: rgba(239,68,68,0.04);
@@ -2337,6 +2386,7 @@ img, canvas, svg, video { max-width: 100%; }
   .workflow-lifecycle-grid { grid-template-columns: 1fr; }
   .coaching-control-grid { grid-template-columns: 1fr; }
   .today-revenue-loop-head { flex-direction: column; }
+  .pipeline-proof-grid { grid-template-columns: 1fr; }
   .today-revenue-loop-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
@@ -2581,7 +2631,7 @@ img, canvas, svg, video { max-width: 100%; }
 
           <div class="retreat-status-bar">
             <div class="retreat-title">TEECO Agent Basecamp</div>
-            <div class="retreat-counters"><span><b>2</b> active</span><span><b style="color:var(--text-muted)">0</b> stale</span><span><b style="color:var(--red)">0</b> error</span><span>walk mode: on</span></div>
+            <div class="retreat-counters"><span><b>1</b> live</span><span><b style="color:var(--text-muted)">1</b> under construction</span><span><b style="color:var(--red)">0</b> error</span><span>walk mode: on</span></div>
           </div>
           <div class="retreat-stage-label"><span>🏕️</span><span>Rural STR lodge · agents visible first</span></div>
 
@@ -2652,6 +2702,17 @@ img, canvas, svg, video { max-width: 100%; }
           <div>
             <div class="alert-title" style="color:var(--red)">Coaching Sales Proof Debt: counts still Unknown</div>
             <div class="alert-body">Before celebrating task volume, get Stephanie's source snapshot for qualified leads, calls booked, calls held, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up. Motion overdue counts stay secondary until the $13K coaching pipeline is sourced.</div>
+          </div>
+        </div>
+
+        <div class="pipeline-proof-stamp" aria-label="Coaching pipeline proof stamp">
+          <h3>🔎 Pipeline Proof Stamp — do not let Unknown become fake progress</h3>
+          <p>This stamp tells Jeff whether the $13K coaching scoreboard is allowed to influence decisions today. It stays blocked until a source snapshot exists.</p>
+          <div class="pipeline-proof-grid">
+            <div class="pipeline-proof-cell"><div class="label">Source snapshot</div><div class="value">Missing</div><div class="note">Need CRM/GHL export date before replacing Unknown metrics.</div></div>
+            <div class="pipeline-proof-cell"><div class="label">Decision status</div><div class="value">Blocked</div><div class="note">Do not judge sales performance or agent ROI from unsourced counts.</div></div>
+            <div class="pipeline-proof-cell"><div class="label">Owner ask</div><div class="value">Stephanie</div><div class="note">Qualified leads, booked/held calls, closes, follow-ups due, oldest untouched lead.</div></div>
+            <div class="pipeline-proof-cell"><div class="label">Next revenue move</div><div class="value">25-min export</div><div class="note">Paste counts + source date, then recover the highest-risk follow-up.</div></div>
           </div>
         </div>
 
@@ -2824,23 +2885,23 @@ img, canvas, svg, video { max-width: 100%; }
                 </div>
               </div>
 
-              <div class="workflow-stage-card">
+              <div class="workflow-stage-card under-construction">
                 <div class="workflow-stage-top">
                   <div>
                     <div class="workflow-stage-title">Scout Home Design + Designers Site Engine</div>
                     <div class="workflow-stage-owner">Owner: Scout / Jeff approval</div>
                   </div>
-                  <span class="badge badge-validating">VALIDATING</span>
+                  <span class="badge badge-construction">UNDER CONSTRUCTION</span>
                 </div>
-                <div class="workflow-stage-desc">Scout is corrected into a 7-day Telegram-visible home/design test. It graduates only if outputs are useful for STR design decisions, Myla/design-team workflow, or designers.teeco.co creation.</div>
+                <div class="workflow-stage-desc">Scout is corrected into a 7-day home/design test, but remains greyed out until a source-backed design brief or designers.teeco.co build slice is locally verified and approved as useful.</div>
                 <div class="workflow-checklist">
                   <span>✅ Role corrected from content to home/design</span>
-                  <span>⬜ Jeff approves quality bar</span>
-                  <span>⬜ designers.teeco.co or design deliverable proof attached</span>
+                  <span>⬜ Source-backed design brief or build slice exists</span>
+                  <span>⬜ Local verification passes and Jeff approves quality bar</span>
                 </div>
               </div>
             </div>
-            <div class="workflow-automation-rule"><strong>Automation rule:</strong> agents should self-solve issues they discover inside their permission box. If the workflow is incomplete, the dashboard shows it as under construction instead of fake-live. When verification passes, the card can flip to live and Atlas should notify Jeff in Telegram with what changed, proof checked, and the next revenue action.</div>
+            <div class="workflow-automation-rule"><strong>Automation rule:</strong> agents should self-solve issues they discover inside their permission box. If the workflow is incomplete, the dashboard shows it as under construction instead of fake-live. When source proof and local verification pass, the card can flip to live and Atlas should report what changed, proof checked, and the next revenue action.</div>
           </div>
         </div>
 
@@ -3543,7 +3604,7 @@ const workstreams = [
 
 const agentFleet = [
   { name:"Atlas", freq:"On demand + approved dashboard sprints", lastRun:"Active now", status:"live" },
-  { name:"Scout", freq:"Daily 8am — home/design + designers site test", lastRun:"Role corrected 2026-05-10; next design brief scheduled", status:"validating" },
+  { name:"Scout", freq:"Home/design + designers site test — no recurring live status yet", lastRun:"Under construction until proof-backed deliverable is verified", status:"construction" },
   { name:"CRM/GHL Sales Metrics Sync", freq:"Build queue — needs source export", lastRun:"Blocked on Stephanie data", status:"construction" },
 ];
 
@@ -3572,6 +3633,8 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added Pipeline Proof Stamp above the daily revenue loop so the coaching scoreboard is visibly blocked until a CRM/GHL source snapshot, owner ask, and 25-minute export action exist", time:"2026-05-11 08:47AM PDT", color:"var(--red)" },
+  { type:"bot", agent:"Atlas Workflow Readiness Audit", action:"Greyed Scout's home/design engine back to UNDER CONSTRUCTION: role is corrected, but no source-backed deliverable plus local verification proof is present yet, so it must not appear validating/live", time:"2026-05-11 08:30AM PDT", color:"var(--text-muted)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Today's $13K Coaching Revenue Control Loop to the overview so Jeff sees the daily sales-control sequence first: source CRM/GHL counts, recover oldest lead, confirm booked consults, then throttle new agent work until ROI proof exists", time:"2026-05-11 04:45AM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Follow-Up Recovery Board so coaching leaks now show owner, source status, due timing, notification state, next action, and ROI link without inventing CRM counts", time:"2026-05-11 12:40AM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Re-pointed the overview warning away from generic Motion task debt and toward Stephanie's missing coaching sales proof: qualified leads, booked/held calls, closes, follow-ups due, oldest untouched lead, and highest-risk follow-up", time:"2026-05-10 09:01PM PDT", color:"var(--red)" },
