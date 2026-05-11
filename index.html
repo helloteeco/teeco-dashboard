@@ -3098,6 +3098,31 @@ img, canvas, svg, video { max-width: 100%; }
                 <span><span class="sales-proof-status">Next sprint</span></span>
               </div>
             </div>
+            <div class="sales-proof-board" aria-label="Agent spend ROI gate">
+              <div class="sales-proof-board-title">
+                <h4>🧾 Agent Spend ROI Gate — no more automation without cost + pipeline proof</h4>
+                <p>Agent work only earns more scheduled time when spend, completed output, owner, and $13K coaching funnel link are visible. Costs stay Unknown until Hermes/API usage logs are connected.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Agent / workflow</span><span>Spend proof required</span><span>Output must prove</span><span>Approval status</span></div>
+              <div class="sales-proof-row">
+                <strong>Atlas profitability runs</strong>
+                <span>Unknown until Hermes run cost/usage log is attached to this dashboard.</span>
+                <span>One verified dashboard slice that reduces dropped balls, improves source proof, or blocks vanity automation.</span>
+                <span><span class="sales-proof-status">Allowed: narrow</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Scout home/design test</strong>
+                <span>Unknown; must report run volume, cost, and whether output helped Jeff/Myla review faster.</span>
+                <span>One source-backed STR design brief or designers.teeco.co slice with owner, next action, and approval gate.</span>
+                <span><span class="sales-proof-status">Test-gated</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Future agents</strong>
+                <span>Budget cap and 7-day run volume required before any recurring schedule.</span>
+                <span>Role, mission, ROI metric, permissions, completed work, shutdown rule, and coaching-funnel link.</span>
+                <span><span class="sales-proof-status">Blocked</span></span>
+              </div>
+            </div>
             <div class="content-lead-queue" aria-label="Content-to-lead proof queue">
               <div class="content-lead-title">
                 <h4>🧲 Content-to-Lead Proof Queue — stop publishing without a pipeline link</h4>
@@ -3506,6 +3531,9 @@ function handleSearch(query) {
   if ("activity proof source owner roi unknown guardrail".includes(q)) {
     matches.push({ icon: "🧾", text: "Activity Proof Guardrail", hint: "Execution log quality", tab: "activity" });
   }
+  if ("agent spend cost roi budget usage approval automation".includes(q)) {
+    matches.push({ icon: "🧾", text: "Agent Spend ROI Gate", hint: "Cost + $13K funnel proof", tab: "revenue" });
+  }
   if ("team".includes(q) || "workload".includes(q)) {
     matches.push({ icon: "👥", text: "Team & Workload", hint: "Tab", tab: "team" });
   }
@@ -3633,6 +3661,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added Agent Spend ROI Gate so Atlas, Scout, and future agents cannot earn more scheduled work without cost proof, completed output, owner, shutdown/approval rule, and ROI link to the $13K coaching funnel", time:"2026-05-11 12:01PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined legacy/demo activity claims in the feed: old bot/team items now say source proof needed instead of masquerading as revenue progress", time:"2026-05-11 09:01AM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Pipeline Proof Stamp above the daily revenue loop so the coaching scoreboard is visibly blocked until a CRM/GHL source snapshot, owner ask, and 25-minute export action exist", time:"2026-05-11 08:47AM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Workflow Readiness Audit", action:"Greyed Scout's home/design engine back to UNDER CONSTRUCTION: role is corrected, but no source-backed deliverable plus local verification proof is present yet, so it must not appear validating/live", time:"2026-05-11 08:30AM PDT", color:"var(--text-muted)" },
