@@ -785,6 +785,8 @@ img, canvas, svg, video { max-width: 100%; }
 .badge-validating::before { background: var(--purple); }
 .badge-construction { background: rgba(113,113,122,0.12); color: var(--text-tertiary); }
 .badge-construction::before { background: var(--text-muted); }
+.badge-paused { background: rgba(113,113,122,0.12); color: var(--text-tertiary); }
+.badge-paused::before { background: var(--text-muted); }
 
 /* ═══ AGENT FLEET TABLE ═══ */
 .fleet-stats {
@@ -2865,7 +2867,7 @@ img, canvas, svg, video { max-width: 100%; }
           <div>
             <div class="section-header" style="margin-bottom:16px">
               <h2 style="font-size:18px">All Workstreams</h2>
-              <p>Click to expand &middot; Each has a scheduled AI agent assigned</p>
+              <p>Click to expand &middot; Coaching stays first; paused side quests need a direct $13K ROI link before agent time.</p>
             </div>
             <div id="workstream-list"></div>
           </div>
@@ -3792,6 +3794,7 @@ const statusMap = {
   active: { cls: "badge-active", label: "ACTIVE" },
   live: { cls: "badge-live", label: "LIVE" },
   pending: { cls: "badge-pending", label: "PENDING TEST" },
+  paused: { cls: "badge-paused", label: "PAUSED / ROI GATE" },
   construction: { cls: "badge-construction", label: "UNDER CONSTRUCTION" },
   in_progress: { cls: "badge-progress", label: "IN PROGRESS" },
   needs_setup: { cls: "badge-setup", label: "NEEDS SETUP" },
@@ -3824,14 +3827,14 @@ const workstreams = [
     metrics:{scansToday:"1", oppsFound:"This week", topMatch:"FEMA lodging", status:"LIVE"},
     actions:["Review today's scan results in Telegram","Bid on FEMA temporary housing RFP if score > 80","Build response template for recurring types"],
     agent:"Daily SAM.gov + FEMA scan → Telegram", agentFreq:"Daily 8:04am", health:90 },
-  { name:"ParkStay Platform", icon:"🏕️", status:"in_progress", color:"var(--gold)", freq:"Wed 10am",
-    metrics:{phase:"Prototype → Prod", hostFee:"3%", model:"Direct booking", target:"parkstay.teeco.co"},
-    actions:["Move from manus.space to parkstay.teeco.co","Build waitlist landing page with email capture","Set up Stripe Connect for host payouts","Seed with Jeff's 31 properties"],
-    agent:"Weekly ParkStay dev + marketing sprint", agentFreq:"Wed 10:05am", health:45 },
-  { name:"Teeco Edge", icon:"⚡", status:"active", color:"var(--blue)", freq:"M/W/F 7:08am",
-    metrics:{site:"edge.teeco.co", focus:"Conversion", agent:"M/W/F marketing", funnel:"Active"},
-    actions:["Improve landing page conversion rate","A/B test pricing and CTA copy","Drive traffic from social channels"],
-    agent:"M/W/F marketing + conversion optimization", agentFreq:"M/W/F 7:08am", health:80 },
+  { name:"ParkStay Platform", icon:"🏕️", status:"paused", color:"var(--gold)", freq:"Paused until ROI proof",
+    metrics:{phase:"Test / pause", hostFee:"Unknown", model:"Only if it feeds coaching or management", target:"dashboard note only"},
+    actions:["Do not move marketplace/Stripe work forward without Jeff approval","If reopened, define one coaching/management lead-capture test","Record owner, budget cap, source proof, and shutdown rule before agent time"],
+    agent:"No active recurring agent — proposal only", agentFreq:"Paused", health:10 },
+  { name:"Teeco Edge", icon:"⚡", status:"paused", color:"var(--blue)", freq:"Paused until coaching link",
+    metrics:{site:"edge.teeco.co", focus:"Paused unless tied to $13K coaching", agent:"None active here", funnel:"Unknown"},
+    actions:["Do not optimize Edge as a standalone side quest","If used, tie each page/test to qualified leads, booked calls, or follow-ups","Require owner, source URL, CRM/GHL lead-source tag, and shutdown rule"],
+    agent:"No active recurring agent — coaching ROI gate", agentFreq:"Paused", health:10 },
   { name:"PhotoLab", icon:"📸", status:"active", color:"var(--orange)", freq:"Tue 9:08am",
     metrics:{site:"photolab.teeco.co", focus:"Airbnb photos", agent:"Weekly report", revenue:"Growing"},
     actions:["Track weekly sales and usage metrics","Expand referral program","Create case studies from client results"],
@@ -3886,6 +3889,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Focus Governor", action:"Paused ParkStay and Teeco Edge inside the workstream list until each has a direct $13K coaching/management ROI link, owner, source proof, budget cap, and shutdown rule; no recurring agent time is implied", time:"2026-05-12 03:34PM PDT", color:"var(--text-muted)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected the Agent Retreat proof state: Brock is visible as an existing product-engineer role, but Scout and Brock are UNDER CONSTRUCTION until source-backed output, owner, verification proof, cost/spend, and ROI link are visible", time:"2026-05-12 12:09PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Today's One Ask to the overview with a copy-paste Stephanie request for GHL/CRM coaching counts, source date, oldest untouched lead, and highest-risk follow-up before more bot activity is treated as progress", time:"2026-05-12 12:01PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Source Freshness SLA so GHL/CRM snapshots, calendar consult status, and content-to-lead URLs must be current before the dashboard treats coaching metrics or agent/content work as actionable", time:"2026-05-12 09:19AM PDT", color:"var(--blue)" },
