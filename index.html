@@ -1384,6 +1384,36 @@ img, canvas, svg, video { max-width: 100%; }
 .ai-scout .ai-face { box-shadow: 0 -13px 0 4px var(--hair), -12px -1px 0 -4px var(--hair), 14px 2px 0 -4px var(--hair), 18px 10px 0 -6px var(--hair2); }
 .ai-scout .ai-cape { background: linear-gradient(160deg, rgba(71,224,157,.22), #082a22); border-radius: 12px 20px 28px 14px; }
 .ai-scout .ai-accent-tail { left: 55px; top: 37px; transform: rotate(-30deg); background: linear-gradient(180deg, #8bf0d0, #278c76); }
+.ai-brock {
+  left: 46%; bottom: 21%;
+  --hair:#2f2016; --hair2:#120b07; --coat:#b7791f; --coat2:#4b2506; --trim:#ffe08a; --pants:#17120d;
+  animation-name: brock-patrol; animation-delay: -4.1s;
+}
+.ai-brock .ai-hair-back {
+  width: 58px; left: 12px;
+  border-radius: 44% 50% 36% 36%;
+  box-shadow: -11px 13px 0 -5px var(--hair2), 14px 13px 0 -6px var(--hair2), 0 0 0 5px rgba(251,192,45,.10);
+}
+.ai-brock .ai-face { box-shadow: 0 -12px 0 4px var(--hair), -13px -1px 0 -5px var(--hair), 13px -1px 0 -5px var(--hair); }
+.ai-brock .ai-cape { background: linear-gradient(160deg, rgba(251,192,45,.20), #2c1704); border-radius: 18px 12px 22px 20px; }
+.ai-brock .ai-accent-tail { left: 15px; top: 42px; transform: rotate(28deg); background: linear-gradient(180deg, #ffe08a, #b7791f); }
+.agent-proof-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0 0;
+}
+.agent-proof-chip {
+  background: rgba(10,10,11,0.74);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 9px 10px;
+  color: rgba(255,255,255,.82);
+  font-size: 11px;
+  line-height: 1.35;
+}
+.agent-proof-chip strong { display:block; color:#fff; font-size:12px; margin-bottom:2px; }
+.agent-proof-chip .proof-status { color: var(--gold); font-weight: 900; }
 .agent-pad {
   position: absolute;
   width: 92px; height: 62px;
@@ -1431,6 +1461,12 @@ img, canvas, svg, video { max-width: 100%; }
   28% { transform: translate(-82px,18px) scale(.99); }
   55% { transform: translate(-146px,-34px) scale(1.02); }
   78% { transform: translate(-38px,-48px) scale(1); }
+}
+@keyframes brock-patrol {
+  0%,100% { transform: translate(0,0) scale(1); }
+  24% { transform: translate(62px,24px) scale(.99); }
+  52% { transform: translate(-44px,-30px) scale(1.02); }
+  76% { transform: translate(36px,-50px) scale(1); }
 }
 @keyframes fire-flicker {
   from { transform: scaleY(.82) translateY(3px); opacity: .72; }
@@ -2442,6 +2478,7 @@ img, canvas, svg, video { max-width: 100%; }
   .today-revenue-loop-head { flex-direction: column; }
   .pipeline-proof-grid { grid-template-columns: 1fr; }
   .source-request-grid { grid-template-columns: 1fr; }
+  .agent-proof-strip { grid-template-columns: 1fr; }
   .today-revenue-loop-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
@@ -2529,8 +2566,10 @@ img, canvas, svg, video { max-width: 100%; }
   .ai-employee { width: 76px; height: 126px; }
   .ai-sprite { transform: translateX(-50%) scale(.68); transform-origin: top center; }
   .ai-task-bubble { min-width: 98px; max-width: 116px; font-size: 9px; bottom: 108px; }
-  .ai-atlas { left: 10%; bottom: 16%; }
-  .ai-scout { right: 10%; bottom: 17%; }
+  .ai-atlas { left: 8%; bottom: 16%; }
+  .ai-scout { right: 8%; bottom: 17%; }
+  .ai-brock { left: 43%; bottom: 15%; }
+  .agent-proof-strip { grid-template-columns: 1fr; }
   @keyframes atlas-patrol {
     0%,100% { transform: translate(0,0) scale(1); }
     35% { transform: translate(44px,-18px) scale(1.01); }
@@ -2596,7 +2635,7 @@ img, canvas, svg, video { max-width: 100%; }
         </button>
         <button class="nav-item" onclick="switchTab('agents', this)" aria-label="Agent Fleet">
           <span class="nav-icon">🤖</span> Agent Fleet
-          <span class="nav-badge" style="background:var(--green-bg);color:var(--green)">2</span>
+          <span class="nav-badge" style="background:var(--green-bg);color:var(--green)">3</span>
         </button>
         <button class="nav-item" onclick="switchTab('revenue', this)" aria-label="Revenue">
           <span class="nav-icon">💰</span> Revenue
@@ -2653,7 +2692,7 @@ img, canvas, svg, video { max-width: 100%; }
       <div class="topbar-right">
         <div class="topbar-stat">
           <span class="dot" style="background:var(--green);box-shadow:0 0 6px var(--green)"></span>
-          <span style="color:var(--green)">2 Agents Visible</span>
+          <span style="color:var(--green)">3 Agents Visible</span>
         </div>
         <div class="topbar-stat">
           <span class="dot" style="background:var(--red)"></span>
@@ -2686,7 +2725,7 @@ img, canvas, svg, video { max-width: 100%; }
 
           <div class="retreat-status-bar">
             <div class="retreat-title">TEECO Agent Basecamp</div>
-            <div class="retreat-counters"><span><b>1</b> live</span><span><b style="color:var(--text-muted)">1</b> under construction</span><span><b style="color:var(--red)">0</b> error</span><span>walk mode: on</span></div>
+            <div class="retreat-counters"><span><b>1</b> live</span><span><b style="color:var(--text-muted)">2</b> under construction</span><span><b style="color:var(--red)">0</b> error</span><span>walk mode: on</span></div>
           </div>
           <div class="retreat-stage-label"><span>🏕️</span><span>Rural STR lodge · agents visible first</span></div>
 
@@ -2697,18 +2736,29 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="ai-nameplate">Atlas</div>
           </div>
           <div class="ai-employee ai-scout" aria-label="Scout walking around the lodge">
-            <div class="ai-task-bubble">Scout: designs STR homes + designers site</div>
+            <div class="ai-task-bubble">Scout: blocked until proof-backed design output</div>
             <div class="ai-sprite"><span class="ai-accent-tail"></span><span class="ai-cape"></span><span class="ai-hair-back"></span><span class="ai-face"></span><span class="ai-collar"></span><span class="ai-torso"></span><span class="ai-arm left"></span><span class="ai-arm right"></span><span class="ai-leg left"></span><span class="ai-leg right"></span><span class="ai-accessory">🔎</span></div>
             <div class="ai-shadow"></div>
             <div class="ai-nameplate">Scout</div>
           </div>
+          <div class="ai-employee ai-brock" aria-label="Brock walking around the lodge">
+            <div class="ai-task-bubble">Brock: discovery gate before build</div>
+            <div class="ai-sprite"><span class="ai-accent-tail"></span><span class="ai-cape"></span><span class="ai-hair-back"></span><span class="ai-face"></span><span class="ai-collar"></span><span class="ai-torso"></span><span class="ai-arm left"></span><span class="ai-arm right"></span><span class="ai-leg left"></span><span class="ai-leg right"></span><span class="ai-accessory">🛠️</span></div>
+            <div class="ai-shadow"></div>
+            <div class="ai-nameplate">Brock</div>
+          </div>
 
-          <div class="agent-pad p1">future hire<br>locked</div>
+          <div class="agent-pad p1">Count desk<br>locked</div>
           <div class="agent-pad p2">open desk<br>after ROI</div>
 
           <div class="retreat-hero-status">
-            <span><strong>Built toward your reference:</strong> Maple-style lodge, distinct agent outfits, speech bubbles, motion, personality.</span>
-            <span class="mini-action">Next: click/tap characters → accountability cards.</span>
+            <span><strong>Live means proof exists:</strong> Atlas is live narrowly for verified local dashboard fixes. Scout and Brock are visible, but stay under construction until source-backed outputs are verified.</span>
+            <span class="mini-action">Next: source coaching counts first; then approve one safe Scout/Brock build slice only if it links to revenue or delivery speed.</span>
+          </div>
+          <div class="agent-proof-strip" aria-label="Plain-English agent proof strip">
+            <div class="agent-proof-chip"><strong>Atlas</strong><span class="proof-status">LIVE NARROWLY</span> · dashboard fixes only; each run must reduce dropped balls, source-proof gaps, or fake productivity.</div>
+            <div class="agent-proof-chip"><strong>Scout</strong><span class="proof-status">UNDER CONSTRUCTION</span> · needs one verified STR design / designers.teeco.co output before more schedule.</div>
+            <div class="agent-proof-chip"><strong>Brock</strong><span class="proof-status">UNDER CONSTRUCTION</span> · discovery-first product engineer; no build sprint until owner, requirements, and revenue link are visible.</div>
           </div>
         </div>
 
@@ -2860,7 +2910,7 @@ img, canvas, svg, video { max-width: 100%; }
 
         <div class="fleet-stats">
           <div class="fleet-stat-card" style="background:var(--green-bg);border:1px solid var(--green-border)">
-            <div class="stat-num" style="color:var(--green)">2</div>
+            <div class="stat-num" style="color:var(--green)">3</div>
             <div class="stat-label" style="color:var(--green)">Visible Agents</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--gold-subtle);border:1px solid rgba(251,192,45,0.2)">
@@ -2868,7 +2918,7 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="stat-label" style="color:var(--gold)">Runs / Week Unknown</div>
           </div>
           <div class="fleet-stat-card" style="background:var(--orange-bg);border:1px solid var(--orange-border)">
-            <div class="stat-num" style="color:var(--orange)">1</div>
+            <div class="stat-num" style="color:var(--orange)">2</div>
             <div class="stat-label" style="color:var(--orange)">Under Construction</div>
           </div>
         </div>
@@ -2905,16 +2955,33 @@ img, canvas, svg, video { max-width: 100%; }
                   <div class="retreat-avatar" style="box-shadow:0 0 0 3px rgba(168,85,247,0.08)">🔎</div>
                   <div>
                     <div class="retreat-name">Scout</div>
-                    <div class="retreat-role">Home Design Scout / designers.teeco.co Builder</div>
+                    <div class="retreat-role">Home Design Scout / designers.teeco.co QA</div>
                   </div>
                 </div>
                 <div class="retreat-meta-grid">
-                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">VALIDATING 7-day test: produce one Telegram-visible home/design brief or designers.teeco.co build slice.</div></div>
-                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">Role corrected 2026-05-10: Scout is for home design and designers.teeco.co, not generic content briefs. First design-focused brief scheduled next.</div></div>
+                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">UNDER CONSTRUCTION: produce one source-backed home/design brief or designers.teeco.co workflow slice that Jeff/Myla can judge.</div></div>
+                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">Role corrected to STR home/design + designers.teeco.co support. Output proof is not counted live until source file, owner, and local verification are visible.</div></div>
                   <div class="retreat-meta"><div class="label">Spend / cost</div><div class="value">Unknown; must report cost before earning more scheduled work.</div></div>
                   <div class="retreat-meta"><div class="label">Permissions</div><div class="value">Research + draft home/design briefs and designers.teeco.co plans only. No publishing, pricing changes, or team messages.</div></div>
-                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Create one STR design brief or designers.teeco.co homepage/workflow slice for Jeff/Myla review.</div></div>
+                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Deliver one reviewable design/workflow artifact with source, owner, blocker, and revenue/delivery-speed link.</div></div>
                   <div class="retreat-meta"><div class="label">Shutdown rule</div><div class="value">Pause if outputs do not improve design speed/quality, designer workflow clarity, or revenue-supporting design deliverables.</div></div>
+                </div>
+              </div>
+              <div class="retreat-agent-card">
+                <div class="retreat-agent-top">
+                  <div class="retreat-avatar" style="box-shadow:0 0 0 3px rgba(251,192,45,0.08)">🛠️</div>
+                  <div>
+                    <div class="retreat-name">Brock</div>
+                    <div class="retreat-role">Strategic Product Engineer / designers.teeco.co</div>
+                  </div>
+                </div>
+                <div class="retreat-meta-grid">
+                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">UNDER CONSTRUCTION: discovery-first intake before any designers.teeco.co build work is treated as live.</div></div>
+                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">No public/dashboard-counted product work yet. Plan claims need source file, acceptance criteria, owner, and local verification before promotion.</div></div>
+                  <div class="retreat-meta"><div class="label">Spend / cost</div><div class="value">Unknown; cost dashboard is not connected yet.</div></div>
+                  <div class="retreat-meta"><div class="label">Permissions</div><div class="value">Plan and build only after approval. No deploy, no public changes, no stakeholder messages without Atlas/Jeff.</div></div>
+                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Write the smallest safe build-slice spec: owner, input files, acceptance test, rollback rule, and $13K coaching/delivery ROI link.</div></div>
+                  <div class="retreat-meta"><div class="label">Shutdown rule</div><div class="value">Pause if Brock codes before understanding, skips acceptance tests, or creates random features.</div></div>
                 </div>
               </div>
             </div>
@@ -3010,7 +3077,7 @@ img, canvas, svg, video { max-width: 100%; }
 
         <div class="info-box">
           <div class="info-title">⚡ Fleet Status</div>
-          <p>Current visible employees: Atlas and Scout. No 15-agent fantasy layer yet. Future characters need role, ROI metric, budget, permissions, 7-day test, and shutdown rule before they earn a desk in the lodge.</p>
+          <p>Current visible employees: Atlas, Scout, and Brock. Only Atlas is live. Scout and Brock stay under construction until source-backed output, owner, verification proof, cost/spend, and ROI link are visible. Future characters need role, ROI metric, budget, permissions, 7-day test, and shutdown rule before they earn a desk in the lodge.</p>
         </div>
       </div>
 
@@ -3789,7 +3856,8 @@ const workstreams = [
 
 const agentFleet = [
   { name:"Atlas", freq:"On demand + approved dashboard sprints", lastRun:"Active now", status:"live" },
-  { name:"Scout", freq:"Home/design + designers site test — no recurring live status yet", lastRun:"Under construction until proof-backed deliverable is verified", status:"construction" },
+  { name:"Scout", freq:"Under construction — no fake heartbeat", lastRun:"Blocked until one source-backed design/workflow artifact is verified", status:"construction" },
+  { name:"Brock", freq:"Under construction — discovery gate before build", lastRun:"Blocked until owner, acceptance test, cost/spend, and ROI link are visible", status:"construction" },
   { name:"CRM/GHL Sales Metrics Sync", freq:"Build queue — needs source export", lastRun:"Blocked on Stephanie data", status:"construction" },
 ];
 
@@ -3812,12 +3880,13 @@ const teamMembers = [
   { name:"Eng", role:"Property Manager", color:"var(--red)", initial:"E",
     tasks:["Day-to-day property operations","Guest communications & reviews","Maintenance coordination","Turnover scheduling"],
     activeTasks:"Unknown", completed:"Unknown", workstreams:["Rentals","Operations","Guest Experience"] },
-  { name:"AI Fleet", role:"Atlas + Scout only", color:"var(--gold-dark)", initial:"🤖",
-    tasks:["Chief-of-staff triage","Home/design Scout briefs","Revenue accountability","Future-agent approval gates"],
+  { name:"AI Fleet", role:"Atlas live; Scout + Brock under construction", color:"var(--gold-dark)", initial:"🤖",
+    tasks:["Chief-of-staff triage","Home/design Scout briefs","Brock discovery gates","Revenue accountability","Future-agent approval gates"],
     activeTasks:"Unknown", completed:"Unknown", workstreams:["Coaching","Design","Personal Brand"] },
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected the Agent Retreat proof state: Brock is visible as an existing product-engineer role, but Scout and Brock are UNDER CONSTRUCTION until source-backed output, owner, verification proof, cost/spend, and ROI link are visible", time:"2026-05-12 12:09PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Today's One Ask to the overview with a copy-paste Stephanie request for GHL/CRM coaching counts, source date, oldest untouched lead, and highest-risk follow-up before more bot activity is treated as progress", time:"2026-05-12 12:01PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Source Freshness SLA so GHL/CRM snapshots, calendar consult status, and content-to-lead URLs must be current before the dashboard treats coaching metrics or agent/content work as actionable", time:"2026-05-12 09:19AM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Consult Outcome Ledger so booked calls, held consults, no-shows, and reschedules have owner/proof requirements before more agent or content work gets approved", time:"2026-05-11 06:01PM PDT", color:"var(--red)" },
