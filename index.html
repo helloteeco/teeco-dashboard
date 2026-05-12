@@ -3124,6 +3124,31 @@ img, canvas, svg, video { max-width: 100%; }
                 <span><span class="sales-proof-status">Protect time</span></span>
               </div>
             </div>
+            <div class="sales-proof-board" aria-label="Sales source freshness SLA">
+              <div class="sales-proof-board-title">
+                <h4>🕒 Source Freshness SLA — stale proof cannot run the $13K coaching week</h4>
+                <p>Jeff should know whether the coaching dashboard is operating from current source proof or yesterday's fog. These rules keep the next action pointed at source freshness instead of more bot activity.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Source</span><span>Fresh enough when</span><span>Owner / next action</span><span>Decision rule</span></div>
+              <div class="sales-proof-row">
+                <strong>GHL/CRM pipeline snapshot</strong>
+                <span>Same business day export with qualified leads, booked/held calls, closes, follow-ups due, and oldest untouched lead.</span>
+                <span>Stephanie sends the snapshot date + counts; Atlas leaves metrics Unknown until it is attached.</span>
+                <span><span class="sales-proof-status">Block if stale</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Calendar consult status</strong>
+                <span>Reviewed before/after each consult block: upcoming confirmed, held, no-show, rescheduled, close/nurture outcome.</span>
+                <span>Jeff/Stephanie mark outcome before adding new content or agent tasks.</span>
+                <span><span class="sales-proof-status">Recover first</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Content-to-lead source URL</strong>
+                <span>Each asset has CTA, lead-source tag, owner, and next follow-up proof before it is counted as pipeline support.</span>
+                <span>Scout/Atlas attach source URL + ROI link; otherwise the asset stays a draft/test.</span>
+                <span><span class="sales-proof-status">Draft only</span></span>
+              </div>
+            </div>
             <div class="sales-proof-board" aria-label="Sales proof promotion board">
               <div class="sales-proof-board-title">
                 <h4>✅ Sales Proof Promotion Board — when Unknown becomes live</h4>
@@ -3579,6 +3604,9 @@ function handleSearch(query) {
   if ("sales proof promotion unknown qualified booked held follow-ups".includes(q)) {
     matches.push({ icon: "✅", text: "Sales Proof Promotion Board", hint: "Unknown → live metric gates", tab: "revenue" });
   }
+  if ("source freshness stale crm calendar consult content lead url sla".includes(q)) {
+    matches.push({ icon: "🕒", text: "Source Freshness SLA", hint: "Fresh proof before decisions", tab: "revenue" });
+  }
   if ("activity proof source owner roi unknown guardrail".includes(q)) {
     matches.push({ icon: "🧾", text: "Activity Proof Guardrail", hint: "Execution log quality", tab: "activity" });
   }
@@ -3712,6 +3740,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added Source Freshness SLA so GHL/CRM snapshots, calendar consult status, and content-to-lead URLs must be current before the dashboard treats coaching metrics or agent/content work as actionable", time:"2026-05-12 09:19AM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Consult Outcome Ledger so booked calls, held consults, no-shows, and reschedules have owner/proof requirements before more agent or content work gets approved", time:"2026-05-11 06:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Replaced the overview's first metric row with a $13K coaching proof scoreboard: coaching revenue, qualified leads, calls booked/held, closes, and follow-ups now stay Unknown until CRM/GHL source proof lands", time:"2026-05-11 05:02PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Interview Link Router so warm leads use Jeff's interview link, Stephanie-owned onboarding uses Stephanie's tracked flow, and old-client strategy questions are moved to a call without over-delivering in text", time:"2026-05-11 03:01PM PDT", color:"var(--blue)" },
