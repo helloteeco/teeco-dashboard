@@ -3074,6 +3074,31 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="sales-sla-script"><strong>Promotion rule:</strong> only move coaching metrics from Unknown to live after the exported source date, owner, next action, and follow-up proof are visible. If proof is missing, route the next 25-minute sprint to Stephanie instead of adding more agent activity.</div>
             </div>
+            <div class="sales-proof-board" aria-label="Coaching consult outcome ledger">
+              <div class="sales-proof-board-title">
+                <h4>📞 Consult Outcome Ledger — booked is not the same as held</h4>
+                <p>This gives Jeff one place to demand the sales outcome proof that actually matters. Keep every count Unknown until calendar + CRM source proof exists, then use the outcome split to recover no-shows and stale warm leads before approving more agent/content work.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Consult lane</span><span>Outcome proof needed</span><span>Owner / next action</span><span>Revenue rule</span></div>
+              <div class="sales-proof-row">
+                <strong>Upcoming booked calls</strong>
+                <span>Unknown: calendar status, reminder sent, lead stage, and source date.</span>
+                <span>Stephanie confirms prep/reminder status before the call window.</span>
+                <span><span class="sales-proof-status">Protect held rate</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Held consults</strong>
+                <span>Unknown: attended yes/no, fit notes, close/follow-up outcome, next-touch due date.</span>
+                <span>Jeff/Stephanie mark close, nurture, or disqualify so follow-up does not drift.</span>
+                <span><span class="sales-proof-status">Close path</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>No-shows + reschedules</strong>
+                <span>Unknown: count, oldest no-show, recovery message timestamp, and rebook link used.</span>
+                <span>Stephanie works recovery queue before new content/agent tasks get more time.</span>
+                <span><span class="sales-proof-status">Recover $13K risk</span></span>
+              </div>
+            </div>
             <div class="sales-proof-board" aria-label="Coaching interview link routing guardrail">
               <div class="sales-proof-board-title">
                 <h4>🔗 Coaching Interview Link Router — do not leak warm leads into the wrong lane</h4>
@@ -3687,6 +3712,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added Consult Outcome Ledger so booked calls, held consults, no-shows, and reschedules have owner/proof requirements before more agent or content work gets approved", time:"2026-05-11 06:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Replaced the overview's first metric row with a $13K coaching proof scoreboard: coaching revenue, qualified leads, calls booked/held, closes, and follow-ups now stay Unknown until CRM/GHL source proof lands", time:"2026-05-11 05:02PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Interview Link Router so warm leads use Jeff's interview link, Stephanie-owned onboarding uses Stephanie's tracked flow, and old-client strategy questions are moved to a call without over-delivering in text", time:"2026-05-11 03:01PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Agent Spend ROI Gate so Atlas, Scout, and future agents cannot earn more scheduled work without cost proof, completed output, owner, shutdown/approval rule, and ROI link to the $13K coaching funnel", time:"2026-05-11 12:01PM PDT", color:"var(--gold)" },
