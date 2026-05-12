@@ -1738,6 +1738,60 @@ img, canvas, svg, video { max-width: 100%; }
   margin-top: 4px;
 }
 
+.source-request-brief {
+  margin: 0 0 18px;
+  background: rgba(251,192,45,0.045);
+  border: 1px solid rgba(251,192,45,0.18);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.source-request-brief h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.source-request-brief p {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.source-request-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.4fr;
+  gap: 12px;
+  align-items: stretch;
+}
+.source-request-card {
+  background: rgba(10,10,11,0.38);
+  border: 1px solid rgba(251,192,45,0.18);
+  border-radius: var(--radius-xs);
+  padding: 12px;
+  min-width: 0;
+}
+.source-request-card .label {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.source-request-card .value {
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.source-request-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.source-request-card li { margin-bottom: 5px; }
+.source-request-script {
+  color: var(--text-primary);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .dropped-ball-register {
   margin-top: 18px;
   background: rgba(239,68,68,0.04);
@@ -2387,6 +2441,7 @@ img, canvas, svg, video { max-width: 100%; }
   .coaching-control-grid { grid-template-columns: 1fr; }
   .today-revenue-loop-head { flex-direction: column; }
   .pipeline-proof-grid { grid-template-columns: 1fr; }
+  .source-request-grid { grid-template-columns: 1fr; }
   .today-revenue-loop-grid { grid-template-columns: 1fr; }
   .dropped-ball-row { grid-template-columns: 1fr; gap: 6px; }
   .dropped-ball-row.header { display: none; }
@@ -2714,6 +2769,29 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="pipeline-proof-cell"><div class="label">Decision status</div><div class="value">Blocked</div><div class="note">Do not judge sales performance or agent ROI from unsourced counts.</div></div>
             <div class="pipeline-proof-cell"><div class="label">Owner ask</div><div class="value">Stephanie</div><div class="note">Qualified leads, booked/held calls, closes, follow-ups due, oldest untouched lead.</div></div>
             <div class="pipeline-proof-cell"><div class="label">Next revenue move</div><div class="value">25-min export</div><div class="note">Paste counts + source date, then recover the highest-risk follow-up.</div></div>
+          </div>
+        </div>
+
+        <div class="source-request-brief" aria-label="Coaching source request brief">
+          <h3>📌 Today's One Ask — source the $13K coaching scoreboard</h3>
+          <p>Do not add more bot activity before the sales source is current. This gives Jeff one copy-paste ask instead of another dashboard warning.</p>
+          <div class="source-request-grid">
+            <div class="source-request-card">
+              <div class="label">Fields needed</div>
+              <div class="value">
+                <ul>
+                  <li>Qualified leads</li>
+                  <li>Calls booked, held, no-show/rescheduled</li>
+                  <li>Closes + follow-ups due</li>
+                  <li>Oldest untouched lead + highest-risk follow-up</li>
+                  <li>Source/export date</li>
+                </ul>
+              </div>
+            </div>
+            <div class="source-request-card">
+              <div class="label">Copy-paste to Stephanie</div>
+              <div class="source-request-script">Hey! can u send today's GHL/CRM snapshot for coaching: qualified leads, calls booked, calls held, no-shows/reschedules, closes, follow-ups due, oldest untouched lead, highest-risk follow-up, and the export/source date? Counts only are fine. I need it so the dashboard stops showing Unknown and we can recover the biggest dropped ball first.</div>
+            </div>
           </div>
         </div>
 
@@ -3740,6 +3818,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added Today's One Ask to the overview with a copy-paste Stephanie request for GHL/CRM coaching counts, source date, oldest untouched lead, and highest-risk follow-up before more bot activity is treated as progress", time:"2026-05-12 12:01PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Source Freshness SLA so GHL/CRM snapshots, calendar consult status, and content-to-lead URLs must be current before the dashboard treats coaching metrics or agent/content work as actionable", time:"2026-05-12 09:19AM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Consult Outcome Ledger so booked calls, held consults, no-shows, and reschedules have owner/proof requirements before more agent or content work gets approved", time:"2026-05-11 06:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Replaced the overview's first metric row with a $13K coaching proof scoreboard: coaching revenue, qualified leads, calls booked/held, closes, and follow-ups now stay Unknown until CRM/GHL source proof lands", time:"2026-05-11 05:02PM PDT", color:"var(--red)" },
