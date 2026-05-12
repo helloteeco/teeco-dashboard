@@ -2659,40 +2659,41 @@ img, canvas, svg, video { max-width: 100%; }
 
         <div class="section-header">
           <h2>Command Center</h2>
-          <p>Real-time overview of all Teeco operations, bots, and workstreams</p>
+          <p>First row is the $13K coaching scoreboard. Non-sales work stays secondary until source proof exists.</p>
         </div>
 
         <div class="metrics-grid">
           <div class="metric-card">
             <div class="metric-icon" style="background:var(--orange-bg)">💰</div>
-            <div class="metric-label">Monthly Revenue</div>
-            <div class="metric-value" style="color:var(--orange)">—</div>
+            <div class="metric-label">Coaching Revenue</div>
+            <div class="metric-value" style="color:var(--orange)">Unknown</div>
             <div class="metric-sub">
-              <span class="metric-trend neutral">Connect Stripe</span>
+              <span class="metric-trend neutral">$13K / close</span>
+              <span>source needed</span>
             </div>
           </div>
           <div class="metric-card">
-            <div class="metric-icon" style="background:var(--blue-bg)">🏠</div>
-            <div class="metric-label">Properties</div>
-            <div class="metric-value" style="color:var(--blue)">31</div>
-            <div class="metric-sub">Active rental portfolio</div>
+            <div class="metric-icon" style="background:var(--blue-bg)">🎯</div>
+            <div class="metric-label">Qualified Leads</div>
+            <div class="metric-value" style="color:var(--blue)">Unknown</div>
+            <div class="metric-sub">Need CRM/GHL export date</div>
           </div>
           <div class="metric-card">
-            <div class="metric-icon" style="background:var(--red-bg)">⚠️</div>
-            <div class="metric-label">Overdue Tasks</div>
-            <div class="metric-value" style="color:var(--red)">220</div>
+            <div class="metric-icon" style="background:var(--red-bg)">📞</div>
+            <div class="metric-label">Calls Booked / Held</div>
+            <div class="metric-value" style="color:var(--red)">Unknown</div>
             <div class="metric-sub">
-              <span class="metric-trend down">14 this week</span>
-              <span>via Motion</span>
+              <span class="metric-trend neutral">Split no-shows</span>
+              <span>Stephanie owns</span>
             </div>
           </div>
           <div class="metric-card">
-            <div class="metric-icon" style="background:var(--green-bg)">🤖</div>
-            <div class="metric-label">Agent Fleet</div>
-            <div class="metric-value" style="color:var(--green)">2</div>
+            <div class="metric-icon" style="background:var(--green-bg)">✅</div>
+            <div class="metric-label">Closes + Follow-ups</div>
+            <div class="metric-value" style="color:var(--green)">Unknown</div>
             <div class="metric-sub">
-              <span class="metric-trend neutral">1 live / 1 pending</span>
-              <span>Atlas live; Scout test-gated</span>
+              <span class="metric-trend neutral">Recover dropped balls</span>
+              <span>before new bots</span>
             </div>
           </div>
         </div>
@@ -3686,6 +3687,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Replaced the overview's first metric row with a $13K coaching proof scoreboard: coaching revenue, qualified leads, calls booked/held, closes, and follow-ups now stay Unknown until CRM/GHL source proof lands", time:"2026-05-11 05:02PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Coaching Interview Link Router so warm leads use Jeff's interview link, Stephanie-owned onboarding uses Stephanie's tracked flow, and old-client strategy questions are moved to a call without over-delivering in text", time:"2026-05-11 03:01PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added Agent Spend ROI Gate so Atlas, Scout, and future agents cannot earn more scheduled work without cost proof, completed output, owner, shutdown/approval rule, and ROI link to the $13K coaching funnel", time:"2026-05-11 12:01PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined legacy/demo activity claims in the feed: old bot/team items now say source proof needed instead of masquerading as revenue progress", time:"2026-05-11 09:01AM PDT", color:"var(--orange)" },
