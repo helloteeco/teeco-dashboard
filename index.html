@@ -787,6 +787,8 @@ img, canvas, svg, video { max-width: 100%; }
 .badge-construction::before { background: var(--text-muted); }
 .badge-paused { background: rgba(113,113,122,0.12); color: var(--text-tertiary); }
 .badge-paused::before { background: var(--text-muted); }
+.badge-idle { background: rgba(113,113,122,0.12); color: var(--text-tertiary); }
+.badge-idle::before { background: var(--text-muted); }
 
 /* ═══ AGENT FLEET TABLE ═══ */
 .fleet-stats {
@@ -2727,7 +2729,7 @@ img, canvas, svg, video { max-width: 100%; }
 
           <div class="retreat-status-bar">
             <div class="retreat-title">TEECO Agent Basecamp</div>
-            <div class="retreat-counters"><span><b>1</b> live</span><span><b style="color:var(--text-muted)">2</b> under construction</span><span><b style="color:var(--red)">0</b> error</span><span>walk mode: on</span></div>
+            <div class="retreat-counters"><span><b>1</b> live</span><span><b style="color:var(--text-muted)">2</b> idle</span><span><b style="color:var(--orange)">1</b> audit gate</span><span>walk mode: seat only</span></div>
           </div>
           <div class="retreat-stage-label"><span>🏕️</span><span>Rural STR lodge · agents visible first</span></div>
 
@@ -2738,13 +2740,13 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="ai-nameplate">Atlas</div>
           </div>
           <div class="ai-employee ai-scout" aria-label="Scout walking around the lodge">
-            <div class="ai-task-bubble">Scout: blocked until proof-backed design output</div>
+            <div class="ai-task-bubble">Scout: idle; proof needed</div>
             <div class="ai-sprite"><span class="ai-accent-tail"></span><span class="ai-cape"></span><span class="ai-hair-back"></span><span class="ai-face"></span><span class="ai-collar"></span><span class="ai-torso"></span><span class="ai-arm left"></span><span class="ai-arm right"></span><span class="ai-leg left"></span><span class="ai-leg right"></span><span class="ai-accessory">🔎</span></div>
             <div class="ai-shadow"></div>
             <div class="ai-nameplate">Scout</div>
           </div>
           <div class="ai-employee ai-brock" aria-label="Brock walking around the lodge">
-            <div class="ai-task-bubble">Brock: discovery gate before build</div>
+            <div class="ai-task-bubble">Brock: idle; proof needed</div>
             <div class="ai-sprite"><span class="ai-accent-tail"></span><span class="ai-cape"></span><span class="ai-hair-back"></span><span class="ai-face"></span><span class="ai-collar"></span><span class="ai-torso"></span><span class="ai-arm left"></span><span class="ai-arm right"></span><span class="ai-leg left"></span><span class="ai-leg right"></span><span class="ai-accessory">🛠️</span></div>
             <div class="ai-shadow"></div>
             <div class="ai-nameplate">Brock</div>
@@ -2754,13 +2756,13 @@ img, canvas, svg, video { max-width: 100%; }
           <div class="agent-pad p2">open desk<br>after ROI</div>
 
           <div class="retreat-hero-status">
-            <span><strong>Live means proof exists:</strong> Atlas is live narrowly for verified local dashboard fixes. Scout and Brock are visible, but stay under construction until source-backed outputs are verified.</span>
-            <span class="mini-action">Next: source coaching counts first; then approve one safe Scout/Brock build slice only if it links to revenue or delivery speed.</span>
+            <span><strong>Honest agent rule:</strong> only show ACTIVE/LIVE when a process is actually running or scheduled. Scout and Brock are IDLE right now; reported artifacts still need source proof before more build time.</span>
+            <span class="mini-action">Audit use: compare this card to visible proof, owner approval, cost/spend, and the next acceptance test before we let more build time happen.</span>
           </div>
           <div class="agent-proof-strip" aria-label="Plain-English agent proof strip">
             <div class="agent-proof-chip"><strong>Atlas</strong><span class="proof-status">LIVE NARROWLY</span> · dashboard fixes only; each run must reduce dropped balls, source-proof gaps, or fake productivity.</div>
-            <div class="agent-proof-chip"><strong>Scout</strong><span class="proof-status">UNDER CONSTRUCTION</span> · needs one verified STR design / designers.teeco.co output before more schedule.</div>
-            <div class="agent-proof-chip"><strong>Brock</strong><span class="proof-status">UNDER CONSTRUCTION</span> · discovery-first product engineer; no build sprint until owner, requirements, and revenue link are visible.</div>
+            <div class="agent-proof-chip"><strong>Scout</strong><span class="proof-status">IDLE / PROOF NEEDED</span> · reported audit/QA work needs attached source proof, owner, and next test before more schedule.</div>
+            <div class="agent-proof-chip"><strong>Brock</strong><span class="proof-status">IDLE / PROOF NEEDED</span> · reported prototype work is not dashboard-trusted until source proof and local verification are attached.</div>
           </div>
         </div>
 
@@ -2921,7 +2923,7 @@ img, canvas, svg, video { max-width: 100%; }
           </div>
           <div class="fleet-stat-card" style="background:var(--orange-bg);border:1px solid var(--orange-border)">
             <div class="stat-num" style="color:var(--orange)">2</div>
-            <div class="stat-label" style="color:var(--orange)">Under Construction</div>
+            <div class="stat-label" style="color:var(--orange)">Idle / Audit-Gated</div>
           </div>
         </div>
 
@@ -2961,11 +2963,11 @@ img, canvas, svg, video { max-width: 100%; }
                   </div>
                 </div>
                 <div class="retreat-meta-grid">
-                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">UNDER CONSTRUCTION: produce one source-backed home/design brief or designers.teeco.co workflow slice that Jeff/Myla can judge.</div></div>
-                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">Role corrected to STR home/design + designers.teeco.co support. Output proof is not counted live until source file, owner, and local verification are visible.</div></div>
+                  <div class="retreat-meta"><div class="label">Current state</div><div class="value">IDLE: no active Scout process right now. Reported Matterport/design-workflow audit needs dashboard-visible source proof before it counts as completed work.</div></div>
+                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">Role corrected to home/design + designers.teeco.co support. Completion claims stay audit-gated until source file, owner, and verification proof are visible.</div></div>
                   <div class="retreat-meta"><div class="label">Spend / cost</div><div class="value">Unknown; must report cost before earning more scheduled work.</div></div>
                   <div class="retreat-meta"><div class="label">Permissions</div><div class="value">Research + draft home/design briefs and designers.teeco.co plans only. No publishing, pricing changes, or team messages.</div></div>
-                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Deliver one reviewable design/workflow artifact with source, owner, blocker, and revenue/delivery-speed link.</div></div>
+                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Attach one reviewable design/workflow proof card with source, owner, blocker, and revenue/delivery-speed link.</div></div>
                   <div class="retreat-meta"><div class="label">Shutdown rule</div><div class="value">Pause if outputs do not improve design speed/quality, designer workflow clarity, or revenue-supporting design deliverables.</div></div>
                 </div>
               </div>
@@ -2978,11 +2980,11 @@ img, canvas, svg, video { max-width: 100%; }
                   </div>
                 </div>
                 <div class="retreat-meta-grid">
-                  <div class="retreat-meta"><div class="label">Current task</div><div class="value">UNDER CONSTRUCTION: discovery-first intake before any designers.teeco.co build work is treated as live.</div></div>
-                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">No public/dashboard-counted product work yet. Plan claims need source file, acceptance criteria, owner, and local verification before promotion.</div></div>
+                  <div class="retreat-meta"><div class="label">Current state</div><div class="value">IDLE: no active Brock process right now. Any reported prototype/build work needs scoped proof attached before dashboard promotion.</div></div>
+                  <div class="retreat-meta"><div class="label">Completed work</div><div class="value">No production-dashboard-trusted product work yet. Plan/build claims need source file, acceptance criteria, owner, cost/spend, and local verification before promotion.</div></div>
                   <div class="retreat-meta"><div class="label">Spend / cost</div><div class="value">Unknown; cost dashboard is not connected yet.</div></div>
                   <div class="retreat-meta"><div class="label">Permissions</div><div class="value">Plan and build only after approval. No deploy, no public changes, no stakeholder messages without Atlas/Jeff.</div></div>
-                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">Write the smallest safe build-slice spec: owner, input files, acceptance test, rollback rule, and $13K coaching/delivery ROI link.</div></div>
+                  <div class="retreat-meta"><div class="label">Next action</div><div class="value">If Jeff wants another pass, require room-by-room flow proof, item extraction proof, acceptance test, rollback rule, and delivery-speed ROI link.</div></div>
                   <div class="retreat-meta"><div class="label">Shutdown rule</div><div class="value">Pause if Brock codes before understanding, skips acceptance tests, or creates random features.</div></div>
                 </div>
               </div>
@@ -2995,7 +2997,7 @@ img, canvas, svg, video { max-width: 100%; }
           <div class="card-header">
             <div>
               <h3>Workflow Lifecycle Gates</h3>
-              <p style="color:var(--text-tertiary);font-size:13px;margin-top:4px">If a workflow is not ready to interpret or use, it stays greyed out as under construction. It only turns live after source proof + a verification run.</p>
+              <p style="color:var(--text-tertiary);font-size:13px;margin-top:4px">If a workflow is not ready to use, it stays idle, blocked, or audit-gated. It only turns live after source proof + a verification run.</p>
             </div>
             <span class="card-badge" style="background:rgba(113,113,122,0.12);color:var(--text-tertiary)">Self-solve queue</span>
           </div>
@@ -3039,17 +3041,19 @@ img, canvas, svg, video { max-width: 100%; }
                     <div class="workflow-stage-title">Scout Home Design + Designers Site Engine</div>
                     <div class="workflow-stage-owner">Owner: Scout / Jeff approval</div>
                   </div>
-                  <span class="badge badge-construction">UNDER CONSTRUCTION</span>
+                  <span class="badge badge-validating">AUDIT NEEDED</span>
                 </div>
-                <div class="workflow-stage-desc">Scout is corrected into a 7-day home/design test, but remains greyed out until a source-backed design brief or designers.teeco.co build slice is locally verified and approved as useful.</div>
+                <div class="workflow-stage-desc">Scout and Brock may have reported local artifacts, but the workflow does not become useful until proof is attached and Jeff can test the room-by-room flow and shopping-list extraction path. The dashboard should show proof status, not pretend the agent is currently working.</div>
                 <div class="workflow-checklist">
                   <span>✅ Role corrected from content to home/design</span>
-                  <span>⬜ Source-backed design brief or build slice exists</span>
-                  <span>⬜ Local verification passes and Jeff approves quality bar</span>
+                  <span>⬜ Source proof attached for any reported build/audit artifact</span>
+                  <span>⬜ Local verification evidence is visible in this dashboard repo</span>
+                  <span>⬜ Jeff tests preview and confirms it was worth building</span>
+                  <span>⬜ Sheet/export proof exists for placed design items</span>
                 </div>
               </div>
             </div>
-            <div class="workflow-automation-rule"><strong>Automation rule:</strong> agents should self-solve issues they discover inside their permission box. If the workflow is incomplete, the dashboard shows it as under construction instead of fake-live. When source proof and local verification pass, the card can flip to live and Atlas should report what changed, proof checked, and the next revenue action.</div>
+            <div class="workflow-automation-rule"><strong>Audit rule:</strong> separate “working now” from “last verified output.” Active means a process or scheduled job is running. Idle means no process is running, even if useful work exists. A workflow only earns more build time after proof path, local verification, owner approval, and a clear reason it helps revenue or delivery speed.</div>
           </div>
         </div>
 
@@ -3079,7 +3083,7 @@ img, canvas, svg, video { max-width: 100%; }
 
         <div class="info-box">
           <div class="info-title">⚡ Fleet Status</div>
-          <p>Current visible employees: Atlas, Scout, and Brock. Only Atlas is live. Scout and Brock stay under construction until source-backed output, owner, verification proof, cost/spend, and ROI link are visible. Future characters need role, ROI metric, budget, permissions, 7-day test, and shutdown rule before they earn a desk in the lodge.</p>
+          <p>Current visible employees: Atlas, Scout, and Brock. Atlas is live only for this conversation/dashboard lane. Scout and Brock are idle right now: reported outputs should not be shown as actively working or trusted until a current process, Kanban run, source proof, or verification log proves it. Keep this page as an audit board so we can ask: what did we build, where is the proof, did Jeff test it, and was it worth the time?</p>
         </div>
       </div>
 
@@ -3798,6 +3802,7 @@ const statusMap = {
   construction: { cls: "badge-construction", label: "UNDER CONSTRUCTION" },
   in_progress: { cls: "badge-progress", label: "IN PROGRESS" },
   needs_setup: { cls: "badge-setup", label: "NEEDS SETUP" },
+  idle: { cls: "badge-idle", label: "IDLE" },
   validating: { cls: "badge-validating", label: "VALIDATING" },
 };
 
@@ -3859,8 +3864,8 @@ const workstreams = [
 
 const agentFleet = [
   { name:"Atlas", freq:"On demand + approved dashboard sprints", lastRun:"Active now", status:"live" },
-  { name:"Scout", freq:"Under construction — no fake heartbeat", lastRun:"Blocked until one source-backed design/workflow artifact is verified", status:"construction" },
-  { name:"Brock", freq:"Under construction — discovery gate before build", lastRun:"Blocked until owner, acceptance test, cost/spend, and ROI link are visible", status:"construction" },
+  { name:"Scout", freq:"Idle — no current run", lastRun:"Proof needed before reported audit/QA work is dashboard-trusted", status:"idle" },
+  { name:"Brock", freq:"Idle — no current run", lastRun:"Proof needed before reported prototype work is dashboard-trusted", status:"idle" },
   { name:"CRM/GHL Sales Metrics Sync", freq:"Build queue — needs source export", lastRun:"Blocked on Stephanie data", status:"construction" },
 ];
 
@@ -3883,12 +3888,13 @@ const teamMembers = [
   { name:"Eng", role:"Property Manager", color:"var(--red)", initial:"E",
     tasks:["Day-to-day property operations","Guest communications & reviews","Maintenance coordination","Turnover scheduling"],
     activeTasks:"Unknown", completed:"Unknown", workstreams:["Rentals","Operations","Guest Experience"] },
-  { name:"AI Fleet", role:"Atlas live; Scout + Brock under construction", color:"var(--gold-dark)", initial:"🤖",
+  { name:"AI Fleet", role:"Atlas live; Scout + Brock idle / audit-gated", color:"var(--gold-dark)", initial:"🤖",
     tasks:["Chief-of-staff triage","Home/design Scout briefs","Brock discovery gates","Revenue accountability","Future-agent approval gates"],
     activeTasks:"Unknown", completed:"Unknown", workstreams:["Coaching","Design","Personal Brand"] },
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Tightened the Agent Retreat status language so Scout and Brock are shown as idle/audit-gated instead of fake-active; reported artifacts now need source proof, owner, cost/spend, and verification before more build time", time:"2026-05-12 06:31PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced coaching workstream claims: active clients, pipeline, and coaching revenue now show Unknown until Stephanie's CRM/GHL source snapshot is attached; $13K program copy corrected to the core 1:1 coaching offer", time:"2026-05-12 05:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Focus Governor", action:"Paused ParkStay and Teeco Edge inside the workstream list until each has a direct $13K coaching/management ROI link, owner, source proof, budget cap, and shutdown rule; no recurring agent time is implied", time:"2026-05-12 03:34PM PDT", color:"var(--text-muted)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected the Agent Retreat proof state: Brock is visible as an existing product-engineer role, but Scout and Brock are UNDER CONSTRUCTION until source-backed output, owner, verification proof, cost/spend, and ROI link are visible", time:"2026-05-12 12:09PM PDT", color:"var(--orange)" },
