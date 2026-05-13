@@ -3275,6 +3275,31 @@ img, canvas, svg, video { max-width: 100%; }
                 <span><span class="sales-proof-status">Protect time</span></span>
               </div>
             </div>
+            <div class="sales-proof-board" aria-label="Warm lead handoff packet">
+              <div class="sales-proof-board-title">
+                <h4>🧾 Warm Lead Handoff Packet — no interview link without context</h4>
+                <p>Before a warm lead gets routed to Jeff or Stephanie, capture the minimum safe context that prevents a dropped ball. Do not ask for banking, SSNs, IDs, or private financing details. Keep counts Unknown until CRM/GHL proof exists.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Handoff field</span><span>Minimum safe proof</span><span>Owner / next action</span><span>Decision rule</span></div>
+              <div class="sales-proof-row">
+                <strong>Lead identity + source</strong>
+                <span>Name/handle, source URL or campaign tag, CRM stage, and last-touch timestamp.</span>
+                <span>Stephanie logs the source date before the lead is counted as qualified.</span>
+                <span><span class="sales-proof-status">Required</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Readiness for Jeff</strong>
+                <span>Goal, timeline, market/listing context if available, and whether they asked for the $13K coaching path.</span>
+                <span>Jeff gets the interview only when readiness is clear; otherwise Stephanie follows up first.</span>
+                <span><span class="sales-proof-status">Route safely</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Next touch + outcome</strong>
+                <span>Booking link used, consult status, follow-up due date, close/nurture/disqualify outcome.</span>
+                <span>Stephanie/Jeff update outcome within the same business day so the dashboard can recover leaks.</span>
+                <span><span class="sales-proof-status">Prevent drift</span></span>
+              </div>
+            </div>
             <div class="sales-proof-board" aria-label="Sales source freshness SLA">
               <div class="sales-proof-board-title">
                 <h4>🕒 Source Freshness SLA — stale proof cannot run the $13K coaching week</h4>
@@ -3758,6 +3783,9 @@ function handleSearch(query) {
   if ("source freshness stale crm calendar consult content lead url sla".includes(q)) {
     matches.push({ icon: "🕒", text: "Source Freshness SLA", hint: "Fresh proof before decisions", tab: "revenue" });
   }
+  if ("warm lead handoff packet interview context route booking jeff stephanie".includes(q)) {
+    matches.push({ icon: "🧾", text: "Warm Lead Handoff Packet", hint: "Safe context before routing", tab: "revenue" });
+  }
   if ("activity proof source owner roi unknown guardrail".includes(q)) {
     matches.push({ icon: "🧾", text: "Activity Proof Guardrail", hint: "Execution log quality", tab: "activity" });
   }
@@ -3894,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Builder Sprint", action:"Added a Warm Lead Handoff Packet so $13K coaching prospects are routed to Jeff or Stephanie only after safe context, source proof, booking link used, next-touch date, and consult outcome are captured; no sensitive finance/identity data requested", time:"2026-05-13 12:00PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Tightened the Agent Retreat status language so Scout and Brock are shown as idle/audit-gated instead of fake-active; reported artifacts now need source proof, owner, cost/spend, and verification before more build time", time:"2026-05-12 06:31PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced coaching workstream claims: active clients, pipeline, and coaching revenue now show Unknown until Stephanie's CRM/GHL source snapshot is attached; $13K program copy corrected to the core 1:1 coaching offer", time:"2026-05-12 05:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Focus Governor", action:"Paused ParkStay and Teeco Edge inside the workstream list until each has a direct $13K coaching/management ROI link, owner, source proof, budget cap, and shutdown rule; no recurring agent time is implied", time:"2026-05-12 03:34PM PDT", color:"var(--text-muted)" },
