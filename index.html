@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced chart data: revenue mix and bot-vs-team charts now render zeroed placeholders until Stripe/QuickBooks/PMS/CRM/GHL or run-log source proof is attached, preventing vanity visuals from outranking $13K coaching proof", time:"2026-05-13 12:03PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added a Warm Lead Handoff Packet so $13K coaching prospects are routed to Jeff or Stephanie only after safe context, source proof, booking link used, next-touch date, and consult outcome are captured; no sensitive finance/identity data requested", time:"2026-05-13 12:00PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Tightened the Agent Retreat status language so Scout and Brock are shown as idle/audit-gated instead of fake-active; reported artifacts now need source proof, owner, cost/spend, and verification before more build time", time:"2026-05-12 06:31PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced coaching workstream claims: active clients, pipeline, and coaching revenue now show Unknown until Stephanie's CRM/GHL source snapshot is attached; $13K program copy corrected to the core 1:1 coaching offer", time:"2026-05-12 05:01PM PDT", color:"var(--red)" },
@@ -4218,10 +4219,10 @@ function initCharts() {
       data: {
         labels: ['Rentals', 'Coaching', 'Edge', 'PhotoLab', 'GovCon', 'Other'],
         datasets: [{
-          data: [40, 25, 15, 10, 5, 5],
+          data: [0, 0, 0, 0, 0, 0],
           backgroundColor: [
-            'rgba(34,197,94,0.8)', 'rgba(251,192,45,0.8)', 'rgba(59,130,246,0.8)',
-            'rgba(249,115,22,0.8)', 'rgba(168,85,247,0.8)', 'rgba(113,113,122,0.5)'
+            'rgba(113,113,122,0.25)', 'rgba(251,192,45,0.35)', 'rgba(113,113,122,0.25)',
+            'rgba(113,113,122,0.25)', 'rgba(113,113,122,0.25)', 'rgba(113,113,122,0.25)'
           ],
           borderWidth: 0,
         }]
@@ -4232,7 +4233,7 @@ function initCharts() {
         cutout: '65%',
         plugins: {
           legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, pointStyle: 'circle', font: { size: 11 } } },
-          title: { display: true, text: 'Target Revenue Mix', color: '#a1a1aa', font: { size: 12 } }
+          title: { display: true, text: 'Revenue Mix Unknown — source proof required', color: '#a1a1aa', font: { size: 12 } }
         }
       }
     });
@@ -4308,8 +4309,8 @@ function initCharts() {
       data: {
         labels: ['Bot Actions', 'Team Actions'],
         datasets: [{
-          data: [10, 9],
-          backgroundColor: ['rgba(251,192,45,0.7)', 'rgba(59,130,246,0.7)'],
+          data: [0, 0],
+          backgroundColor: ['rgba(113,113,122,0.35)', 'rgba(113,113,122,0.25)'],
           borderWidth: 0,
         }]
       },
