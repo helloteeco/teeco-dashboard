@@ -3094,7 +3094,7 @@ img, canvas, svg, video { max-width: 100%; }
           <div class="alert-icon">⚠️</div>
           <div>
             <div class="alert-title" style="color:var(--orange)">Revenue Data Not Connected</div>
-            <div class="alert-body">This Stripe account only shows 3 small payments ($83 total). Real revenue from coaching ($13K design + mgmt fees), Edge, PhotoLab, and rentals is either on a different Stripe account or collected through other channels. QuickBooks needs re-authentication.</div>
+            <div class="alert-body">This Stripe account only shows 3 small payments ($83 total). Real revenue from the $13K 1:1 coaching program, management, PhotoLab, and rentals is either on a different Stripe account or collected through other channels. QuickBooks needs re-authentication.</div>
           </div>
         </div>
 
@@ -3127,7 +3127,7 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="rev-stream-icon" style="background:var(--gold-subtle)">🎯</div>
             <div class="rev-stream-name">Coaching</div>
             <div class="rev-stream-value" style="color:var(--text-muted)">—</div>
-            <div class="rev-stream-detail">$13K program &middot; Design + Management fees<br>7 active clients</div>
+            <div class="rev-stream-detail">$13K 1:1 coaching program<br>Active clients: Unknown until CRM/GHL source proof</div>
           </div>
           <div class="rev-stream-card">
             <div class="rev-stream-icon" style="background:var(--blue-bg)">💳</div>
@@ -3811,10 +3811,10 @@ const workstreams = [
     metrics:{properties:"31", revenue:"Connect PMS", occupancy:"—", nightlyRate:"—"},
     actions:["Deploy PriceLabs optimization across all 31 units","Onboard Evergreens A/B + Homely Comforts A/B + Cozy Getaway","Deploy Slack AI #ai-review-drafts channel"],
     agent:"Daily property performance digest", agentFreq:"Daily 8:09am", health:85 },
-  { name:"Teeco Coaching", icon:"🎯", status:"active", color:"var(--gold)", freq:"Mon/Thu 9am",
-    metrics:{program:"$13K Design+Mgmt", activeClients:"7", pipeline:"—", revenue:"Design fees + mgmt"},
-    actions:["Follow up on warm leads from webinar funnel","Client delivery: Steph & Wilson, Gainesville, KY, Brenda, Lisa & Gus, Neil, Christie","Build case study from completed client projects"],
-    agent:"Lead scoring + follow-up drafts", agentFreq:"Mon & Thu 9:10am", health:78 },
+  { name:"Teeco Coaching", icon:"🎯", status:"active", color:"var(--gold)", freq:"Daily sales proof check",
+    metrics:{program:"$13K 1:1 coaching", activeClients:"Unknown", pipeline:"Unknown", revenue:"Unknown until CRM/GHL"},
+    actions:["Get Stephanie's same-day GHL/CRM source snapshot before using pipeline counts","Recover oldest untouched warm lead and highest-risk follow-up first","Attach source proof before counting active clients, case studies, or coaching revenue"],
+    agent:"Source counts + follow-up accountability only", agentFreq:"Blocked until source snapshot", health:0 },
   { name:"Content & Marketing", icon:"📱", status:"active", color:"var(--red)", freq:"Daily 7am",
     metrics:{ytSubs:"~12K", igFollowers:"~11K", schedule:"Mon/Wed/Sat", funnelCTR:"48.3%"},
     actions:["Post case study video (thumbnail ready)","Verify Mon/Wed/Sat YouTube schedule","Create 3 Instagram carousels for rural Airbnb ROI"],
@@ -3889,6 +3889,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced coaching workstream claims: active clients, pipeline, and coaching revenue now show Unknown until Stephanie's CRM/GHL source snapshot is attached; $13K program copy corrected to the core 1:1 coaching offer", time:"2026-05-12 05:01PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Focus Governor", action:"Paused ParkStay and Teeco Edge inside the workstream list until each has a direct $13K coaching/management ROI link, owner, source proof, budget cap, and shutdown rule; no recurring agent time is implied", time:"2026-05-12 03:34PM PDT", color:"var(--text-muted)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Corrected the Agent Retreat proof state: Brock is visible as an existing product-engineer role, but Scout and Brock are UNDER CONSTRUCTION until source-backed output, owner, verification proof, cost/spend, and ROI link are visible", time:"2026-05-12 12:09PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added Today's One Ask to the overview with a copy-paste Stephanie request for GHL/CRM coaching counts, source date, oldest untouched lead, and highest-risk follow-up before more bot activity is treated as progress", time:"2026-05-12 12:01PM PDT", color:"var(--gold)" },
