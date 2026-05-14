@@ -3848,10 +3848,10 @@ const workstreams = [
     metrics:{program:"$13K 1:1 coaching", activeClients:"Unknown", pipeline:"Unknown", revenue:"Unknown until CRM/GHL"},
     actions:["Get Stephanie's same-day GHL/CRM source snapshot before using pipeline counts","Recover oldest untouched warm lead and highest-risk follow-up first","Attach source proof before counting active clients, case studies, or coaching revenue"],
     agent:"Source counts + follow-up accountability only", agentFreq:"Blocked until source snapshot", health:0 },
-  { name:"Content & Marketing", icon:"📱", status:"active", color:"var(--red)", freq:"Daily 7am",
-    metrics:{ytSubs:"~12K", igFollowers:"~11K", schedule:"Mon/Wed/Sat", funnelCTR:"48.3%"},
-    actions:["Post case study video (thumbnail ready)","Verify Mon/Wed/Sat YouTube schedule","Create 3 Instagram carousels for rural Airbnb ROI"],
-    agent:"Daily content scheduling + analytics", agentFreq:"Daily 7:00am", health:72 },
+  { name:"Content & Marketing", icon:"📱", status:"construction", color:"var(--red)", freq:"Blocked until CTA/source proof",
+    metrics:{ytSubs:"Unknown", igFollowers:"Unknown", schedule:"Unknown", funnelCTR:"Unknown"},
+    actions:["Attach source date for audience counts before using them in decisions","Tie each case study/clip/carousel to the $13K coaching CTA and CRM/GHL lead-source tag","Do not treat Mon/Wed/Sat publishing or CTR as progress until qualified leads, booked/held calls, or follow-ups are sourced"],
+    agent:"Content-to-lead proof mapping only — no recurring publishing until sourced", agentFreq:"Blocked", health:0 },
   { name:"AirBNB Anywhere Book", icon:"📖", status:"in_progress", color:"var(--orange)", freq:"Sun 10am",
     metrics:{chapters:"8 / 25", current:"Ch 8: Remote Ops", wordCount:"~24,000", launch:"Q3 2026"},
     actions:["Finish Chapter 8: Remote Property Management","Draft Chapter 9: Guest Experience & Reviews","Integrate 7-day setup checklist into appendix"],
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced Content & Marketing workstream metrics: YouTube/Instagram counts, posting schedule, and funnel CTR now stay Unknown until source date, CTA, CRM/GHL lead-source tag, and booked/held/follow-up proof connect the asset to the $13K coaching funnel", time:"2026-05-14 12:26PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Blocked Lead Automation (GHL) from appearing live: flow counts, webinar/lifestyle CTR, and pipeline optimization now stay Unknown until Stephanie/GHL provides source date, lead-source tags, and booked/held/close/follow-up proof tied to the $13K coaching funnel", time:"2026-05-13 06:05PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced chart data: revenue mix and bot-vs-team charts now render zeroed placeholders until Stripe/QuickBooks/PMS/CRM/GHL or run-log source proof is attached, preventing vanity visuals from outranking $13K coaching proof", time:"2026-05-13 12:03PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added a Warm Lead Handoff Packet so $13K coaching prospects are routed to Jeff or Stephanie only after safe context, source proof, booking link used, next-touch date, and consult outcome are captured; no sensitive finance/identity data requested", time:"2026-05-13 12:00PM PDT", color:"var(--gold)" },
