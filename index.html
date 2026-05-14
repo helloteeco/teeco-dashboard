@@ -3880,10 +3880,10 @@ const workstreams = [
     metrics:{status:"Re-auth QuickBooks", taxYear:"2023-2025", cpa:"Mark", k1s:"Gather 1099s"},
     actions:["Re-authenticate QuickBooks MCP in sidebar","Categorize Q1 2026 transactions","Gather 1099s and K1 from 2024 for Mark"],
     agent:"Weekly transaction categorization", agentFreq:"Pending QB re-auth", health:15 },
-  { name:"Lead Automation (GHL)", icon:"🔥", status:"active", color:"var(--blue)", freq:"Tu/F 9:04am",
-    metrics:{liveFlows:"3", webinarCTR:"48.3%", lifestyleCTR:"66.7%", ghlMonitor:"Tu/F"},
-    actions:["Monitor GHL pipeline — ensure Steph's automation is closing","A/B test rural keyword DM","Edit GHL link to apply.teeco.co"],
-    agent:"GHL pipeline + ManyChat report", agentFreq:"Tu/F 9:04am", health:82 },
+  { name:"Lead Automation (GHL)", icon:"🔥", status:"construction", color:"var(--blue)", freq:"Blocked until GHL source proof",
+    metrics:{liveFlows:"Unknown", webinarCTR:"Unknown", lifestyleCTR:"Unknown", sourceDate:"Missing"},
+    actions:["Attach GHL export/source date before treating flows, CTR, or lead scores as operating truth","Map each automation to qualified leads, booked calls, held calls, closes, or follow-ups due","Keep rural keyword DM tests draft-only until CRM lead-source tags prove pipeline movement"],
+    agent:"GHL proof mapping only — no recurring optimization until sourced", agentFreq:"Blocked", health:0 },
   { name:"Creator Stay SD", icon:"🎬", status:"validating", color:"var(--orange)", freq:"Bi-weekly Mon",
     metrics:{phase:"Demand test", applications:"—", signals:"Collecting", pillars:"4 content pillars"},
     actions:["Review application signal density","Post 'Who it's NOT for' content","Evaluate go/no-go Q2 volume"],
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Blocked Lead Automation (GHL) from appearing live: flow counts, webinar/lifestyle CTR, and pipeline optimization now stay Unknown until Stephanie/GHL provides source date, lead-source tags, and booked/held/close/follow-up proof tied to the $13K coaching funnel", time:"2026-05-13 06:05PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced chart data: revenue mix and bot-vs-team charts now render zeroed placeholders until Stripe/QuickBooks/PMS/CRM/GHL or run-log source proof is attached, preventing vanity visuals from outranking $13K coaching proof", time:"2026-05-13 12:03PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Added a Warm Lead Handoff Packet so $13K coaching prospects are routed to Jeff or Stephanie only after safe context, source proof, booking link used, next-touch date, and consult outcome are captured; no sensitive finance/identity data requested", time:"2026-05-13 12:00PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Builder Sprint", action:"Tightened the Agent Retreat status language so Scout and Brock are shown as idle/audit-gated instead of fake-active; reported artifacts now need source proof, owner, cost/spend, and verification before more build time", time:"2026-05-12 06:31PM PDT", color:"var(--orange)" },
