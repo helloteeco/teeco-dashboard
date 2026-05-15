@@ -3856,10 +3856,10 @@ const workstreams = [
     metrics:{chapters:"8 / 25", current:"Ch 8: Remote Ops", wordCount:"~24,000", launch:"Q3 2026"},
     actions:["Finish Chapter 8: Remote Property Management","Draft Chapter 9: Guest Experience & Reviews","Integrate 7-day setup checklist into appendix"],
     agent:"Weekly writing sprint + chapter review", agentFreq:"Sun 10:10am", health:0 },
-  { name:"GovCon Scanner", icon:"🏛️", status:"active", color:"var(--blue)", freq:"Daily 8:04am",
-    metrics:{scansToday:"1", oppsFound:"This week", topMatch:"FEMA lodging", status:"LIVE"},
-    actions:["Review today's scan results in Telegram","Bid on FEMA temporary housing RFP if score > 80","Build response template for recurring types"],
-    agent:"Daily SAM.gov + FEMA scan → Telegram", agentFreq:"Daily 8:04am", health:0 },
+  { name:"GovCon Scanner", icon:"🏛️", status:"paused", color:"var(--blue)", freq:"Paused until management ROI proof",
+    metrics:{scansToday:"Unknown", oppsFound:"Unknown", topMatch:"Needs source link", status:"ROI gate"},
+    actions:["Do not run daily scans as generic activity without source links, owner, and a current management/coaching revenue path","If reopened, require Ryu/Jeff owner approval, one qualified lodging-management opportunity, budget cap, and shutdown rule","Attach SAM.gov/source link and next action before any bid/template work is counted as progress"],
+    agent:"No active recurring scan — management ROI gate", agentFreq:"Paused", health:0 },
   { name:"ParkStay Platform", icon:"🏕️", status:"paused", color:"var(--gold)", freq:"Paused until ROI proof",
     metrics:{phase:"Test / pause", hostFee:"Unknown", model:"Only if it feeds coaching or management", target:"dashboard note only"},
     actions:["Do not move marketplace/Stripe work forward without Jeff approval","If reopened, define one coaching/management lead-capture test","Record owner, budget cap, source proof, and shutdown rule before agent time"],
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Paused the GovCon Scanner workstream from fake-active daily scanning: opportunity counts and FEMA match claims now stay Unknown until source links, Ryu/Jeff owner approval, budget cap, shutdown rule, and a direct management/coaching revenue path exist", time:"2026-05-15 12:15PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Zeroed the overview source-proof readiness bars so workstreams no longer display fake health percentages; each bar now stays at zero/source needed until owner, source date, next action, and ROI proof are attached", time:"2026-05-14 06:04PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced Content & Marketing workstream metrics: YouTube/Instagram counts, posting schedule, and funnel CTR now stay Unknown until source date, CTA, CRM/GHL lead-source tag, and booked/held/follow-up proof connect the asset to the $13K coaching funnel", time:"2026-05-14 12:26PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Blocked Lead Automation (GHL) from appearing live: flow counts, webinar/lifestyle CTR, and pipeline optimization now stay Unknown until Stephanie/GHL provides source date, lead-source tags, and booked/held/close/follow-up proof tied to the $13K coaching funnel", time:"2026-05-13 06:05PM PDT", color:"var(--blue)" },
