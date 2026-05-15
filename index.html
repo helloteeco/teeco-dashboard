@@ -2882,13 +2882,13 @@ img, canvas, svg, video { max-width: 100%; }
               </div>
               <div class="card-body">
                 <div style="margin-bottom:16px">
-                  <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px">Workstream Health</div>
+                  <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px">Source-Proof Readiness</div>
                   <div id="health-bars"></div>
                 </div>
                 <div>
                   <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px">Agent Runs This Week</div>
                   <div style="font-size:32px;font-weight:800;color:var(--gold)">—</div>
-                  <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Connect run logs; do not fake counts</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Bars stay zero until owner + source date exist</div>
                 </div>
               </div>
             </div>
@@ -3843,7 +3843,7 @@ const workstreams = [
   { name:"Rental Portfolio", icon:"🏠", status:"active", color:"var(--green)", freq:"Daily 8am",
     metrics:{properties:"31", revenue:"Connect PMS", occupancy:"—", nightlyRate:"—"},
     actions:["Deploy PriceLabs optimization across all 31 units","Onboard Evergreens A/B + Homely Comforts A/B + Cozy Getaway","Deploy Slack AI #ai-review-drafts channel"],
-    agent:"Daily property performance digest", agentFreq:"Daily 8:09am", health:85 },
+    agent:"Daily property performance digest", agentFreq:"Daily 8:09am", health:0 },
   { name:"Teeco Coaching", icon:"🎯", status:"active", color:"var(--gold)", freq:"Daily sales proof check",
     metrics:{program:"$13K 1:1 coaching", activeClients:"Unknown", pipeline:"Unknown", revenue:"Unknown until CRM/GHL"},
     actions:["Get Stephanie's same-day GHL/CRM source snapshot before using pipeline counts","Recover oldest untouched warm lead and highest-risk follow-up first","Attach source proof before counting active clients, case studies, or coaching revenue"],
@@ -3855,31 +3855,31 @@ const workstreams = [
   { name:"AirBNB Anywhere Book", icon:"📖", status:"in_progress", color:"var(--orange)", freq:"Sun 10am",
     metrics:{chapters:"8 / 25", current:"Ch 8: Remote Ops", wordCount:"~24,000", launch:"Q3 2026"},
     actions:["Finish Chapter 8: Remote Property Management","Draft Chapter 9: Guest Experience & Reviews","Integrate 7-day setup checklist into appendix"],
-    agent:"Weekly writing sprint + chapter review", agentFreq:"Sun 10:10am", health:32 },
+    agent:"Weekly writing sprint + chapter review", agentFreq:"Sun 10:10am", health:0 },
   { name:"GovCon Scanner", icon:"🏛️", status:"active", color:"var(--blue)", freq:"Daily 8:04am",
     metrics:{scansToday:"1", oppsFound:"This week", topMatch:"FEMA lodging", status:"LIVE"},
     actions:["Review today's scan results in Telegram","Bid on FEMA temporary housing RFP if score > 80","Build response template for recurring types"],
-    agent:"Daily SAM.gov + FEMA scan → Telegram", agentFreq:"Daily 8:04am", health:90 },
+    agent:"Daily SAM.gov + FEMA scan → Telegram", agentFreq:"Daily 8:04am", health:0 },
   { name:"ParkStay Platform", icon:"🏕️", status:"paused", color:"var(--gold)", freq:"Paused until ROI proof",
     metrics:{phase:"Test / pause", hostFee:"Unknown", model:"Only if it feeds coaching or management", target:"dashboard note only"},
     actions:["Do not move marketplace/Stripe work forward without Jeff approval","If reopened, define one coaching/management lead-capture test","Record owner, budget cap, source proof, and shutdown rule before agent time"],
-    agent:"No active recurring agent — proposal only", agentFreq:"Paused", health:10 },
+    agent:"No active recurring agent — proposal only", agentFreq:"Paused", health:0 },
   { name:"Teeco Edge", icon:"⚡", status:"paused", color:"var(--blue)", freq:"Paused until coaching link",
     metrics:{site:"edge.teeco.co", focus:"Paused unless tied to $13K coaching", agent:"None active here", funnel:"Unknown"},
     actions:["Do not optimize Edge as a standalone side quest","If used, tie each page/test to qualified leads, booked calls, or follow-ups","Require owner, source URL, CRM/GHL lead-source tag, and shutdown rule"],
-    agent:"No active recurring agent — coaching ROI gate", agentFreq:"Paused", health:10 },
+    agent:"No active recurring agent — coaching ROI gate", agentFreq:"Paused", health:0 },
   { name:"PhotoLab", icon:"📸", status:"active", color:"var(--orange)", freq:"Tue 9:08am",
     metrics:{site:"photolab.teeco.co", focus:"Airbnb photos", agent:"Weekly report", revenue:"Growing"},
     actions:["Track weekly sales and usage metrics","Expand referral program","Create case studies from client results"],
-    agent:"Weekly PhotoLab sales + growth", agentFreq:"Tue 9:08am", health:75 },
+    agent:"Weekly PhotoLab sales + growth", agentFreq:"Tue 9:08am", health:0 },
   { name:"Stripe / Revenue", icon:"💳", status:"active", color:"var(--gold)", freq:"Mon 8:02am",
     metrics:{stripe:"Connected", report:"Mon 8:02am", streams:"7", target:"$3M-$5M"},
     actions:["Set up Stripe products for Edge + PhotoLab","Map all products to value ladder tiers","Weekly revenue reconciliation"],
-    agent:"Weekly consolidated revenue report", agentFreq:"Mon 8:02am", health:60 },
+    agent:"Weekly consolidated revenue report", agentFreq:"Mon 8:02am", health:0 },
   { name:"Bookkeeping & Taxes", icon:"📒", status:"needs_setup", color:"var(--green)", freq:"Pending",
     metrics:{status:"Re-auth QuickBooks", taxYear:"2023-2025", cpa:"Mark", k1s:"Gather 1099s"},
     actions:["Re-authenticate QuickBooks MCP in sidebar","Categorize Q1 2026 transactions","Gather 1099s and K1 from 2024 for Mark"],
-    agent:"Weekly transaction categorization", agentFreq:"Pending QB re-auth", health:15 },
+    agent:"Weekly transaction categorization", agentFreq:"Pending QB re-auth", health:0 },
   { name:"Lead Automation (GHL)", icon:"🔥", status:"construction", color:"var(--blue)", freq:"Blocked until GHL source proof",
     metrics:{liveFlows:"Unknown", webinarCTR:"Unknown", lifestyleCTR:"Unknown", sourceDate:"Missing"},
     actions:["Attach GHL export/source date before treating flows, CTR, or lead scores as operating truth","Map each automation to qualified leads, booked calls, held calls, closes, or follow-ups due","Keep rural keyword DM tests draft-only until CRM lead-source tags prove pipeline movement"],
@@ -3887,7 +3887,7 @@ const workstreams = [
   { name:"Creator Stay SD", icon:"🎬", status:"validating", color:"var(--orange)", freq:"Bi-weekly Mon",
     metrics:{phase:"Demand test", applications:"—", signals:"Collecting", pillars:"4 content pillars"},
     actions:["Review application signal density","Post 'Who it's NOT for' content","Evaluate go/no-go Q2 volume"],
-    agent:"Bi-weekly demand signal report", agentFreq:"Every other Mon", health:25 },
+    agent:"Bi-weekly demand signal report", agentFreq:"Every other Mon", health:0 },
 ];
 
 const agentFleet = [
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Zeroed the overview source-proof readiness bars so workstreams no longer display fake health percentages; each bar now stays at zero/source needed until owner, source date, next action, and ROI proof are attached", time:"2026-05-14 06:04PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced Content & Marketing workstream metrics: YouTube/Instagram counts, posting schedule, and funnel CTR now stay Unknown until source date, CTA, CRM/GHL lead-source tag, and booked/held/follow-up proof connect the asset to the $13K coaching funnel", time:"2026-05-14 12:26PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Blocked Lead Automation (GHL) from appearing live: flow counts, webinar/lifestyle CTR, and pipeline optimization now stay Unknown until Stephanie/GHL provides source date, lead-source tags, and booked/held/close/follow-up proof tied to the $13K coaching funnel", time:"2026-05-13 06:05PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced chart data: revenue mix and bot-vs-team charts now render zeroed placeholders until Stripe/QuickBooks/PMS/CRM/GHL or run-log source proof is attached, preventing vanity visuals from outranking $13K coaching proof", time:"2026-05-13 12:03PM PDT", color:"var(--red)" },
@@ -4052,6 +4053,7 @@ workstreams.slice(0, 8).forEach(ws => {
     <div class="health-bar-item">
       <span class="hb-label">${ws.name}</span>
       <div class="hb-bar"><div class="hb-fill" style="width:${ws.health}%;background:${color}"></div></div>
+      <span style="font-size:11px;color:var(--text-muted);width:96px;text-align:right">Source needed</span>
     </div>`;
 });
 
