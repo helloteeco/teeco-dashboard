@@ -3868,10 +3868,10 @@ const workstreams = [
     metrics:{site:"edge.teeco.co", focus:"Paused unless tied to $13K coaching", agent:"None active here", funnel:"Unknown"},
     actions:["Do not optimize Edge as a standalone side quest","If used, tie each page/test to qualified leads, booked calls, or follow-ups","Require owner, source URL, CRM/GHL lead-source tag, and shutdown rule"],
     agent:"No active recurring agent — coaching ROI gate", agentFreq:"Paused", health:0 },
-  { name:"PhotoLab", icon:"📸", status:"active", color:"var(--orange)", freq:"Tue 9:08am",
-    metrics:{site:"photolab.teeco.co", focus:"Airbnb photos", agent:"Weekly report", revenue:"Growing"},
-    actions:["Track weekly sales and usage metrics","Expand referral program","Create case studies from client results"],
-    agent:"Weekly PhotoLab sales + growth", agentFreq:"Tue 9:08am", health:0 },
+  { name:"PhotoLab", icon:"📸", status:"paused", color:"var(--orange)", freq:"Paused until source proof",
+    metrics:{site:"photolab.teeco.co", focus:"Airbnb photos", agent:"None active until sourced", revenue:"Unknown"},
+    actions:["Attach Stripe/QuickBooks/source proof before treating orders or revenue as live","Only use case studies if they connect to a $13K coaching CTA, CRM lead-source tag, or management lead path","Require owner, budget cap, next action, and shutdown rule before recurring PhotoLab agent time"],
+    agent:"No active recurring agent — source proof + coaching/management ROI gate", agentFreq:"Paused", health:0 },
   { name:"Stripe / Revenue", icon:"💳", status:"active", color:"var(--gold)", freq:"Mon 8:02am",
     metrics:{stripe:"Connected", report:"Mon 8:02am", streams:"7", target:"$3M-$5M"},
     actions:["Set up Stripe products for Edge + PhotoLab","Map all products to value ladder tiers","Weekly revenue reconciliation"],
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Paused PhotoLab from appearing active without source proof: revenue, weekly report cadence, and growth claims now stay Unknown until Stripe/QuickBooks/source data plus a coaching/management ROI link, owner, budget cap, next action, and shutdown rule are visible", time:"2026-05-15 06:01PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Paused the GovCon Scanner workstream from fake-active daily scanning: opportunity counts and FEMA match claims now stay Unknown until source links, Ryu/Jeff owner approval, budget cap, shutdown rule, and a direct management/coaching revenue path exist", time:"2026-05-15 12:15PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Zeroed the overview source-proof readiness bars so workstreams no longer display fake health percentages; each bar now stays at zero/source needed until owner, source date, next action, and ROI proof are attached", time:"2026-05-14 06:04PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced Content & Marketing workstream metrics: YouTube/Instagram counts, posting schedule, and funnel CTR now stay Unknown until source date, CTA, CRM/GHL lead-source tag, and booked/held/follow-up proof connect the asset to the $13K coaching funnel", time:"2026-05-14 12:26PM PDT", color:"var(--red)" },
