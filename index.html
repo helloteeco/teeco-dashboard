@@ -3872,10 +3872,10 @@ const workstreams = [
     metrics:{site:"photolab.teeco.co", focus:"Airbnb photos", agent:"None active until sourced", revenue:"Unknown"},
     actions:["Attach Stripe/QuickBooks/source proof before treating orders or revenue as live","Only use case studies if they connect to a $13K coaching CTA, CRM lead-source tag, or management lead path","Require owner, budget cap, next action, and shutdown rule before recurring PhotoLab agent time"],
     agent:"No active recurring agent — source proof + coaching/management ROI gate", agentFreq:"Paused", health:0 },
-  { name:"Stripe / Revenue", icon:"💳", status:"active", color:"var(--gold)", freq:"Mon 8:02am",
-    metrics:{stripe:"Connected", report:"Mon 8:02am", streams:"7", target:"$3M-$5M"},
-    actions:["Set up Stripe products for Edge + PhotoLab","Map all products to value ladder tiers","Weekly revenue reconciliation"],
-    agent:"Weekly consolidated revenue report", agentFreq:"Mon 8:02am", health:0 },
+  { name:"Stripe / Revenue", icon:"💳", status:"construction", color:"var(--gold)", freq:"Blocked until source + coaching split",
+    metrics:{stripe:"Source proof needed", report:"Unknown", coachingRevenue:"Unknown", productMap:"Needs $13K coaching split"},
+    actions:["Do not set up Edge or PhotoLab products while those side quests are paused behind ROI gates","Reconcile coaching-program payments separately from rentals/management before using revenue totals","Require Stripe/QuickBooks source date, owner, and $13K coaching-funnel link before any revenue report is treated as live"],
+    agent:"Revenue source-proof mapping only — no side-quest product setup", agentFreq:"Blocked", health:0 },
   { name:"Bookkeeping & Taxes", icon:"📒", status:"needs_setup", color:"var(--green)", freq:"Pending",
     metrics:{status:"Re-auth QuickBooks", taxYear:"2023-2025", cpa:"Mark", k1s:"Gather 1099s"},
     actions:["Re-authenticate QuickBooks MCP in sidebar","Categorize Q1 2026 transactions","Gather 1099s and K1 from 2024 for Mark"],
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined Stripe / Revenue from looking live without payment-source proof: coaching revenue, report cadence, product map, and side-quest Stripe setup now stay blocked until Stripe/QuickBooks source date, owner, and $13K coaching-funnel split are visible", time:"2026-05-16 05:26PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Paused PhotoLab from appearing active without source proof: revenue, weekly report cadence, and growth claims now stay Unknown until Stripe/QuickBooks/source data plus a coaching/management ROI link, owner, budget cap, next action, and shutdown rule are visible", time:"2026-05-15 06:01PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Paused the GovCon Scanner workstream from fake-active daily scanning: opportunity counts and FEMA match claims now stay Unknown until source links, Ryu/Jeff owner approval, budget cap, shutdown rule, and a direct management/coaching revenue path exist", time:"2026-05-15 12:15PM PDT", color:"var(--blue)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Zeroed the overview source-proof readiness bars so workstreams no longer display fake health percentages; each bar now stays at zero/source needed until owner, source date, next action, and ROI proof are attached", time:"2026-05-14 06:04PM PDT", color:"var(--red)" },
