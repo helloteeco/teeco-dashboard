@@ -3852,10 +3852,10 @@ const workstreams = [
     metrics:{ytSubs:"Unknown", igFollowers:"Unknown", schedule:"Unknown", funnelCTR:"Unknown"},
     actions:["Attach source date for audience counts before using them in decisions","Tie each case study/clip/carousel to the $13K coaching CTA and CRM/GHL lead-source tag","Do not treat Mon/Wed/Sat publishing or CTR as progress until qualified leads, booked/held calls, or follow-ups are sourced"],
     agent:"Content-to-lead proof mapping only — no recurring publishing until sourced", agentFreq:"Blocked", health:0 },
-  { name:"AirBNB Anywhere Book", icon:"📖", status:"in_progress", color:"var(--orange)", freq:"Sun 10am",
-    metrics:{chapters:"8 / 25", current:"Ch 8: Remote Ops", wordCount:"~24,000", launch:"Q3 2026"},
-    actions:["Finish Chapter 8: Remote Property Management","Draft Chapter 9: Guest Experience & Reviews","Integrate 7-day setup checklist into appendix"],
-    agent:"Weekly writing sprint + chapter review", agentFreq:"Sun 10:10am", health:0 },
+  { name:"AirBNB Anywhere Book", icon:"📖", status:"construction", color:"var(--orange)", freq:"Blocked until coaching CTA proof",
+    metrics:{chapters:"Unknown", current:"Needs source proof", wordCount:"Unknown", launch:"Do not date until sourced"},
+    actions:["Attach manuscript/source date before using chapter or word-count progress","Tie the next excerpt/checklist to the $13K coaching CTA and CRM/GHL lead-source tag","Do not schedule writing-agent work ahead of same-day sales follow-up proof"],
+    agent:"Personal-brand proof mapping only — no recurring writing sprint until sourced", agentFreq:"Blocked", health:0 },
   { name:"GovCon Scanner", icon:"🏛️", status:"paused", color:"var(--blue)", freq:"Paused until management ROI proof",
     metrics:{scansToday:"Unknown", oppsFound:"Unknown", topMatch:"Needs source link", status:"ROI gate"},
     actions:["Do not run daily scans as generic activity without source links, owner, and a current management/coaching revenue path","If reopened, require Ryu/Jeff owner approval, one qualified lodging-management opportunity, budget cap, and shutdown rule","Attach SAM.gov/source link and next action before any bid/template work is counted as progress"],
@@ -3884,10 +3884,10 @@ const workstreams = [
     metrics:{liveFlows:"Unknown", webinarCTR:"Unknown", lifestyleCTR:"Unknown", sourceDate:"Missing"},
     actions:["Attach GHL export/source date before treating flows, CTR, or lead scores as operating truth","Map each automation to qualified leads, booked calls, held calls, closes, or follow-ups due","Keep rural keyword DM tests draft-only until CRM lead-source tags prove pipeline movement"],
     agent:"GHL proof mapping only — no recurring optimization until sourced", agentFreq:"Blocked", health:0 },
-  { name:"Creator Stay SD", icon:"🎬", status:"validating", color:"var(--orange)", freq:"Bi-weekly Mon",
-    metrics:{phase:"Demand test", applications:"—", signals:"Collecting", pillars:"4 content pillars"},
-    actions:["Review application signal density","Post 'Who it's NOT for' content","Evaluate go/no-go Q2 volume"],
-    agent:"Bi-weekly demand signal report", agentFreq:"Every other Mon", health:0 },
+  { name:"Creator Stay SD", icon:"🎬", status:"construction", color:"var(--orange)", freq:"Blocked until source + coaching link",
+    metrics:{phase:"Demand test", applications:"Unknown", signals:"Unknown", pillars:"Needs source proof"},
+    actions:["Attach application/source links before treating demand signals as live","Only continue if the test captures qualified coaching or management leads with owner and next action","Require budget cap, source date, CRM lead-source tag, and shutdown rule before recurring agent time"],
+    agent:"Demand-signal proof mapping only — no bi-weekly agent until sourced", agentFreq:"Blocked", health:0 },
 ];
 
 const agentFleet = [
@@ -3922,6 +3922,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced personal-brand side lanes: AirBNB Anywhere Book and Creator Stay SD no longer show chapter/application progress or recurring agent cadence until source proof, $13K coaching CTA/CRM lead-source link, owner, budget cap, and shutdown rule are visible", time:"2026-05-17 12:39PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined Stripe / Revenue from looking live without payment-source proof: coaching revenue, report cadence, product map, and side-quest Stripe setup now stay blocked until Stripe/QuickBooks source date, owner, and $13K coaching-funnel split are visible", time:"2026-05-16 05:26PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Paused PhotoLab from appearing active without source proof: revenue, weekly report cadence, and growth claims now stay Unknown until Stripe/QuickBooks/source data plus a coaching/management ROI link, owner, budget cap, next action, and shutdown rule are visible", time:"2026-05-15 06:01PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Paused the GovCon Scanner workstream from fake-active daily scanning: opportunity counts and FEMA match claims now stay Unknown until source links, Ryu/Jeff owner approval, budget cap, shutdown rule, and a direct management/coaching revenue path exist", time:"2026-05-15 12:15PM PDT", color:"var(--blue)" },
