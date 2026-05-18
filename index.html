@@ -2878,17 +2878,18 @@ img, canvas, svg, video { max-width: 100%; }
             <div class="card">
               <div class="card-header">
                 <h3>📊 Quick Stats</h3>
-                <span class="card-badge" style="background:var(--green-bg);color:var(--green)">Live</span>
+                <span class="card-badge" style="background:var(--red-bg);color:var(--red)">Source gated</span>
               </div>
               <div class="card-body">
                 <div style="margin-bottom:16px">
                   <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px">Source-Proof Readiness</div>
                   <div id="health-bars"></div>
+                  <div style="font-size:12px;color:var(--red);margin-top:8px">Not live: health bars are decision aids only after CRM/GHL, Stripe/QuickBooks, Motion, and Hermes usage source dates are attached.</div>
                 </div>
                 <div>
                   <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px">Agent Runs This Week</div>
                   <div style="font-size:32px;font-weight:800;color:var(--gold)">—</div>
-                  <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Bars stay zero until owner + source date exist</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Unknown until Hermes run logs + cost/spend proof are connected; do not treat visible activity as revenue proof.</div>
                 </div>
               </div>
             </div>
@@ -3922,6 +3923,8 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Changed the overview Quick Stats card from Live to Source gated: health bars and agent-run counts now warn they are not decision proof until CRM/GHL, Stripe/QuickBooks, Motion, and Hermes usage source dates plus cost/spend proof are attached", time:"2026-05-18 12:42PM PDT", color:"var(--red)" },
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined the remaining unsourced Digital/Stripe revenue line-chart values: the chart now stays at zero/source-gated until Stripe/QuickBooks export date, owner, and the separate $13K coaching revenue split are attached", time:"2026-05-17 05:11PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced personal-brand side lanes: AirBNB Anywhere Book and Creator Stay SD no longer show chapter/application progress or recurring agent cadence until source proof, $13K coaching CTA/CRM lead-source link, owner, budget cap, and shutdown rule are visible", time:"2026-05-17 12:39PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined Stripe / Revenue from looking live without payment-source proof: coaching revenue, report cadence, product map, and side-quest Stripe setup now stay blocked until Stripe/QuickBooks source date, owner, and $13K coaching-funnel split are visible", time:"2026-05-16 05:26PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Paused PhotoLab from appearing active without source proof: revenue, weekly report cadence, and growth claims now stay Unknown until Stripe/QuickBooks/source data plus a coaching/management ROI link, owner, budget cap, next action, and shutdown rule are visible", time:"2026-05-15 06:01PM PDT", color:"var(--orange)" },
@@ -4197,10 +4200,10 @@ function initCharts() {
             pointRadius: 4,
           },
           {
-            label: 'Digital',
-            data: [28, 25, 30, null, null, null],
-            borderColor: 'var(--blue)',
-            backgroundColor: 'rgba(59,130,246,0.1)',
+            label: 'Digital / Stripe (source gated)',
+            data: [0, 0, 0, null, null, null],
+            borderColor: 'rgba(113,113,122,0.6)',
+            backgroundColor: 'rgba(113,113,122,0.1)',
             fill: true,
             tension: 0.4,
             pointRadius: 4,
