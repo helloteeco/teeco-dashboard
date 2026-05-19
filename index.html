@@ -3826,6 +3826,7 @@ function scrollToWs(name) {
 const statusMap = {
   active: { cls: "badge-active", label: "ACTIVE" },
   live: { cls: "badge-live", label: "LIVE" },
+  source_gated: { cls: "badge-construction", label: "SOURCE GATED" },
   pending: { cls: "badge-pending", label: "PENDING TEST" },
   paused: { cls: "badge-paused", label: "PAUSED / ROI GATE" },
   construction: { cls: "badge-construction", label: "UNDER CONSTRUCTION" },
@@ -3841,14 +3842,14 @@ function badge(status) {
 }
 
 const workstreams = [
-  { name:"Rental Portfolio", icon:"🏠", status:"active", color:"var(--green)", freq:"Daily 8am",
-    metrics:{properties:"31", revenue:"Connect PMS", occupancy:"—", nightlyRate:"—"},
-    actions:["Deploy PriceLabs optimization across all 31 units","Onboard Evergreens A/B + Homely Comforts A/B + Cozy Getaway","Deploy Slack AI #ai-review-drafts channel"],
-    agent:"Daily property performance digest", agentFreq:"Daily 8:09am", health:0 },
   { name:"Teeco Coaching", icon:"🎯", status:"active", color:"var(--gold)", freq:"Daily sales proof check",
     metrics:{program:"$13K 1:1 coaching", activeClients:"Unknown", pipeline:"Unknown", revenue:"Unknown until CRM/GHL"},
     actions:["Get Stephanie's same-day GHL/CRM source snapshot before using pipeline counts","Recover oldest untouched warm lead and highest-risk follow-up first","Attach source proof before counting active clients, case studies, or coaching revenue"],
     agent:"Source counts + follow-up accountability only", agentFreq:"Blocked until source snapshot", health:0 },
+  { name:"Rental Portfolio", icon:"🏠", status:"source_gated", color:"var(--green)", freq:"Management secondary to coaching proof",
+    metrics:{properties:"31 reported / PMS proof needed", revenue:"Connect PMS", occupancy:"—", nightlyRate:"—"},
+    actions:["Keep rental ops behind the $13K coaching scoreboard until sales counts are sourced","Attach PMS/source date before treating properties, occupancy, nightly rate, or revenue as operating truth","Only escalate management tasks that reduce guest/owner risk or create a direct management/coaching revenue action"],
+    agent:"PMS/source-proof digest only — no vanity property activity", agentFreq:"Source gated", health:0 },
   { name:"Content & Marketing", icon:"📱", status:"construction", color:"var(--red)", freq:"Blocked until CTA/source proof",
     metrics:{ytSubs:"Unknown", igFollowers:"Unknown", schedule:"Unknown", funnelCTR:"Unknown"},
     actions:["Attach source date for audience counts before using them in decisions","Tie each case study/clip/carousel to the $13K coaching CTA and CRM/GHL lead-source tag","Do not treat Mon/Wed/Sat publishing or CTR as progress until qualified leads, booked/held calls, or follow-ups are sourced"],
@@ -3923,6 +3924,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Moved Teeco Coaching to the first workstream slot and source-gated Rental Portfolio so the All Workstreams view cannot start with management/property activity ahead of the $13K coaching proof snapshot; rental counts now require PMS/source-date proof before operating decisions", time:"2026-05-18 06:02PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Changed the overview Quick Stats card from Live to Source gated: health bars and agent-run counts now warn they are not decision proof until CRM/GHL, Stripe/QuickBooks, Motion, and Hermes usage source dates plus cost/spend proof are attached", time:"2026-05-18 12:42PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined the remaining unsourced Digital/Stripe revenue line-chart values: the chart now stays at zero/source-gated until Stripe/QuickBooks export date, owner, and the separate $13K coaching revenue split are attached", time:"2026-05-17 05:11PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined unsourced personal-brand side lanes: AirBNB Anywhere Book and Creator Stay SD no longer show chapter/application progress or recurring agent cadence until source proof, $13K coaching CTA/CRM lead-source link, owner, budget cap, and shutdown rule are visible", time:"2026-05-17 12:39PM PDT", color:"var(--orange)" },
