@@ -3924,6 +3924,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined the leftover Activity by Hour chart code so hidden/reintroduced activity-volume visuals cannot show fake hourly counts; activity remains a source-proof log, not revenue proof", time:"2026-05-19 12:23PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Moved Teeco Coaching to the first workstream slot and source-gated Rental Portfolio so the All Workstreams view cannot start with management/property activity ahead of the $13K coaching proof snapshot; rental counts now require PMS/source-date proof before operating decisions", time:"2026-05-18 06:02PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Changed the overview Quick Stats card from Live to Source gated: health bars and agent-run counts now warn they are not decision proof until CRM/GHL, Stripe/QuickBooks, Motion, and Hermes usage source dates plus cost/spend proof are attached", time:"2026-05-18 12:42PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined the remaining unsourced Digital/Stripe revenue line-chart values: the chart now stays at zero/source-gated until Stripe/QuickBooks export date, owner, and the separate $13K coaching revenue split are attached", time:"2026-05-17 05:11PM PDT", color:"var(--red)" },
@@ -4286,7 +4287,7 @@ function initCharts() {
     });
   }
 
-  // Activity by Hour
+  // Activity by Hour (source-gated quarantine)
   const hourCtx = document.getElementById('activityHourChart');
   if (hourCtx) {
     new Chart(hourCtx, {
@@ -4294,10 +4295,10 @@ function initCharts() {
       data: {
         labels: ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'],
         datasets: [{
-          label: 'Activities',
-          data: [1, 2, 4, 3, 2, 1, 0, 1, 1, 1, 1, 0],
-          backgroundColor: 'rgba(168,85,247,0.4)',
-          borderColor: 'rgba(168,85,247,0.8)',
+          label: 'Activity volume (source proof required)',
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(113,113,122,0.25)',
+          borderColor: 'rgba(113,113,122,0.6)',
           borderWidth: 1,
           borderRadius: 4,
         }]
@@ -4305,7 +4306,7 @@ function initCharts() {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
+        plugins: { legend: { display: false }, title: { display: true, text: 'Hourly activity Unknown — source proof required', color: '#a1a1aa', font: { size: 12 } } },
         scales: {
           y: { beginAtZero: true, grid: { color: '#1f1f23' } },
           x: { grid: { display: false }, ticks: { font: { size: 10 } } }
