@@ -2661,13 +2661,13 @@ img, canvas, svg, video { max-width: 100%; }
           <span class="nav-icon">🎯</span> Coaching
         </button>
         <button class="nav-item" onclick="switchTab('overview', this); setTimeout(()=>scrollToWs('ParkStay Platform'),100)">
-          <span class="nav-icon">🏕️</span> ParkStay
+          <span class="nav-icon">🏕️</span> ParkStay <span style="font-size:10px;color:var(--text-muted);font-weight:700">PAUSED</span>
         </button>
         <button class="nav-item" onclick="switchTab('overview', this); setTimeout(()=>scrollToWs('Teeco Edge'),100)">
-          <span class="nav-icon">⚡</span> Edge
+          <span class="nav-icon">⚡</span> Edge <span style="font-size:10px;color:var(--text-muted);font-weight:700">GATED</span>
         </button>
         <button class="nav-item" onclick="switchTab('overview', this); setTimeout(()=>scrollToWs('PhotoLab'),100)">
-          <span class="nav-icon">📸</span> PhotoLab
+          <span class="nav-icon">📸</span> PhotoLab <span style="font-size:10px;color:var(--text-muted);font-weight:700">GATED</span>
         </button>
       </div>
     </div>
@@ -3924,6 +3924,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Marked the sidebar shortcuts for ParkStay, Edge, and PhotoLab as PAUSED/GATED so side-quest navigation cannot look like approved active work ahead of $13K coaching sales proof", time:"2026-05-21 12:22PM PDT", color:"var(--text-muted)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined the leftover Activity by Hour chart code so hidden/reintroduced activity-volume visuals cannot show fake hourly counts; activity remains a source-proof log, not revenue proof", time:"2026-05-19 12:23PM PDT", color:"var(--orange)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Moved Teeco Coaching to the first workstream slot and source-gated Rental Portfolio so the All Workstreams view cannot start with management/property activity ahead of the $13K coaching proof snapshot; rental counts now require PMS/source-date proof before operating decisions", time:"2026-05-18 06:02PM PDT", color:"var(--gold)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Changed the overview Quick Stats card from Live to Source gated: health bars and agent-run counts now warn they are not decision proof until CRM/GHL, Stripe/QuickBooks, Motion, and Hermes usage source dates plus cost/spend proof are attached", time:"2026-05-18 12:42PM PDT", color:"var(--red)" },
