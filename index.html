@@ -3327,6 +3327,31 @@ img, canvas, svg, video { max-width: 100%; }
                 <span><span class="sales-proof-status">Draft only</span></span>
               </div>
             </div>
+            <div class="sales-proof-board" aria-label="Revenue decision freeze queue">
+              <div class="sales-proof-board-title">
+                <h4>🧊 Revenue Decision Freeze Queue — what stays blocked until source proof lands</h4>
+                <p>This keeps Jeff from approving more dashboard, content, or agent motion while the $13K coaching scoreboard is still Unknown. It is a decision gate, not a new metric.</p>
+              </div>
+              <div class="sales-proof-row header"><span>Decision lane</span><span>Blocked until</span><span>Owner / next action</span><span>Allowed now</span></div>
+              <div class="sales-proof-row">
+                <strong>New agent/content work</strong>
+                <span>Same-day CRM/GHL snapshot plus owner, next action, cost/spend, and ROI link to qualified leads or calls.</span>
+                <span>Atlas throttles approvals; Stephanie supplies sales proof first.</span>
+                <span><span class="sales-proof-status">Narrow fixes only</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Side-quest revival</strong>
+                <span>Direct Coaching → Management → Personal Brand revenue path, source link, budget cap, 7-day test, and shutdown rule.</span>
+                <span>Jeff/Atlas decide after coaching follow-up risk is sourced.</span>
+                <span><span class="sales-proof-status">Paused</span></span>
+              </div>
+              <div class="sales-proof-row">
+                <strong>Dashboard decisions</strong>
+                <span>Unknown sales counts replaced with sourced qualified leads, booked/held calls, closes, and follow-ups due.</span>
+                <span>Atlas may only ship small proof/accountability guardrails until the source date is visible.</span>
+                <span><span class="sales-proof-status">SLOW</span></span>
+              </div>
+            </div>
             <div class="sales-proof-board" aria-label="Sales proof promotion board">
               <div class="sales-proof-board-title">
                 <h4>✅ Sales Proof Promotion Board — when Unknown becomes live</h4>
@@ -3788,6 +3813,9 @@ function handleSearch(query) {
   if ("warm lead handoff packet interview context route booking jeff stephanie".includes(q)) {
     matches.push({ icon: "🧾", text: "Warm Lead Handoff Packet", hint: "Safe context before routing", tab: "revenue" });
   }
+  if ("decision freeze queue slow blocked source proof approval agent content side quest".includes(q)) {
+    matches.push({ icon: "🧊", text: "Revenue Decision Freeze Queue", hint: "Blocked until sales proof", tab: "revenue" });
+  }
   if ("activity proof source owner roi unknown guardrail".includes(q)) {
     matches.push({ icon: "🧾", text: "Activity Proof Guardrail", hint: "Execution log quality", tab: "activity" });
   }
@@ -3925,6 +3953,7 @@ const teamMembers = [
 ];
 
 const activityLog = [
+  { type:"bot", agent:"Atlas Profitability Governor", action:"Added a Revenue Decision Freeze Queue so new agent/content work, side-quest revival, and dashboard decisions stay blocked or SLOW until Stephanie's same-day CRM/GHL source proof replaces Unknown $13K coaching sales counts", time:"2026-05-23 12:24PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Added a visible SLOW run stance to the Pipeline Proof Stamp so Jeff can see dashboard work should stay limited to narrow fixes until Stephanie's same-day CRM/GHL snapshot replaces Unknown $13K coaching sales counts", time:"2026-05-22 12:22PM PDT", color:"var(--red)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Marked the sidebar shortcuts for ParkStay, Edge, and PhotoLab as PAUSED/GATED so side-quest navigation cannot look like approved active work ahead of $13K coaching sales proof", time:"2026-05-21 12:22PM PDT", color:"var(--text-muted)" },
   { type:"bot", agent:"Atlas Profitability Governor", action:"Quarantined the leftover Activity by Hour chart code so hidden/reintroduced activity-volume visuals cannot show fake hourly counts; activity remains a source-proof log, not revenue proof", time:"2026-05-19 12:23PM PDT", color:"var(--orange)" },
