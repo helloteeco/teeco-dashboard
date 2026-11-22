@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scoreboard",
+  "description": "One screen of ~10 money/growth/customer numbers. Colour is computed: green on target, amber within 10%, red more than 10% off.",
+  "type": "object",
+  "required": [
+    "numbers"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "example_data": {
+          "type": "boolean"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "refresh": {
+          "type": "string"
+        },
+        "run": {
+          "type": "string"
+        }
+      }
+    },
+    "numbers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "group",
+          "name",
+          "this_week",
+          "target",
+          "owner"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "group": {
+            "enum": [
+              "Money",
+              "Growth",
+              "Customers"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "this_week": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "last_week": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "target": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "better": {
+            "enum": [
+              "higher",
+              "lower"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          },
+          "owner_phone": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commitment tracker",
+  "description": "Project tracking: what was committed, by when, and what's next. Not a performance-monitoring tool.",
+  "type": "object",
+  "required": [
+    "commitments"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "example_data": {
+          "type": "boolean",
+          "description": "true for the fictional data in this public repo. Real data must never be committed here."
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date",
+          "description": "Date used as 'today' for overdue math. Omit to use the viewer's current date."
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "commitments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "project",
+          "item",
+          "owner",
+          "committed_date",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable ID, e.g. C-001"
+          },
+          "project": {
+            "type": "string"
+          },
+          "item": {
+            "type": "string",
+            "description": "The deliverable or task"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "requested_by": {
+            "type": "string"
+          },
+          "committed_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "source": {
+            "type": "string",
+            "description": "Where the commitment was made (meeting, thread, doc)"
+          },
+          "status": {
+            "enum": [
+              "on_track",
+              "behind",
+              "stalled",
+              "done"
+            ]
+          },
+          "blocker": {
+            "type": "string"
+          },
+          "last_update": {
+            "type": "string",
+            "format": "date"
+          },
+          "next_action": {
+            "type": "string"
+          },
+          "proof_link": {
+            "type": "string",
+            "description": "URL to proof of completion/progress; empty if none"
+          },
+          "visibility": {
+            "enum": [
+              "team",
+              "leadership",
+              "private"
+            ],
+            "description": "Who should see this row once real auth exists"
+          }
+        }
+      }
+    }
+  }
+}
