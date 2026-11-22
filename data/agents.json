@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "as_of": "2026-11-22",
+    "example_data": true,
+    "note": "Agent names, purposes, schedules and connections are from the AIFS resources page. Status is a placeholder until each agent is installed. Prompt docs live on the bot's computer, not in this public repo."
+  },
+  "agents": [
+    {
+      "id": "AG-1",
+      "name": "Constraint Finder",
+      "purpose": "Scans your data and names the ONE constraint limiting output. One at a time.",
+      "schedule": "Every Monday 8:00",
+      "setup_time": "10 min",
+      "connections": [
+        "CRM (HubSpot or Close)",
+        "Stripe or accounting tool",
+        "Slack",
+        "Gmail (Money Prompt)"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/constraint-finder.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Martell, AI Growth Model"
+    },
+    {
+      "id": "AG-2",
+      "name": "Creative Strategist",
+      "purpose": "One message per person, never one message for everyone.",
+      "schedule": "Weekly run + weekly what's-working review",
+      "setup_time": "10 min",
+      "connections": [
+        "Grok Bot / Claude / ChatGPT",
+        "ICP sources (calls, emails, SMS, comments, DMs, CRM)",
+        "Higgsfield",
+        "ElevenLabs",
+        "Suno",
+        "Gemini"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/messaging-multiplier.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Bertulli, Scale the Unscalable"
+    },
+    {
+      "id": "AG-3",
+      "name": "Chief of Staff",
+      "purpose": "Doesn't do the work. Routes it. Brings you no more than 3 judgment calls.",
+      "schedule": "Every weekday 8:00 + daily interview + nightly brain cleanup",
+      "setup_time": "20 min",
+      "connections": [
+        "Brain (Notion page or Google Drive folder)",
+        "Dashboard",
+        "Fireflies (or call recorder)",
+        "CRM",
+        "Stripe",
+        "Slack"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/ai-chief-of-staff.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Barlow, Fast Team Formula"
+    },
+    {
+      "id": "AG-4",
+      "name": "Deal Coach",
+      "purpose": "Finds what your best closers do differently, and coaches the rest of the team to do it.",
+      "schedule": "Every Monday (weekly coaching) + daily audit",
+      "setup_time": "15 min",
+      "connections": [
+        "CRM (Close, HubSpot or Salesforce)",
+        "Call recorder (Fireflies, Gong or Fathom)",
+        "Slack"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/deal-coach.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Sharifpour, Revenue Engine Autopilot"
+    },
+    {
+      "id": "AG-5",
+      "name": "Team Trainer",
+      "purpose": "Turns your decisions, stories and language into short trainings you run live.",
+      "schedule": "On demand; weekly 30 min learn + 30 min train",
+      "setup_time": "10 min",
+      "connections": [
+        "Slack",
+        "Gmail",
+        "Notion or Google Drive (your notes)"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/team-trainer.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Martell, Become an AI Leader"
+    },
+    {
+      "id": "AG-6",
+      "name": "Client Host",
+      "purpose": "Every morning, the 9 customers who need you most, with drafts waiting in your voice.",
+      "schedule": "Every weekday 8:00 + monthly review",
+      "setup_time": "30 min",
+      "connections": [
+        "CRM (HubSpot)",
+        "Stripe",
+        "Google Drive",
+        "Intercom",
+        "Fathom",
+        "Gmail",
+        "Slack"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/client-host.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Ogilvie, Raving Fans Blueprint"
+    },
+    {
+      "id": "AG-7",
+      "name": "AI Content Strategist",
+      "purpose": "Finds the problems your customers already have, and turns them into scripts in your voice.",
+      "schedule": "Weekly",
+      "setup_time": "15 min",
+      "connections": [
+        "Grok Bot / Claude / ChatGPT",
+        "TopicFinder",
+        "Customer questions + comments",
+        "Past posts + voice samples"
+      ],
+      "status": "not_installed",
+      "prompt_doc": "/workspace/aifs-resources/agents/content-strategist.md",
+      "source_url": "https://www.danmartell.com/aifs-resources/#/agents",
+      "from_talk": "Gaudet, The Authority Brand"
+    }
+  ]
+}

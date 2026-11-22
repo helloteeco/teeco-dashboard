@@ -1,0 +1,299 @@
+{
+  "meta": {
+    "example_data": true,
+    "as_of": "2026-11-22",
+    "note": "EXAMPLE DATA ONLY. Fictional placeholders, not real TEECO people, clients, or numbers.",
+    "top9_refresh": "08:00",
+    "timezone": "America/Los_Angeles",
+    "quiet_threshold_days": 30,
+    "avg_monthly_value": 500,
+    "quiet_cost_note": "Ogilvie: quiet customers x monthly value, doubled for the referral you never get."
+  },
+  "color_definitions": {
+    "purple": "Top-tier / raving fan. Highest value or most engaged; protect and look for referrals or expansion.",
+    "green": "Healthy. On track, no open issues in the data.",
+    "yellow": "Needs attention. Something open or slipping; act this week before it turns red.",
+    "red": "At risk. Open issue, complaint, or no response in the data; act today."
+  },
+  "clients": [
+    {
+      "id": "CL-001",
+      "name": "Example Client A",
+      "color": "purple",
+      "priority": 3,
+      "owner": "Example Owner B",
+      "last_contact": "2026-11-21",
+      "reason": "Example: repeat client, asked about adding a second example property.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 6,
+      "signals": [
+        "thanked",
+        "renewed"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-002",
+      "name": "Example Client B",
+      "color": "purple",
+      "priority": 2,
+      "owner": "Example Owner C",
+      "last_contact": "2026-11-20",
+      "reason": "Example: repeat client, asked about adding a second example property.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 5,
+      "signals": [
+        "thanked",
+        "renewed"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-003",
+      "name": "Example Client C",
+      "color": "purple",
+      "priority": 1,
+      "owner": "Example Owner D",
+      "last_contact": "2026-11-19",
+      "reason": "Example: repeat client, asked about adding a second example property.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 4,
+      "signals": [
+        "thanked",
+        "renewed"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-004",
+      "name": "Example Client D",
+      "color": "green",
+      "priority": 5,
+      "owner": "Example Owner E",
+      "last_contact": "2026-11-18",
+      "reason": "Example: bookings steady, no open issues in example data.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 13,
+      "signals": [
+        "logged_in"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-005",
+      "name": "Example Client E",
+      "color": "green",
+      "priority": 4,
+      "owner": "Example Owner A",
+      "last_contact": "2026-11-17",
+      "reason": "Example: bookings steady, no open issues in example data.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 12,
+      "signals": [
+        "logged_in"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-006",
+      "name": "Example Client F",
+      "color": "green",
+      "priority": 3,
+      "owner": "Example Owner B",
+      "last_contact": "2026-11-16",
+      "reason": "Example: bookings steady, no open issues in example data.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 11,
+      "signals": [
+        "logged_in"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-007",
+      "name": "Example Client G",
+      "color": "green",
+      "priority": 2,
+      "owner": "Example Owner C",
+      "last_contact": "2026-11-15",
+      "reason": "Example: bookings steady, no open issues in example data.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 10,
+      "signals": [
+        "logged_in"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-008",
+      "name": "Example Client H",
+      "color": "green",
+      "priority": 1,
+      "owner": "Example Owner D",
+      "last_contact": "2026-11-14",
+      "reason": "Example: bookings steady, no open issues in example data.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 9,
+      "signals": [
+        "logged_in"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-009",
+      "name": "Example Client I",
+      "color": "yellow",
+      "priority": 4,
+      "owner": "Example Owner E",
+      "last_contact": "2026-11-13",
+      "reason": "Example: one open question waiting on reply.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 38,
+      "signals": [
+        "no_reply"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-010",
+      "name": "Example Client J",
+      "color": "yellow",
+      "priority": 3,
+      "owner": "Example Owner A",
+      "last_contact": "2026-11-12",
+      "reason": "Example: one open question waiting on reply.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 37,
+      "signals": [
+        "no_reply"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-011",
+      "name": "Example Client K",
+      "color": "yellow",
+      "priority": 2,
+      "owner": "Example Owner B",
+      "last_contact": "2026-11-11",
+      "reason": "Example: one open question waiting on reply.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 36,
+      "signals": [
+        "no_reply"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-012",
+      "name": "Example Client L",
+      "color": "yellow",
+      "priority": 1,
+      "owner": "Example Owner C",
+      "last_contact": "2026-11-10",
+      "reason": "Example: one open question waiting on reply.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 35,
+      "signals": [
+        "no_reply"
+      ],
+      "channel": "sms",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-013",
+      "name": "Example Client M",
+      "color": "red",
+      "priority": 4,
+      "owner": "Example Owner D",
+      "last_contact": "2026-11-09",
+      "reason": "Example: open issue flagged in example data, no reply yet.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 66,
+      "signals": [
+        "no_reply",
+        "support_ticket_open"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-014",
+      "name": "Example Client N",
+      "color": "red",
+      "priority": 3,
+      "owner": "Example Owner E",
+      "last_contact": "2026-11-08",
+      "reason": "Example: open issue flagged in example data, no reply yet.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 65,
+      "signals": [
+        "no_reply",
+        "support_ticket_open"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-015",
+      "name": "Example Client O",
+      "color": "red",
+      "priority": 2,
+      "owner": "Example Owner A",
+      "last_contact": "2026-11-07",
+      "reason": "Example: open issue flagged in example data, no reply yet.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 64,
+      "signals": [
+        "no_reply",
+        "support_ticket_open"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    },
+    {
+      "id": "CL-016",
+      "name": "Example Client P",
+      "color": "red",
+      "priority": 1,
+      "owner": "Example Owner B",
+      "last_contact": "2026-11-06",
+      "reason": "Example: open issue flagged in example data, no reply yet.",
+      "source": "Example CRM record",
+      "next_step_draft": "Draft only: check in about example item (human approves before anything is sent).",
+      "days_quiet": 63,
+      "signals": [
+        "no_reply",
+        "support_ticket_open"
+      ],
+      "channel": "call",
+      "finish_line": "Example: the outcome this client came for"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "example_data": true,
+    "as_of": "2026-11-22",
+    "note": "EXAMPLE DATA ONLY. Fictional placeholders, not real TEECO people, clients, or numbers."
+  },
+  "sources": [
+    {
+      "id": "gohighlevel",
+      "name": "GoHighLevel",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Client Host",
+        "Commitments"
+      ],
+      "notes": "Placeholder only. No live integration in this repo."
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Client Host"
+      ],
+      "notes": "Placeholder only. No live integration in this repo."
+    },
+    {
+      "id": "google_drive",
+      "name": "Google Drive",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Commitments"
+      ],
+      "notes": "Placeholder only. No live integration in this repo."
+    },
+    {
+      "id": "str_platforms",
+      "name": "Airbnb / Vrbo / Turno",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Client Host",
+        "Team"
+      ],
+      "notes": "Placeholder only. No live integration in this repo."
+    },
+    {
+      "id": "granola",
+      "name": "Granola",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Commitments"
+      ],
+      "notes": "Placeholder only. No live integration in this repo."
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Commitments",
+        "Team"
+      ],
+      "notes": "Placeholder only. No live integration in this repo."
+    },
+    {
+      "id": "call-recordings",
+      "name": "Fathom / Fireflies / Granola (call recordings)",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Client Host",
+        "Deal Coach",
+        "Scorecard"
+      ],
+      "notes": "Talks: record every sales and onboarding call. Placeholder."
+    },
+    {
+      "id": "crm",
+      "name": "Sales CRM activity + pipeline",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Scorecard",
+        "Client Host",
+        "Deal Coach"
+      ],
+      "notes": "Talks: CRM as the central hub. Placeholder."
+    },
+    {
+      "id": "gmail",
+      "name": "Gmail",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Client Host",
+        "Constraint Finder (Money Prompt)",
+        "Team Trainer"
+      ],
+      "notes": "Drafts only; nothing sent. Placeholder."
+    },
+    {
+      "id": "intercom",
+      "name": "Intercom",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Client Host"
+      ],
+      "notes": "Support questions and tickets. Placeholder."
+    },
+    {
+      "id": "notion",
+      "name": "Notion (company brain)",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Chief of Staff",
+        "Team Trainer",
+        "Agents"
+      ],
+      "notes": "Business brain; nightly cleanup. Placeholder."
+    },
+    {
+      "id": "topicfinder",
+      "name": "TopicFinder",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "AI Content Strategist"
+      ],
+      "notes": "Outlier posts in the niche. Placeholder."
+    },
+    {
+      "id": "financials",
+      "name": "Financials / scorecard sheet",
+      "status": "not_connected",
+      "last_sync": null,
+      "feeds": [
+        "Scoreboard",
+        "Constraint Finder",
+        "Chief of Staff"
+      ],
+      "notes": "Revenue, cash, margin. Placeholder."
+    }
+  ]
+}
