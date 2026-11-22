@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "example_data": true,
+    "as_of": "2026-11-22",
+    "note": "EXAMPLE DATA ONLY. Fictional placeholders, not real TEECO people, clients, or numbers.",
+    "cadence": "Analysis Sunday night; check Thursday (Martell). Workbook agent default: Mondays 8:00."
+  },
+  "current": {
+    "id": "K-001",
+    "title": "Example: slow follow-up after booked calls",
+    "stage": "Sales",
+    "owner": "Example Owner C",
+    "opened": "2026-11-16",
+    "steps": {
+      "locate": "Example: booked calls are fine, but 1 in 3 never get a second touch.",
+      "diagnose": "Example: no follow-up cadence is written down; each rep does their own thing.",
+      "quantify": "Example: ~6 lost deals a month at example $2,000 each.",
+      "quantify_monthly_cost": 12000,
+      "prescribe": "Example: copy the top rep's 5-touch cadence (Deal Coach playbook).",
+      "execute": "Example: surge. Every rep clears open follow-ups by Thursday. Owner reports back in 2 hours."
+    },
+    "status": "execute",
+    "next_check": "2026-11-26",
+    "evidence": [
+      "Example CRM activity report",
+      "Example call recordings (last 30 days)"
+    ]
+  },
+  "snap_question": {
+    "question": "If demand tripled, where would the business slow down first?",
+    "answer": "Example: onboarding new customers (one example person does it all)."
+  },
+  "feedback": [
+    {
+      "date": "2026-11-16",
+      "from": "Example Owner C",
+      "agrees": true,
+      "text": "Example: agree, we lose them after the first call."
+    },
+    {
+      "date": "2026-11-17",
+      "from": "Example Owner B",
+      "agrees": false,
+      "text": "Example: I think lead quality is the bigger issue; here's why..."
+    }
+  ],
+  "history": [
+    {
+      "id": "K-000",
+      "title": "Example: invoices sent late",
+      "closed": "2026-11-09",
+      "result": "Example: AR over 30 days down from 25% to 18%"
+    }
+  ]
+}

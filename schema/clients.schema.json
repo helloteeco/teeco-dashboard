@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Client Host",
+  "description": "Clients sorted purple/green/yellow/red. Only show what is in the data: never invent customers or quotes. Nothing is ever sent from the dashboard.",
+  "type": "object",
+  "required": [
+    "color_definitions",
+    "clients"
+  ],
+  "properties": {
+    "meta": {
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "as_of"
+          ],
+          "properties": {
+            "example_data": {
+              "type": "boolean",
+              "description": "true for the fictional data in this public repo. Real data must never be committed here."
+            },
+            "as_of": {
+              "type": "string",
+              "format": "date",
+              "description": "Date used as 'today' for overdue math. Omit to use the viewer's current date."
+            },
+            "note": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "top9_refresh": {
+          "type": "string",
+          "description": "Local time the daily top 9 refreshes, HH:MM"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "quiet_threshold_days": {
+          "type": "integer",
+          "description": "Days without contact before a client counts as quiet"
+        },
+        "avg_monthly_value": {
+          "type": "number",
+          "description": "Average monthly value per customer, for the quiet-customer cost"
+        },
+        "quiet_cost_note": {
+          "type": "string"
+        }
+      }
+    },
+    "color_definitions": {
+      "type": "object",
+      "required": [
+        "purple",
+        "green",
+        "yellow",
+        "red"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "clients": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "color"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "color": {
+            "enum": [
+              "purple",
+              "green",
+              "yellow",
+              "red"
+            ]
+          },
+          "priority": {
+            "type": "number",
+            "description": "Higher = earlier in its color group and in the top 9"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "last_contact": {
+            "type": "string",
+            "format": "date"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Why this color, taken from source data only"
+          },
+          "source": {
+            "type": "string",
+            "description": "Record the color is based on"
+          },
+          "next_step_draft": {
+            "type": "string",
+            "description": "Suggested draft only; a human approves every message"
+          },
+          "days_quiet": {
+            "type": "integer",
+            "description": "Days since we last heard from them"
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "no_reply",
+                "no_rebook",
+                "no_review",
+                "support_ticket_open",
+                "waiting_on_us",
+                "thanked",
+                "logged_in",
+                "renewed",
+                "asked_guidance",
+                "referred"
+              ]
+            }
+          },
+          "channel": {
+            "enum": [
+              "call",
+              "sms",
+              "email"
+            ],
+            "description": "Phone first, then SMS; email only if you must (Ogilvie)"
+          },
+          "finish_line": {
+            "type": "string",
+            "description": "The outcome this client came for"
+          },
+          "assigned_to": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

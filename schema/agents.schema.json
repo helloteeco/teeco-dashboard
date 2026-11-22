@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agents",
+  "description": "The 7 AIFS agents with purpose, schedule, required connections, status and prompt doc.",
+  "type": "object",
+  "required": [
+    "agents"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "example_data": {
+          "type": "boolean"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "refresh": {
+          "type": "string"
+        },
+        "run": {
+          "type": "string"
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "purpose",
+          "schedule",
+          "connections",
+          "status",
+          "prompt_doc"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "schedule": {
+            "type": "string"
+          },
+          "setup_time": {
+            "type": "string"
+          },
+          "connections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "not_installed",
+              "installing",
+              "live"
+            ]
+          },
+          "prompt_doc": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "from_talk": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

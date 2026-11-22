@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scorecard",
+  "description": "Metrics with goal, success, pace, color and owner (Barlow: every metric needs an owner; red = number one constraint). Martell sensors: unit economics.",
+  "type": "object",
+  "required": [
+    "metrics"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "example_data": {
+          "type": "boolean",
+          "description": "true for the fictional data in this public repo. Real data must never be committed here."
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "group",
+          "name",
+          "color",
+          "owner"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "success": {
+            "type": "string",
+            "description": "What success looks like"
+          },
+          "pace_target": {
+            "type": "string",
+            "description": "How much per day/hour/week tells us we're on pace"
+          },
+          "current": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "color": {
+            "enum": [
+              "green",
+              "yellow",
+              "red"
+            ]
+          },
+          "owner": {
+            "type": "string"
+          },
+          "owner_contact": {
+            "type": "string",
+            "description": "Name + phone in the private build; placeholder here"
+          },
+          "how_to_move": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date"
+          },
+          "from_talk": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

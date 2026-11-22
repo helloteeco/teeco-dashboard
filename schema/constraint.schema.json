@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Constraint loop",
+  "description": "Money constraint loop: locate, diagnose, quantify, prescribe, execute (surge).",
+  "type": "object",
+  "required": [
+    "current"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "example_data": {
+          "type": "boolean",
+          "description": "true for the fictional data in this public repo. Real data must never be committed here."
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string"
+        },
+        "cadence": {
+          "type": "string"
+        }
+      }
+    },
+    "current": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "owner",
+        "steps",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "stage": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "opened": {
+          "type": "string",
+          "format": "date"
+        },
+        "steps": {
+          "type": "object",
+          "required": [
+            "locate",
+            "diagnose",
+            "quantify",
+            "prescribe",
+            "execute"
+          ],
+          "properties": {
+            "locate": {
+              "type": "string"
+            },
+            "diagnose": {
+              "type": "string"
+            },
+            "quantify": {
+              "type": "string"
+            },
+            "prescribe": {
+              "type": "string"
+            },
+            "execute": {
+              "type": "string"
+            },
+            "quantify_monthly_cost": {
+              "type": "number"
+            }
+          }
+        },
+        "status": {
+          "enum": [
+            "locate",
+            "diagnose",
+            "quantify",
+            "prescribe",
+            "execute",
+            "solved"
+          ]
+        },
+        "next_check": {
+          "type": "string",
+          "format": "date"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "snap_question": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "answer": {
+          "type": "string"
+        }
+      }
+    },
+    "feedback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "from",
+          "text"
+        ],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "from": {
+            "type": "string"
+          },
+          "agrees": {
+            "type": "boolean"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "closed": {
+            "type": "string",
+            "format": "date"
+          },
+          "result": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

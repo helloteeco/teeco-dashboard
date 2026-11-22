@@ -37,3 +37,8 @@ Verification before finalizing:
 - Confirm existing login still works unless intentionally changed.
 - Confirm mobile layout is not obviously broken.
 - Update a development log section/file if present.
+
+## v1 source-of-truth dashboard (dashboard-v1 branch)
+- The site is now `index.html` + `assets/` + JSON in `data/` (EXAMPLE data only) with schemas in `schema/`. See README.md.
+- The repo is public: never commit real names, client data, financials, passwords, or keys. Real data goes behind @teeco.co Google sign-in per README "Go-live steps".
+- The previous single-file dashboard is preserved in git history on `main` (commit 1323276).

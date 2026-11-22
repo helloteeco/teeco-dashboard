@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "example_data": true,
+    "as_of": "2026-11-22",
+    "note": "EXAMPLE DATA ONLY. Fictional placeholders, not real TEECO people, clients, or numbers.",
+    "run": "Every weekday 8:00 after reading the Scoreboard",
+    "rule": "Routes, doesn't do the work. No more than 3 judgment calls. Facts, assumptions and gaps kept separate."
+  },
+  "assignments": [
+    {
+      "id": "R-01",
+      "item": "Cash collected is red: chase the 3 oldest open invoices",
+      "metric": "N-02",
+      "owner": "Example Owner A",
+      "deadline": "2026-11-23",
+      "context": "Example: 3 invoices past 30 days (brain: billing notes)",
+      "status": "open"
+    },
+    {
+      "id": "R-02",
+      "item": "Sales calls booked is red: send pre-call quiz to new leads",
+      "metric": "N-06",
+      "owner": "Example Owner C",
+      "deadline": "2026-11-24",
+      "context": "Example: show rate fell after reminder change",
+      "status": "open"
+    },
+    {
+      "id": "R-03",
+      "item": "Refunds red: call both refunded customers, find the reason",
+      "metric": "N-09",
+      "owner": "Example Owner D",
+      "deadline": "2026-11-23",
+      "context": "Example: both mention a late start",
+      "status": "open"
+    },
+    {
+      "id": "R-04",
+      "item": "Gross margin amber: review example contractor costs",
+      "metric": "N-04",
+      "owner": "Example Owner A",
+      "deadline": "2026-11-25",
+      "context": "Example: one job ran over hours",
+      "status": "chasing"
+    }
+  ],
+  "judgment_calls": [
+    {
+      "id": "J-1",
+      "question": "Example: Do we pause the example ad campaign until booked calls recover? (yes/no)",
+      "why": "Example: spend is steady while booked calls dropped 12%"
+    },
+    {
+      "id": "J-2",
+      "question": "Example: Approve offering a goodwill credit to the two refunded customers? (yes/no)",
+      "why": "Example: both were long-time clients"
+    },
+    {
+      "id": "J-3",
+      "question": "Example: Should Example Owner C stop taking founder calls this week so you can? (pick one)",
+      "why": "Example: close rate is higher on the founder's calls"
+    }
+  ],
+  "brain_log": [
+    {
+      "date": "2026-11-21",
+      "type": "decision",
+      "text": "Example: all outbound customer messages stay drafts until a human approves."
+    },
+    {
+      "date": "2026-11-21",
+      "type": "fact",
+      "text": "Example: invoices over 30 days total 3."
+    },
+    {
+      "date": "2026-11-20",
+      "type": "assumption",
+      "text": "Example: the booked-call drop is from the reminder change (not yet confirmed)."
+    },
+    {
+      "date": "2026-11-20",
+      "type": "gap",
+      "text": "Example: no call recordings for in-person consults yet."
+    }
+  ]
+}

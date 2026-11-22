@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "example_data": true,
+    "as_of": "2026-11-22",
+    "note": "EXAMPLE DATA ONLY. Fictional placeholders, not real TEECO people, clients, or numbers."
+  },
+  "people": [
+    {
+      "name": "Example Owner A",
+      "role": "Example role A",
+      "team": "Example Team"
+    },
+    {
+      "name": "Example Owner B",
+      "role": "Example role B",
+      "team": "Example Team"
+    },
+    {
+      "name": "Example Owner C",
+      "role": "Example role C",
+      "team": "Example Team"
+    },
+    {
+      "name": "Example Owner D",
+      "role": "Example role D",
+      "team": "Example Team"
+    },
+    {
+      "name": "Example Owner E",
+      "role": "Example role E",
+      "team": "Example Team"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIFS build checklist",
+  "description": "Every concrete thing the AIFS 2026 speakers said to build, install, set up, prompt, measure or do, with the exact quote and timestamp.",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "source": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "example_data": {
+          "type": "boolean"
+        },
+        "categories": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "item",
+          "kind",
+          "status",
+          "owner",
+          "quote"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "e"
+            ]
+          },
+          "item": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "software",
+              "habit"
+            ]
+          },
+          "cadence": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "not_started",
+              "in_progress",
+              "done"
+            ]
+          },
+          "video": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9
+          },
+          "speaker": {
+            "type": "string"
+          },
+          "talk": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "pattern": "^(\\d+:)?\\d\\d:\\d\\d$"
+          },
+          "quote": {
+            "type": "string",
+            "description": "Exact words from the talk captions"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "workbook": {
+            "type": "string"
+          },
+          "view": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "source_doc": {
+            "type": "string",
+            "description": "For items from the resources page/workbook instead of the audio"
+          }
+        }
+      }
+    }
+  }
+}

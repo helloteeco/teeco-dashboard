@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team roster",
+  "description": "People shown in the Team view. Cards are computed from commitments.",
+  "type": "object",
+  "required": [
+    "people"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "as_of"
+      ],
+      "properties": {
+        "example_data": {
+          "type": "boolean",
+          "description": "true for the fictional data in this public repo. Real data must never be committed here."
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date",
+          "description": "Date used as 'today' for overdue math. Omit to use the viewer's current date."
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Must match commitments[].owner"
+          },
+          "role": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
